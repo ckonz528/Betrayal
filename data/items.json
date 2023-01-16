@@ -1,0 +1,178 @@
+[
+    {
+        "Adrenaline Shot": {
+            "description": "A syringe containing a strange fluorescent liquid. Before you attempt a trait roll, you can use this item to add 4 to the result of that roll. Discard this item after you use it.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Amulet of the Ages": {
+            "description": "Ancient silver and inlaid gems inscribed with blessings. Gain 1 Might, 1 Speed, 1 Knowledge and 1 Sanity now. Lose 3 Might, 3 Speed, 3 Knowledge and 3 Sanity if you lose the Amulet.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Angel Feather": {
+            "description": "A perfect feather fluttering in your hand. When you attempt a roll of any kind, you can call out a number from 0 to 8. Use that number instead of rolling the dice. Discard this item after you use it.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Armor": {
+            "description": "It's just prop armor from a Renaissance Fair, but it's still metal. Any time (not just once per turn) you take physical damage, take one point less of damage. This item can't be stolen.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 0
+        }
+    },
+    {
+        "Axe": {
+            "description": "A weapon. Very Sharp. You roll 1 additional die (maximum of 8 dice) when making a Might attack with this weapon. You can't use another weapon while you're using this one.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Bell": {
+            "description": "???",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Blood Dagger": {
+            "description": "A nasty weapon. Needles and tubes extend from the handle... and plunge right into your veins. You roll 3 additional dice (maximum of 8 dice) when making a Might attack with this weapon. If you do, lose 1 Speed. You can't use another weapon while you're using this one. This item cannot be traded or dropped. If it's stolen, take 2 dice of physical damage.",
+            "drop": 0,
+            "trade": 0,
+            "steal": 1
+        }
+    },
+    {
+        "Bottle": {
+            "description": "An opaque vial containing a black liquid. Once during your turn after the haunt is revealed, you can roll 3 dice and drink from the Bottle. Discard this item after you use it.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Candle": {
+            "description": "It makes the shadows move - at least, you hope it's doing that. If you have the Bell, Book, and Candle, gain 2 in each trait. The first time you lose one of those 3 items later in the game, lose 2 from each trait.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Dark Dice": {
+            "description": "Are you feeling lucky? Once per turn, you can roll 3 dice.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Dynamite": {
+            "description": "The fuse isn't lit... yet. Instead of attacking, you can throw the Dynamite through a connecting door into an adjacent room. Each explorer and monster with Might and Speed traits in that room must attempt a Speed roll. 5+ Take no damage from the Dynamite, 5 take 4 points of physical damage. Discard this item after you use it.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Healing Salve": {
+            "description": "A sticky paste in a shallow bowl. You can apply the Healing Salve to yourself or to another living explorer in the same room. If that explorer's Might or Speed is below it's starting value, raise one or both to its starting value. Discard this item after you use it.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Idol": {
+            "description": "Perhaps it's chosen you for some greater purpose. Like human sacrifice. Once per turn, you can rub the Idol before making any trait, combat, or event roll to add 2 dice to the roll (a maximum of 8 dice). Each time you do, you lose one sanity.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Lucky Stone": {
+            "description": "A smooth, ordinary-looking rock. You sense it will bring you good fortune. After you attempt a roll of any kind, you can rub the stone once to reroll any number of those dice. Discard this item after you use it.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Medical Kit": {
+            "description": "A doctor's bag, depleted in some critical resources. Once during your turn, you can attempt a Knowledge roll to heal yourself or another explorer in the same room. You can't raise a trait above its starting value with the Medical Kit.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Music Box": {
+            "description": "A hand-crafted antique. It plays a haunting melody that gets stuck in your head. Once per turn, you can open or close the music box. While the Music Box is open, any explorer or monster with a Sanity trait that enters or starts in the same room (as the box) must make a sanity roll of 4+. If the roll fails, the explorer or monster ends its turn as it is mesmerized by the music. If the explorer or monster carrying the music box becomes mesmerized, they drop the Music Box. If the Music Box was open when it was dropped, and it remains open.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Pickpocket's Gloves": {
+            "description": "Helping yourself has never seemed so easy. When you are in the same room as another explorer, you can discard this item to take any item that explorer is carrying.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Puzzle Box": {
+            "description": "There must be a way to open it. Once during your turn, you can attempt a knowledge roll to open the box.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Rabbit's Foot": {
+            "description": "Not so lucky for the rabbit. Once during your turn, you can reroll 1 die. You must keep the second roll.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Revolver": {
+            "description": "A weapon. An old, potent-looking weapon. You can use the Revolver to attack with Speed instead of Might. (Your opponent then defends with Speed and takes physical damage). Roll 1 additional die on your Speed attack roll (maximum 8 dice). With the Revolver, you can attack anyone in the same room or within line of sight (through an uninterrupted straight line of doors). If you attack someone in another room and you lose, you don't take damage. You can't use another weapon while you're using this one.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Sacrificial Dagger": {
+            "description": "A weapon. A twisted shard of iron covered in mysterious symbols and stained with blood. When making a Might attack with this weapon, you roll 3 extra dice (maximum 8 dice), but you must first make a knowledge roll. You can't use another weapon while you're using this one.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    },
+    {
+        "Smelling Salts": {
+            "description": "Whew, that's a lungful. If you or another explorer's Knowledge is below it's starting value, and you're in the same room, you can raise that trait to it's starting value by using the Smelling Salts. Discard this item after you use it.",
+            "drop": 1,
+            "trade": 1,
+            "steal": 1
+        }
+    }
+]

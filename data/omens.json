@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Bite",
+        "description": "When you draw this card, the player on your right rolls a Might 4 attack against you. You defend against this attack as normal, by rolling dice equal to your Might. This omen can't be dropped, traded, or stolen.",
+        "drop": 0,
+        "trade": 0,
+        "steal": 0
+    },
+    {
+        "name": "Book",
+        "description": "Gain 2 Knowledge now. Lose 2 Knowledge if you lose the Book.",
+        "drop": 1,
+        "trade": 1,
+        "steal": 1
+    },
+    {
+        "name": "Crystal Ball",
+        "description": "Once during your turn after the haunt is revealed, you can attempt a Knowledge roll to peer into the Crystal Ball: 4+: You see the truth. Search the item or event stack for a card of your choice. Shuffle that stack. Then place that card on top. 1-3: You avert your eyes. lose 1 Sanity. 0: You stare into Hell. Lose 2 Sanity.",
+        "drop": 1,
+        "trade": 1,
+        "steal": 1
+    },
+    {
+        "name": "Dog",
+        "description": "Gain 1 Might and 1 Sanity now. Lose 1 Might and 1 Sanity if you lose custody of the Dog. Take a small monster token to represent the Dog. Put it in your room. Once during your turn, the Dog can move to any explored room up to 6 spaces away, using doors and stairs, and then return. It can pick up, carry, and or drop 1 item before it returns. The Dog isn't slowed by opponents. It can't use one-way passages or rooms that require a roll. It can't carry items that slow movement. This omen can't be dropped, traded, or stolen.",
+        "drop": 0,
+        "trade": 0,
+        "steal": 0
+    },
+    {
+        "name": "Girl",
+        "description": "Gain 1 Sanity and 1 Knowledge now. Lose 1 Sanity and 1 Knowledge if you lose custody of the Girl. This omen can't be dropped, traded, or stolen.",
+        "drop": 0,
+        "trade": 0,
+        "steal": 0
+    },
+    {
+        "name": "Holy Symbol",
+        "description": "Gain 2 Sanity now. Lose 2 Sanity if you lose the Holy Symbol.",
+        "drop": 1,
+        "trade": 1,
+        "steal": 1
+    },
+    {
+        "name": "Madman",
+        "description": "Gain 2 Might and lose 1 Sanity now. Lose 2 Might and gain 1 Sanity if you lose custody of the Madman. This omen can't be dropped, traded, or stolen.",
+        "drop": 0,
+        "trade": 0,
+        "steal": 0
+    },
+    {
+        "name": "Mask",
+        "description": "Once during your turn, you can attempt a Sanity roll to use the mask: 4+: You can put on or take off the Mask. If you put on the Mask, gain 2 Knowledge and lose 2 Sanity. If you take off the Mask, gain 2 Sanity and lose 2 Knowledge. 0-3: You can't use the Mask this turn.",
+        "drop": 1,
+        "trade": 1,
+        "steal": 1
+    },
+    {
+        "name": "Medallion",
+        "description": "You are immune to the effects of the Pentagram Chamber, Crypt, and Graveyard.",
+        "drop": 1,
+        "trade": 1,
+        "steal": 1
+    },
+    {
+        "name": "Ring",
+        "description": "If you attack an opponent that has a Sanity trait, you can attack with Sanity instead of Might (your opponent defends with Sanity, and damage is mental instead of physical).",
+        "drop": 1,
+        "trade": 1,
+        "steal": 1
+    },
+    {
+        "name": "Skull",
+        "description": "If you take mental damage, you can take all of it as physical damage instead.",
+        "drop": 1,
+        "trade": 1,
+        "steal": 1
+    },
+    {
+        "name": "Spear",
+        "description": "You roll 2 additional dice (maximum 8) when making a Might attack with this weapon. You can't use another weapon while you're using this one.",
+        "drop": 1,
+        "trade": 1,
+        "steal": 1
+    },
+    {
+        "name": "Spirit Board",
+        "description": "Before you move during your turn, you can look at the top tile of the room stack. If you use the Spirit Board after the haunt has been revealed, the traitor can move any number of monsters 1 space closer to you (if you are the traitor, you don't have to move those monsters). If there is no traitor, all monsters move 1 space closer to you.",
+        "drop": 1,
+        "trade": 1,
+        "steal": 1
+    }
+]

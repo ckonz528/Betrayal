@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Missy Dubourde",
+        "speed": [0,3,4,5,6,6,6,7,7],
+        "might": [0,2,3,3,3,4,5,6,7],
+        "sanity": [0,1,2,3,4,5,5,6,7],
+        "knowledge": [0,2,3,4,4,5,6,6,6],
+        "base": [3,4,3,4],
+        "birthday": "2-14",
+        "color": "yellow"
+    },
+    {
+        "name": "Zoe Ingstrom",
+        "speed": [0,4,4,4,4,5,6,8,8],
+        "might": [0,2,2,3,3,4,4,6,7],
+        "sanity": [0,3,4,5,5,6,6,7,8],
+        "knowledge": [0,1,2,3,4,4,5,5,5],
+        "base": [4,4,3,3],
+        "birthday": "11-5",
+        "color": "yellow"
+    },
+    {
+        "name": "Heather Granville",
+        "speed": [0,3,3,4,5,6,6,7,8],
+        "might": [0,3,3,3,4,5,6,7,8],
+        "sanity": [0,3,3,3,4,5,6,6,6],
+        "knowledge": [0,2,3,3,4,5,6,7,8],
+        "base": [3,3,3,5],
+        "birthday": "8-2",
+        "color": "purple"
+    },
+    {
+        "name": "Jenny LeClerc",
+        "speed": [0,2,3,4,4,4,5,6,8],
+        "might": [0,3,4,4,4,4,5,6,8],
+        "sanity": [0,1,1,2,3,3,3,5,6],
+        "knowledge": [0,2,3,3,4,4,5,6,8],
+        "base": [4,3,5,3],
+        "birthday": "3-4",
+        "color": "purple"
+    },
+    {
+        "name": "Vivian Lopez",
+        "speed": [0,3,4,4,4,4,6,7,8],
+        "might": [0,2,2,2,4,4,5,6,6],
+        "sanity": [0,4,4,4,5,6,7,8,8],
+        "knowledge": [0,4,5,5,5,5,6,6,7],
+        "base": [4,3,3,4],
+        "birthday": "1-11",
+        "color": "blue"
+    },
+    {
+        "name": "Madame Zostra",
+        "speed": [0,2,3,3,5,5,6,6,7],
+        "might": [0,2,3,3,4,5,5,5,6],
+        "sanity": [0,4,4,4,5,6,7,8,8],
+        "knowledge": [0,1,3,4,4,4,5,6,6],
+        "base": [3,4,3,4],
+        "birthday": "12-10",
+        "color": "blue"
+    },
+    {
+        "name": "Father Rhinehardt",
+        "speed": [0,2,3,3,4,5,6,7,7],
+        "might": [0,1,2,2,4,4,5,5,7],
+        "sanity": [0,3,4,5,5,6,7,7,8],
+        "knowledge": [0,1,3,3,4,5,6,6,8],
+        "base": [3,3,5,4],
+        "birthday": "3-29",
+        "color": "white"
+    },
+    {
+        "name": "Professor Longfellow",
+        "speed": [0,2,2,4,4,5,5,6,6],
+        "might": [0,1,2,3,4,5,5,6,6],
+        "sanity": [0,1,3,3,4,5,5,6,7],
+        "knowledge": [0,4,5,5,5,6,6,7,8],
+        "base": [4,3,3,4],
+        "birthday": "7-27",
+        "color": "white"
+    },
+    {
+        "name": "Ox Bellows",
+        "speed": [0,2,2,2,3,4,5,5,6],
+        "might": [0,4,5,5,6,6,7,8,8],
+        "sanity": [0,2,2,3,4,5,5,6,7],
+        "knowledge": [0,2,2,3,3,5,5,6,6],
+        "base": [5,3,3,3],
+        "birthday": "10-18",
+        "color": "red"
+    },
+    {
+        "name": "Darrin 'Flash' Williams",
+        "speed": [0,4,4,4,5,6,7,7,8],
+        "might": [0,2,3,3,4,5,6,6,7],
+        "sanity": [0,1,2,3,4,5,5,5,7],
+        "knowledge": [0,2,3,3,4,5,5,5,7],
+        "base": [5,3,3,3],
+        "birthday": "6-6",
+        "color": "red"
+    },
+    {
+        "name": "Peter Akimoto",
+        "speed": [0,3,3,3,4,6,6,7,7],
+        "might": [0,2,3,3,4,5,5,6,8],
+        "sanity": [0,3,4,4,4,5,6,6,7],
+        "knowledge": [0,3,4,4,5,6,6,7,8],
+        "base": [4,3,4,3],
+        "birthday": "9-3",
+        "color": "green"
+    },
+    {
+        "name": "Brandon Jaspers",
+        "speed": [0,3,4,4,4,5,6,7,8],
+        "might": [0,2,3,3,4,5,6,6,7],
+        "sanity": [0,3,3,3,4,5,6,7,8],
+        "knowledge": [0,1,3,3,5,5,6,6,7],
+        "base": [4,4,4,3],
+        "birthday": "5-21",
+        "color": "green"
+    }
+]
