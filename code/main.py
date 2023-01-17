@@ -10,6 +10,8 @@ class Game:
         pygame.display.set_caption(s.TITLE)
         self.clock = pygame.time.Clock()
 
+        self.bg = pygame.image.load(s.BG_IMAGE).convert()
+
     def run(self):
         while True:
             for event in pygame.event.get():
@@ -19,7 +21,7 @@ class Game:
 
             dt = self.clock.tick() / 1000  # delta time
 
-            self.screen.fill('green')
+            self.screen.blit(self.bg, (0, 0))
 
             pygame.display.update()
 
