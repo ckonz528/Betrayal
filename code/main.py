@@ -1,6 +1,7 @@
 import pygame
 from sys import exit
 import settings as s
+from rooms import RoomDeck
 
 
 class Game:
@@ -11,6 +12,9 @@ class Game:
         self.clock = pygame.time.Clock()
 
         self.bg = pygame.image.load(s.BG_IMAGE).convert()
+
+        room_list = json.load(open('../data/rooms.json'))
+        self.room_deck = RoomDeck(room_list)
 
     def run(self):
         while True:
