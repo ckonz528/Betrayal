@@ -7,8 +7,6 @@ from random import shuffle
 
 class Room():
     def __init__(self, tile_info) -> None:
-        pygame.init()
-        self.screen = pygame.display.set_mode((s.SCREEN_W, s.SCREEN_H))
         self.name = tile_info['name']
         self.doors = [d in tile_info['doors'] for d in 'NESW']
         self.card = tile_info['card']
@@ -23,8 +21,10 @@ class Room():
 
 
 class RoomDeck():
-    def __init__(self, room_list) -> None:
+    def __init__(self) -> None:
         # construct deck of tiles
+        room_list = json.load(open('../data/rooms.json'))
+
         self.room_dict = {room_info['name']: Room(
             room_info) for room_info in room_list}
 
@@ -41,5 +41,6 @@ class RoomDeck():
 
 
 if __name__ == '__main__':
-    room_list = json.load(open('../data/rooms.json'))  # list of dictionaries
-    room_deck = RoomDeck(room_list)
+    pygame.init()
+    screen = pygame.display.set_mode((s.SCREEN_W, s.SCREEN_H))
+    room_deck = RoomDeck()

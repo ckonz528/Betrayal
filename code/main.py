@@ -6,15 +6,17 @@ from rooms import RoomDeck
 
 class Game:
     def __init__(self) -> None:
+
+        # initialize pygame and create screen
         pygame.init()
         self.screen = pygame.display.set_mode((s.SCREEN_W, s.SCREEN_H))
         pygame.display.set_caption(s.TITLE)
-        self.clock = pygame.time.Clock()
 
         self.bg = pygame.image.load(s.BG_IMAGE).convert()
 
-        room_list = json.load(open('../data/rooms.json'))
-        self.room_deck = RoomDeck(room_list)
+        self.clock = pygame.time.Clock()
+
+        self.room_deck = RoomDeck()
 
     def run(self):
         while True:
