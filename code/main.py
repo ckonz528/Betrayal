@@ -2,6 +2,7 @@ import pygame
 from sys import exit
 import settings as s
 from rooms import RoomDeck
+from cards import ObjectDeck
 
 
 class Game:
@@ -14,9 +15,10 @@ class Game:
 
         self.bg = pygame.image.load(s.BG_IMAGE).convert()
 
-        self.clock = pygame.time.Clock()
-
+        # create decks
         self.room_deck = RoomDeck()
+        self.omen_deck = ObjectDeck(s.OMEN_JSON)
+        self.item_deck = ObjectDeck(s.ITEM_JSON)
 
     def run(self):
         while True:
@@ -24,8 +26,6 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
-
-            dt = self.clock.tick() / 1000  # delta time
 
             self.screen.blit(self.bg, (0, 0))
 
