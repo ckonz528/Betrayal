@@ -8,7 +8,7 @@ from random import shuffle
 class Room():
     def __init__(self, tile_info) -> None:
         self.name = tile_info['name']
-        self.doors = [d in tile_info['doors'] for d in 'NESW']
+        self.doors = tile_info['doors']
         self.card = tile_info['card']
         self.floors = tile_info['floors']
 
