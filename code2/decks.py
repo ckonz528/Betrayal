@@ -2,41 +2,8 @@ import pygame
 import settings as s
 import json
 from random import shuffle
-
-
-class Card():
-    def __init__(self, card_info: dict) -> None:
-        # applies to items or omens
-        self.name = card_info['name']
-        self.description = card_info['description']
-        self.action = card_info['action']
-
-
-class ObjectCard(Card):
-    def __init__(self, card_info: dict) -> None:
-        super().__init__(card_info)
-        self.weapon = card_info['weapon']
-
-
-class Room():
-    def __init__(self, tile_info) -> None:
-        self.name = tile_info['name']
-        self.doors = tile_info['doors']
-        self.card = tile_info['card']
-        self.floors = tile_info['floors']
-        self.instructions = tile_info['instructions']
-
-        image_name = self.name.lower().replace(' ', '_').replace("'", '')
-
-        try:
-            self.img = pygame.image.load(
-                f'../graphics/rooms/{image_name}.png').convert()
-        except:
-            self.img = pygame.image.load(
-                f'../graphics/rooms/generic.png').convert()
-
-        self.img = pygame.transform.scale(
-            self.img, (s.TILE_SIZE, s.TILE_SIZE))
+from rooms import Room
+from cards import Card, ObjectCard
 
 
 class Deck():
