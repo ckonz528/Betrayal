@@ -1,7 +1,7 @@
 [
   {
     "name": "Alien Geometry",
-    "description": "The angles of this room don't add up. The room is square, but it has five corners. One of the corders is inside out. You try for the door, but it is always on the other side of the room.",
+    "description": "The angles of this room don't add up. The room is square, but it has five corners. One of the corners is inside out. You try for the door, but it is always on the other side of the room.",
     "action": "Make a Knowledge roll. \n4+: Gain 1 Sanity. It starts to make sense! \n0-3: Lose 1 Speed. You experience vertigo."
   },
   {
@@ -106,7 +106,7 @@
   },
   {
     "name": "Meat Moss",
-    "description": "The room is covered in strange plants. They have an earth, almost gamy fragrance. They move on their own, almost as though they were breathing.",
+    "description": "The room is covered in strange plants. They have an earthy, almost gamy fragrance. They move on their own, almost as though they were breathing.",
     "action": "You may inhale the scent. If you do, roll 2 dice.\n3-4: Gain 1 in any trait. Invigorating!\n0-2: Take 1 die of mental damage. Ugh! It smells like death."
   },
   {
@@ -117,7 +117,7 @@
   {
     "name": "Mysterious Fluid",
     "description": "It sparkles and shines in the light, and smells of berries.",
-    "action": "You may drink the fluid. If you do, roll 3 dice.\n6: Gain 1 in each trait.\n5: Gein 1 Might and 1 Speed.\n4: Gain 1 Knowledge and 1 Sanity.\n3: Gain 1 Knowledge and lose 1 Might.\n2: Lose 1 Knowledge and 1 Sanity.\n1: Lose 1 Might and 1 Speed.\n0: Lose 1 in each trait."
+    "action": "You may drink the fluid. If you do, roll 3 dice.\n6: Gain 1 in each trait.\n5: Gain 1 Might and 1 Speed.\n4: Gain 1 Knowledge and 1 Sanity.\n3: Gain 1 Knowledge and lose 1 Might.\n2: Lose 1 Knowledge and 1 Sanity.\n1: Lose 1 Might and 1 Speed.\n0: Lose 1 in each trait."
   },
   {
     "name": "Phone Call",
@@ -132,7 +132,7 @@
   {
     "name": "Radio Broadcast",
     "description": "A radio hisses on behind you, and a crackly voice begins to read news from years gone by. 'On this day in 1980...'",
-    "action": "Roll 2 dice.\n3-4: Gain 1 Knowledge. '...this song came out!' A poppy tune begins to play.\n0-2: Take 1 die of Mental damage. '...a nuclear attack was launced on Washington, D.C.'"
+    "action": "Roll 2 dice.\n3-4: Gain 1 Knowledge. '...this song came out!' A poppy tune begins to play.\n0-2: Take 1 die of Mental damage. '...a nuclear attack was launched on Washington, D.C.'"
   },
   {
     "name": "Say Cheese",
@@ -196,8 +196,8 @@
   },
   {
     "name": "The Stars at Night",
-    "description": "There are lights in the dim ceiling, twinkiling across the entire room. There are too many of them to count. What are they? Stars? Eyes?",
-    "action": "Choos a trait to roll.\n5+: Gain 1 in the chosen trait.\n4: Lose 1 in the chosen trait.\n0-3: Heal the chosen trait."
+    "description": "There are lights in the dim ceiling, twinkling across the entire room. There are too many of them to count. What are they? Stars? Eyes?",
+    "action": "Choose a trait to roll.\n5+: Gain 1 in the chosen trait.\n4: Lose 1 in the chosen trait.\n0-3: Heal the chosen trait."
   },
   {
     "name": "Tiny Robot",

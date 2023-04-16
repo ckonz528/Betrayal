@@ -75,7 +75,7 @@
     "name": "Machete",
     "weapon": true,
     "description": "Still razor sharp.",
-    "action": "When you use the Machete to attack, add 1 to thte result of your roll."
+    "action": "When you use the Machete to attack, add 1 to the result of your roll."
   },
   {
     "name": "Magic Camera",

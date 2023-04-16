@@ -386,7 +386,7 @@
     "floors": [
       "ground"
     ],
-    "instructions": "Leads to the Basement Landing. If you end your turn on this tile, place your exploreer on the Basement Landing"
+    "instructions": "Leads to the Basement Landing. If you end your turn on this tile, place your explorer on the Basement Landing"
   },
   {
     "name": "Library",

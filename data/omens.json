@@ -39,7 +39,7 @@
     "name": "Mask",
     "weapon": false,
     "description": "You can't tell what it's made of, but it's very smooth and slightly warm",
-    "action": "Add 1 to the result of you r Speed rolls. Once during your turn, you may use the Mask to move everyone else on your tile (explorers and monsters) to any adjacent tiles. This effect may not be used to discover new tiles."
+    "action": "Add 1 to the result of your Speed rolls. Once during your turn, you may use the Mask to move everyone else on your tile (explorers and monsters) to any adjacent tiles. This effect may not be used to discover new tiles."
   },
   {
     "name": "Ring",
