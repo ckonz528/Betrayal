@@ -56,6 +56,8 @@ class RoomDeck(Deck):
                 self.name_list.remove(chosen_tile)
                 return tile
 
+        return tile
+
         # TODO: add logic for if there are no more tiles for that floor
 
 
