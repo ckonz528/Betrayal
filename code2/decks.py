@@ -41,6 +41,9 @@ class Deck():
 
         return card_obj
 
+    def get_obj_by_name(self, name: str):
+        return self.obj_dict[name]
+
 
 class RoomDeck(Deck):
     def __init__(self, info_path: str, object: str) -> None:
