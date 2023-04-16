@@ -1,441 +1,682 @@
 [
-    {
-        "name": "Abandoned Room",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "omen",
-        "floors": 3
-    },
-    {
-        "name": "Attic",
-        "doors": [
-            "S"
-        ],
-        "card": "event",
-        "floors": 4
-    },
-    {
-        "name": "Balcony",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "omen",
-        "floors": 4
-    },
-    {
-        "name": "Ballroom",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "event",
-        "floors": 2
-    },
-    {
-        "name": "Basement Landing",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "none",
-        "floors": 1
-    },
-    {
-        "name": "Bedroom",
-        "doors": [
-            "E",
-            "W"
-        ],
-        "card": "event",
-        "floors": 4
-    },
-    {
-        "name": "Bloody Room",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "item",
-        "floors": 6
-    },
-    {
-        "name": "Catacombs",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "omen",
-        "floors": 1
-    },
-    {
-        "name": "Chapel",
-        "doors": [
-            "N"
-        ],
-        "card": "event",
-        "floors": 6
-    },
-    {
-        "name": "Charred Room",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "omen",
-        "floors": 6
-    },
-    {
-        "name": "Chasm",
-        "doors": [
-            "E",
-            "W"
-        ],
-        "card": "none",
-        "floors": 1
-    },
-    {
-        "name": "Coal Chute",
-        "doors": [
-            "N"
-        ],
-        "card": "none",
-        "floors": 2
-    },
-    {
-        "name": "Collapsed Room",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "none",
-        "floors": 6
-    },
-    {
-        "name": "Conservatory",
-        "doors": [
-            "N"
-        ],
-        "card": "event",
-        "floors": 6
-    },
-    {
-        "name": "Creaky Hallway",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "none",
-        "floors": 7
-    },
-    {
-        "name": "Crypt",
-        "doors": [
-            "N"
-        ],
-        "card": "event",
-        "floors": 1
-    },
-    {
-        "name": "Dining Room",
-        "doors": [
-            "N",
-            "E"
-        ],
-        "card": "omen",
-        "floors": 2
-    },
-    {
-        "name": "Dusty Hallway",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "none",
-        "floors": 7
-    },
-    {
-        "name": "Entrance Hall",
-        "doors": [
-            "N",
-            "S",
-            "W"
-        ],
-        "card": "none",
-        "floors": 2
-    },
-    {
-        "name": "Foyer",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "none",
-        "floors": 4
-    },
-    {
-        "name": "Furnace Room",
-        "doors": [
-            "N",
-            "W",
-            "S"
-        ],
-        "card": "omen",
-        "floors": 1
-    },
-    {
-        "name": "Gallery",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "omen",
-        "floors": 4
-    },
-    {
-        "name": "Game Room",
-        "doors": [
-            "N",
-            "E",
-            "S"
-        ],
-        "card": "event",
-        "floors": 7
-    },
-    {
-        "name": "Gardens",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "event",
-        "floors": 2
-    },
-    {
-        "name": "Grand Staircase",
-        "doors": [
-            "E"
-        ],
-        "card": "none",
-        "floors": 4
-    },
-    {
-        "name": "Graveyard",
-        "doors": [
-            "S"
-        ],
-        "card": "event",
-        "floors": 2
-    },
-    {
-        "name": "Gymnasium",
-        "doors": [
-            "E",
-            "S"
-        ],
-        "card": "omen",
-        "floors": 5
-    },
-    {
-        "name": "Junk Room",
-        "doors": [
-            "W",
-            "S"
-        ],
-        "card": "omen",
-        "floors": 7
-    },
-    {
-        "name": "Kitchen",
-        "doors": [
-            "N",
-            "W"
-        ],
-        "card": "omen",
-        "floors": 3
-    },
-    {
-        "name": "Larder",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "item",
-        "floors": 1
-    },
-    {
-        "name": "Library",
-        "doors": [
-            "W",
-            "S"
-        ],
-        "card": "event",
-        "floors": 6
-    },
-    {
-        "name": "Master Bedroom",
-        "doors": [
-            "N",
-            "W"
-        ],
-        "card": "omen",
-        "floors": 4
-    },
-    {
-        "name": "Mystic Elevator",
-        "doors": [
-            "N"
-        ],
-        "card": "none",
-        "floors": 7
-    },
-    {
-        "name": "Operating Laboratory",
-        "doors": [
-            "E",
-            "S"
-        ],
-        "card": "event",
-        "floors": 5
-    },
-    {
-        "name": "Organ Room",
-        "doors": [
-            "W",
-            "S"
-        ],
-        "card": "event",
-        "floors": 7
-    },
-    {
-        "name": "Patio",
-        "doors": [
-            "N",
-            "S",
-            "W"
-        ],
-        "card": "event",
-        "floors": 2
-    },
-    {
-        "name": "Pentagram Chamber",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "omen",
-        "floors": 1
-    },
-    {
-        "name": "Research Laboratory",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "event",
-        "floors": 5
-    },
-    {
-        "name": "Servants' Quarters",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "omen",
-        "floors": 5
-    },
-    {
-        "name": "Stairs From the Basement",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "none",
-        "floors": 1
-    },
-    {
-        "name": "Statuary Corridor",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "event",
-        "floors": 7
-    },
-    {
-        "name": "Storeroom",
-        "doors": [
-            "N"
-        ],
-        "card": "item",
-        "floors": 5
-    },
-    {
-        "name": "Tower",
-        "doors": [
-            "E",
-            "W"
-        ],
-        "card": "event",
-        "floors": 4
-    },
-    {
-        "name": "Underground Lake",
-        "doors": [
-            "N",
-            "E"
-        ],
-        "card": "event",
-        "floors": 1
-    },
-    {
-        "name": "Upper Landing",
-        "doors": [
-            "N",
-            "E",
-            "S",
-            "W"
-        ],
-        "card": "none",
-        "floors": 4
-    },
-    {
-        "name": "Vault",
-        "doors": [
-            "N"
-        ],
-        "card": "event",
-        "floors": 5
-    },
-    {
-        "name": "Wine Cellar",
-        "doors": [
-            "N",
-            "S"
-        ],
-        "card": "item",
-        "floors": 1
-    }
+  {
+    "name": "Armory",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "none",
+    "floors": [
+      "basement",
+      "ground"
+    ],
+    "instructions": "When you discover this tile, reveal cards from the top of the Item deck until you reveal a weapon. Take it and bury the rest."
+  },
+  {
+    "name": "Ballroom",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "omen",
+    "floors": [
+      "ground"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Basement Landing",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "none",
+    "floors": [
+      "basement"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Bloody Room",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "item",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Catacombs",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "omen",
+    "floors": [
+      "basement"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Chapel",
+    "doors": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "ground"
+    ],
+    "instructions": "When you discover this tile, gain 1 Sanity"
+  },
+  {
+    "name": "Charred Room",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Chasm",
+    "doors": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "basement"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Collapsed Room",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "none",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": "If you end your turn on this tile, make a Speed roll. 5+ Nothing happens. 4-0 Place your explorer on the Basement Landing and take one die of Physical damage"
+  },
+  {
+    "name": "Conservatory",
+    "doors": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "card": "item",
+    "floors": [
+      "ground"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Cramped Passageway",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "event",
+    "floors": [
+      "basement",
+      "ground",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Crawlspace",
+    "doors": [
+      1,
+      1,
+      0,
+      1
+    ],
+    "card": "event",
+    "floors": [
+      "basement",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Dining Room",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "event",
+    "floors": [
+      "ground"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Entrance Hall",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "none",
+    "floors": [
+      "ground"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Furnace Room",
+    "doors": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "basement"
+    ],
+    "instructions": "If you end your turn on this tile, take 1 Physical damage"
+  },
+  {
+    "name": "Gallery",
+    "doors": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "upper"
+    ],
+    "instructions": "Leads to the Ballroom"
+  },
+  {
+    "name": "Game Room",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "item",
+    "floors": [
+      "basement",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Graveyard",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "ground"
+    ],
+    "instructions": "Leads to Underground Cavern"
+  },
+  {
+    "name": "Ground Floor Staircase",
+    "doors": [
+      0,
+      1,
+      1,
+      1
+    ],
+    "card": "none",
+    "floors": [
+      "ground"
+    ],
+    "instructions": "Leads to the Upper Landing"
+  },
+  {
+    "name": "Guest Quarters",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Gymnasium",
+    "doors": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "card": "none",
+    "floors": [
+      "basement",
+      "ground"
+    ],
+    "instructions": "When you discover this tile, gain 1 speed"
+  },
+  {
+    "name": "Hallway",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "none",
+    "floors": [
+      "ground"
+    ],
+    "instructions": "Leads to the Secret Stairs"
+  },
+  {
+    "name": "Junk Room",
+    "doors": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "card": "item",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": "When you discover this tile, place an Obstacle token on it"
+  },
+  {
+    "name": "Kitchen",
+    "doors": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "ground"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Laboratory",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "ground"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Larder",
+    "doors": [
+      1,
+      0,
+      0,
+      1
+    ],
+    "card": "none",
+    "floors": [
+      "ground"
+    ],
+    "instructions": "When you discover this tile, gain 1 Might"
+  },
+  {
+    "name": "Laundry Chute",
+    "doors": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "card": "none",
+    "floors": [
+      "ground"
+    ],
+    "instructions": "Leads to the Basement Landing. If you end your turn on this tile, place your exploreer on the Basement Landing"
+  },
+  {
+    "name": "Library",
+    "doors": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": "When you discover this tile, gain 1 Knowledge"
+  },
+  {
+    "name": "Mystic Elevator",
+    "doors": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "card": "none",
+    "floors": [
+      "basement",
+      "ground",
+      "upper"
+    ],
+    "instructions": "Once per turn when you enter this tile, you may roll two dice. Move the Mystic Elevator to an open doorway on a floor according to your roll"
+  },
+  {
+    "name": "Nursery",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "basement",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Observatory",
+    "doors": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Operating Theatre",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "item",
+    "floors": [
+      "basement",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Organ Room",
+    "doors": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "basement",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Panic Room",
+    "doors": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "basement"
+    ],
+    "instructions": "When you discover this tile, if the Secret Stairs tile has not been placed, find it in the tile stack and place it in the Basement. then, shuffle the tile stack"
+  },
+  {
+    "name": "Primary Bedroom",
+    "doors": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Ritual Room",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "basement"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Salon",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Secret Staircase",
+    "doors": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "card": "none",
+    "floors": [
+      "basement"
+    ],
+    "instructions": "Leads to the Hallway"
+  },
+  {
+    "name": "Soundproofed Room",
+    "doors": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "basement",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Specimen Room",
+    "doors": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "card": "omen",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Statuary Corridor",
+    "doors": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Tower",
+    "doors": [
+      1,
+      0,
+      1,
+      1
+    ],
+    "card": "event",
+    "floors": [
+      "upper"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Underground Cavern",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "event",
+    "floors": [
+      "basement"
+    ],
+    "instructions": "Leads to the Graveyard"
+  },
+  {
+    "name": "Underground Lake",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "event",
+    "floors": [
+      "basement"
+    ],
+    "instructions": ""
+  },
+  {
+    "name": "Upper Landing",
+    "doors": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "card": "none",
+    "floors": [
+      "upper"
+    ],
+    "instructions": "Leads to the Ground Floor Staircase"
+  },
+  {
+    "name": "Vault",
+    "doors": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "card": "item",
+    "floors": [
+      "basement"
+    ],
+    "instructions": "Draw 2 items"
+  },
+  {
+    "name": "Winter Bedroom",
+    "doors": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "card": "omen",
+    "floors": [
+      "ground",
+      "upper"
+    ],
+    "instructions": ""
+  }
 ]

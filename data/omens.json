@@ -1,93 +1,56 @@
 [
-    {
-        "name": "Bite",
-        "description": "When you draw this card, the player on your right rolls a Might 4 attack against you. You defend against this attack as normal, by rolling dice equal to your Might. This omen can't be dropped, traded, or stolen.",
-        "drop": 0,
-        "trade": 0,
-        "steal": 0
-    },
-    {
-        "name": "Book",
-        "description": "Gain 2 Knowledge now. Lose 2 Knowledge if you lose the Book.",
-        "drop": 1,
-        "trade": 1,
-        "steal": 1
-    },
-    {
-        "name": "Crystal Ball",
-        "description": "Once during your turn after the haunt is revealed, you can attempt a Knowledge roll to peer into the Crystal Ball: 4+: You see the truth. Search the item or event stack for a card of your choice. Shuffle that stack. Then place that card on top. 1-3: You avert your eyes. lose 1 Sanity. 0: You stare into Hell. Lose 2 Sanity.",
-        "drop": 1,
-        "trade": 1,
-        "steal": 1
-    },
-    {
-        "name": "Dog",
-        "description": "Gain 1 Might and 1 Sanity now. Lose 1 Might and 1 Sanity if you lose custody of the Dog. Take a small monster token to represent the Dog. Put it in your room. Once during your turn, the Dog can move to any explored room up to 6 spaces away, using doors and stairs, and then return. It can pick up, carry, and or drop 1 item before it returns. The Dog isn't slowed by opponents. It can't use one-way passages or rooms that require a roll. It can't carry items that slow movement. This omen can't be dropped, traded, or stolen.",
-        "drop": 0,
-        "trade": 0,
-        "steal": 0
-    },
-    {
-        "name": "Girl",
-        "description": "Gain 1 Sanity and 1 Knowledge now. Lose 1 Sanity and 1 Knowledge if you lose custody of the Girl. This omen can't be dropped, traded, or stolen.",
-        "drop": 0,
-        "trade": 0,
-        "steal": 0
-    },
-    {
-        "name": "Holy Symbol",
-        "description": "Gain 2 Sanity now. Lose 2 Sanity if you lose the Holy Symbol.",
-        "drop": 1,
-        "trade": 1,
-        "steal": 1
-    },
-    {
-        "name": "Madman",
-        "description": "Gain 2 Might and lose 1 Sanity now. Lose 2 Might and gain 1 Sanity if you lose custody of the Madman. This omen can't be dropped, traded, or stolen.",
-        "drop": 0,
-        "trade": 0,
-        "steal": 0
-    },
-    {
-        "name": "Mask",
-        "description": "Once during your turn, you can attempt a Sanity roll to use the mask: 4+: You can put on or take off the Mask. If you put on the Mask, gain 2 Knowledge and lose 2 Sanity. If you take off the Mask, gain 2 Sanity and lose 2 Knowledge. 0-3: You can't use the Mask this turn.",
-        "drop": 1,
-        "trade": 1,
-        "steal": 1
-    },
-    {
-        "name": "Medallion",
-        "description": "You are immune to the effects of the Pentagram Chamber, Crypt, and Graveyard.",
-        "drop": 1,
-        "trade": 1,
-        "steal": 1
-    },
-    {
-        "name": "Ring",
-        "description": "If you attack an opponent that has a Sanity trait, you can attack with Sanity instead of Might (your opponent defends with Sanity, and damage is mental instead of physical).",
-        "drop": 1,
-        "trade": 1,
-        "steal": 1
-    },
-    {
-        "name": "Skull",
-        "description": "If you take mental damage, you can take all of it as physical damage instead.",
-        "drop": 1,
-        "trade": 1,
-        "steal": 1
-    },
-    {
-        "name": "Spear",
-        "description": "You roll 2 additional dice (maximum 8) when making a Might attack with this weapon. You can't use another weapon while you're using this one.",
-        "drop": 1,
-        "trade": 1,
-        "steal": 1
-    },
-    {
-        "name": "Spirit Board",
-        "description": "Before you move during your turn, you can look at the top tile of the room stack. If you use the Spirit Board after the haunt has been revealed, the traitor can move any number of monsters 1 space closer to you (if you are the traitor, you don't have to move those monsters). If there is no traitor, all monsters move 1 space closer to you.",
-        "drop": 1,
-        "trade": 1,
-        "steal": 1
-    }
+  {
+    "name": "Armor",
+    "weapon": false,
+    "description": "Rusty, but sturdy.",
+    "action": "Whenever you take any Physical damage, reduce that damage by 1 (The Armor does not prevent General damage or the direct loss of Might and/or Speed)"
+  },
+  {
+    "name": "Book",
+    "weapon": false,
+    "description": "Strange scribbles cover the pages.",
+    "action": "Add 1 to the result of your Knowledge rolls. Once during your turn, you may use the Book to lose 1 Sanity. On the next trait roll you make this turn that isn't an attack, you may use your Knowledge in place of the named trait."
+  },
+  {
+    "name": "Dagger",
+    "weapon": true,
+    "description": "It smells sharply of blood. Your blood.",
+    "action": "When you use the Dagger to attack, lose 1 Speed. Roll two extra dice on the attack."
+  },
+  {
+    "name": "Dog",
+    "weapon": false,
+    "description": "It stares at you with a keen intelligence.",
+    "action": "Add 1 to the result of your Speed rolls. Once during your turn, you may use the Dog to trade any number of Items or Omens with another player up to 4 tiles away, using the normal trading rules."
+  },
+  {
+    "name": "Holy Symbol",
+    "weapon": false,
+    "description": "A silver symbol that glows in the dark.",
+    "action": "Add 1 to the result of your Sanity rolls. Whenever you discover a tile you may choose to bury it and discover the next tile instead. If you do, do not resolve any effects for the first tile."
+  },
+  {
+    "name": "Idol",
+    "weapon": false,
+    "description": "The idol is made of a strange, worn stone. You can't quite make out what it is supposed to represent.",
+    "action": "Add 1 to the result of your Might rolls. When you discover a tile with an Event symbol, you may choose to not draw an Event card"
+  },
+  {
+    "name": "Mask",
+    "weapon": false,
+    "description": "You can't tell what it's made of, but it's very smooth and slightly warm",
+    "action": "Add 1 to the result of you r Speed rolls. Once during your turn, you may use the Mask to move everyone else on your tile (explorers and monsters) to any adjacent tiles. This effect may not be used to discover new tiles."
+  },
+  {
+    "name": "Ring",
+    "weapon": true,
+    "description": "It twists on itself.",
+    "action": "Add 1 to the result of your Sanity rolls. When you use the Ring to attack, you and the defender each roll Sanity instead of Might. The loser takes Mental damage."
+  },
+  {
+    "name": "Skull",
+    "weapon": false,
+    "description": "Delicately etched with strange marks",
+    "action": "Add 1 to the result of your Knowledge rolls. If something would cause your explorer to die, first roll 3 dice. 4-6: Instead of dying, set all your traits to critical. Memento vivere. 0-3: You die as normal."
+  }
 ]
