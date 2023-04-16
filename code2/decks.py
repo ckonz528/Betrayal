@@ -2,7 +2,6 @@ import pygame
 import settings as s
 import json
 from random import shuffle
-from rooms import Room
 
 
 class Card():
@@ -65,7 +64,7 @@ class Deck():
     def shuffle(self):
         return shuffle(self.name_list)
 
-    def choose_card(self, **kwargs):
+    def choose_card(self, *args, **kwargs):
         # draw cards in order of "stack", get card object
         chosen_card = self.name_list[0]
         card_obj = self.obj_dict[chosen_card]
@@ -80,11 +79,10 @@ class RoomDeck(Deck):
     def __init__(self, info_path: str, object: str) -> None:
         super().__init__(info_path, object)
 
-    def choose_card(self):
+    def choose_card(self, floor):
         # draw tiles in order of "stack"
         for chosen_tile in self.name_list:
             tile = self.obj_dict[chosen_tile]
-            print(tile.name)
 
             # check if the tile can be placed in the current floor
             if floor in tile.floors:
