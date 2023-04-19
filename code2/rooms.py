@@ -26,5 +26,11 @@ class Room(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(
             self.image, (s.TILE_SIZE, s.TILE_SIZE))
 
-        self.pos = (0, 0)
+        self.set_pos((0, 0))
+
+    def set_pos(self, new_pos: tuple):
+        self.pos = new_pos
         self.rect = self.image.get_rect(topleft=self.pos)
+
+    def update(self, dt):
+        pass

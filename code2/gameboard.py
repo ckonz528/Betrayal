@@ -32,14 +32,12 @@ class Gameboard:
         # self.player = Player((0, 0), self.all_sprites)
 
     def place_tile(self, tile: Room, pos: tuple = (0, 0)):
-        tile.pos = pos
+        tile.set_pos(pos)
         self.all_sprites.add(tile)
         print(tile.name)  # test
 
-        # place tile on screen
-
     def run(self, dt):
         # drawing logic
-        self.display_surf.fill('pink')  # background
+        self.display_surf.fill(s.BG_COLOR)  # background
         self.all_sprites.draw(self.display_surf)
-        # self.all_sprites.update()
+        self.all_sprites.update(dt)
