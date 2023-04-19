@@ -4,6 +4,7 @@ SCREEN_H = 720
 TILE_SIZE = 64 * 3
 
 TITLE = 'Betrayal at House on the Hill'
+BG_COLOR = 'pink'
 
 LAYERS = {
     'board': 0,
