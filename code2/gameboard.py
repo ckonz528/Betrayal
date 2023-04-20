@@ -19,9 +19,17 @@ class Gameboard:
     def setup(self):
         # Build decks
         self.room_deck = RoomDeck('../data/rooms.json', 'room')
+
+        # place starting room tiles
+        self.place_tile(self.room_deck.get_obj_by_name(
+            'Ground Floor Staircase'), (0, 0))
+        self.place_tile(self.room_deck.get_obj_by_name(
+            'Hallway'), (s.TILE_SIZE, 0))
+        self.place_tile(self.room_deck.get_obj_by_name(
+            'Entrance Hall'), (2 * s.TILE_SIZE, 0))
+
         # TODO: dynamically choose the floor
         tile = self.room_deck.choose_card(floor="basement")  # test
-        self.place_tile(tile, (s.TILE_SIZE, s.TILE_SIZE))  # test
 
         self.omen_deck = Deck('../data/omens.json', 'object')
         self.item_deck = Deck('../data/items.json', 'object')
@@ -31,7 +39,7 @@ class Gameboard:
         # currently implemented with same logic as Pydew Valley
         # self.player = Player((0, 0), self.all_sprites)
 
-    def place_tile(self, tile: Room, pos: tuple = (0, 0)):
+    def place_tile(self, tile: Room, pos: tuple):
         tile.set_pos(pos)
         self.all_sprites.add(tile)
         print(tile.name)  # test
@@ -40,4 +48,4 @@ class Gameboard:
         # drawing logic
         self.display_surf.fill(s.BG_COLOR)  # background
         self.all_sprites.draw(self.display_surf)
-        self.all_sprites.update(dt)
+        # self.all_sprites.update(dt)

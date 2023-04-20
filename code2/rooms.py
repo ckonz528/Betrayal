@@ -31,6 +31,3 @@ class Room(pygame.sprite.Sprite):
     def set_pos(self, new_pos: tuple):
         self.pos = new_pos
         self.rect = self.image.get_rect(topleft=self.pos)
-
-    def update(self, dt):
-        pass
