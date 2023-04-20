@@ -37,12 +37,19 @@ class Deck():
         card_obj = self.obj_dict[chosen_card]
 
         # remove drawn card from stack
-        self.name_list.remove(chosen_card)
+        self.remove_card(chosen_card)
 
         return card_obj
 
     def get_obj_by_name(self, name: str):
-        return self.obj_dict[name]
+        card_obj = self.obj_dict[name]
+        self.remove_card(name)
+
+        return card_obj
+
+    def remove_card(self, card_name: str):
+        if card_name in self.name_list:
+            self.name_list.remove(card_name)
 
 
 class RoomDeck(Deck):
@@ -58,8 +65,6 @@ class RoomDeck(Deck):
             if floor in tile.floors:
                 self.name_list.remove(chosen_tile)
                 return tile
-
-        return tile
 
         # TODO: add logic for if there are no more tiles for that floor
 
