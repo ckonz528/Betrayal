@@ -4,6 +4,7 @@ import json
 from random import shuffle
 from rooms import Room
 from cards import Card, ObjectCard
+from explorers import Explorer
 
 
 class Deck():
@@ -21,6 +22,9 @@ class Deck():
                 card_info) for card_info in info_list}
         elif object == 'room':
             self.obj_dict = {card_info['name']: Room(
+                card_info) for card_info in info_list}
+        elif object == 'explorer':
+            self.obj_dict = {card_info['name']: Explorer(
                 card_info) for card_info in info_list}
 
         self.name_list = list(self.obj_dict.keys())
@@ -67,6 +71,11 @@ class RoomDeck(Deck):
                 return tile
 
         # TODO: add logic for if there are no more tiles for that floor
+
+
+class CharList(Deck):
+    def __init__(self, info_path: str, object: str) -> None:
+        super().__init__(info_path, object)
 
 
 if __name__ == '__main__':

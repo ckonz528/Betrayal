@@ -1,8 +1,8 @@
 import pygame
 import settings as s
-from decks import Deck, RoomDeck
-from player import Player
+from decks import Deck, RoomDeck, CharList
 from rooms import Room
+from explorers import Explorer
 
 
 class Gameboard:
@@ -34,10 +34,11 @@ class Gameboard:
         self.omen_deck = Deck('../data/omens.json', 'object')
         self.item_deck = Deck('../data/items.json', 'object')
         self.event_deck = Deck('../data/events.json', 'event')
+        self.char_list = CharList('../data/characters.json', 'explorer')
 
         # Players
-        # currently implemented with same logic as Pydew Valley
-        # self.player = Player((0, 0), self.all_sprites)
+        # TODO: make list of players and cycle through them
+        player = self.char_list.name_list['Persephone Puleri']
 
     def place_tile(self, tile: Room, pos: tuple):
         tile.set_pos(pos)

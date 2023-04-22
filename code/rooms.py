@@ -17,7 +17,7 @@ class Room(pygame.sprite.Sprite):
 
         try:
             self.image = pygame.image.load(
-                f'../graphics/rooms/{image_name}.png').convert()
+                f'../graphics/rooms/{image_name}.png').convert_alpha()
         except:
             # print(f"Temp image used for {self.name}") # test
             self.image = pygame.Surface((s.TILE_SIZE, s.TILE_SIZE))

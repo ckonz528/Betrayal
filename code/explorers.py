@@ -1,8 +1,12 @@
 import json
+import pygame
+import settings as s
 
 
-class Character():
+class Explorer(pygame.sprite.Sprite):
     def __init__(self, char_info) -> None:
+        super().__init__()
+
         # character info
         self.char_name = char_info['name']
         self.color = char_info['color']
@@ -11,6 +15,14 @@ class Character():
         self.hobbies = char_info['hobbies']
         self.fact = char_info['fact']
         self.bio = char_info['bio']
+
+        # images
+        image_name = self.char_name.lower().replace(
+            ' ', '_').replace('.', '').replace('"', '').replace
+        self.image = pygame.image.load(
+            f'../graphics/characters/{image_name}.png').convert_alpha()
+        self.image = pygame.transform.scale(
+            self.image, (s.CHAR_SIZE, s.CHAR_SIZE))
 
         # traits
         self.speed_scale = char_info['speed scale']
@@ -29,18 +41,14 @@ class Character():
         self.sanity_base_pos = char_info['base sanity pos']
         self.sanity_pos = self.sanity_base_pos
 
+    def init_player(self, player_name: str):
+        # TODO: run when a player chooses a character
+        self.player = player_name
+        self.set_pos((0, 0))
 
-if __name__ == '__main__':
-    info_path = '../data/characters.json'
-    with open(info_path, "r", encoding='utf-8') as data_file:
-        info_list = json.load(data_file)
+    def set_pos(self, new_pos: tuple):
+        self.pos = new_pos
+        self.rect = self.image.get_rect(topleft=self.pos)
 
-    # choose what type of card objects are created
-    obj_dict = {char_info['name']: Character(
-        char_info) for char_info in info_list}
-
-    name_list = list(obj_dict.keys())
-
-    character = obj_dict[name_list[3]]
-
-    print(character.knowledge_scale[character.knowledge_pos])
+    def trait_roll(self):
+        pass
