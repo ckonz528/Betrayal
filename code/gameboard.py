@@ -1,6 +1,6 @@
 import pygame
 import settings as s
-from decks import Deck, RoomDeck, CharList
+from decks import Deck, RoomDeck
 from rooms import Room
 from explorers import Explorer
 
@@ -34,7 +34,7 @@ class Gameboard:
         self.omen_deck = Deck('../data/omens.json', 'object')
         self.item_deck = Deck('../data/items.json', 'object')
         self.event_deck = Deck('../data/events.json', 'event')
-        self.char_list = CharList('../data/characters.json', 'explorer')
+        self.char_list = Deck('../data/characters.json', 'explorer')
 
         # Players
         # TODO: make list of players and cycle through them

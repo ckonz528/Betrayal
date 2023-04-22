@@ -73,11 +73,6 @@ class RoomDeck(Deck):
         # TODO: add logic for if there are no more tiles for that floor
 
 
-class CharList(Deck):
-    def __init__(self, info_path: str, object: str) -> None:
-        super().__init__(info_path, object)
-
-
 if __name__ == '__main__':
     omen_deck = Deck('../data/omens.json', 'object')
     omen_card = omen_deck.choose_card()
