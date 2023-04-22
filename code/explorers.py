@@ -1,6 +1,7 @@
 import json
 import pygame
 import settings as s
+from timer import Timer
 
 
 class Explorer(pygame.sprite.Sprite):
@@ -18,7 +19,8 @@ class Explorer(pygame.sprite.Sprite):
 
         # images
         image_name = self.char_name.lower().replace(
-            ' ', '_').replace('.', '').replace('"', '').replace
+            ' ', '_').replace('.', '').replace("'", '').replace(',', '')
+
         self.image = pygame.image.load(
             f'../graphics/characters/{image_name}.png').convert_alpha()
         self.image = pygame.transform.scale(
@@ -41,14 +43,49 @@ class Explorer(pygame.sprite.Sprite):
         self.sanity_base_pos = char_info['base sanity pos']
         self.sanity_pos = self.sanity_base_pos
 
-    def init_player(self, player_name: str):
+    def init_player(self, pos: tuple, group):
         # TODO: run when a player chooses a character
-        self.player = player_name
-        self.set_pos((0, 0))
+        # TODO: associate a player with a character
+        self.set_pos(pos)
+        group.add(self)
+
+        # timers
+        self.timers = {
+            'move': Timer(300)
+        }
 
     def set_pos(self, new_pos: tuple):
         self.pos = new_pos
-        self.rect = self.image.get_rect(topleft=self.pos)
+        self.rect = self.image.get_rect(center=self.pos)
+
+    def input(self):
+        keys = pygame.key.get_pressed()
+
+        if not self.timers['move'].active:
+            if keys[pygame.K_UP]:
+                print('up')
+                self.rect.centery -= s.TILE_SIZE
+                self.timers['move'].activate()
+            elif keys[pygame.K_DOWN]:
+                print('down')
+                self.rect.centery += s.TILE_SIZE
+                self.timers['move'].activate()
+            elif keys[pygame.K_LEFT]:
+                print('left')
+                self.rect.centerx -= s.TILE_SIZE
+                self.timers['move'].activate()
+            elif keys[pygame.K_RIGHT]:
+                print('right')
+                self.rect.centerx += s.TILE_SIZE
+                self.timers['move'].activate()
 
     def trait_roll(self):
         pass
+
+    def update_timers(self):
+        for timer in self.timers.values():
+            timer.update()
+
+    def update(self, dt):
+        self.input()
+        self.update_timers()

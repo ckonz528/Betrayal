@@ -71,28 +71,3 @@ class RoomDeck(Deck):
                 return tile
 
         # TODO: add logic for if there are no more tiles for that floor
-
-
-if __name__ == '__main__':
-    omen_deck = Deck('../data/omens.json', 'object')
-    omen_card = omen_deck.choose_card()
-    print(omen_card.name)
-    print(omen_card.weapon)
-
-    item_deck = Deck('../data/items.json', 'object')
-    item_card = item_deck.choose_card()
-    print(item_card.name)
-    print(item_card.weapon)
-
-    event_deck = Deck('../data/events.json', 'event')
-    event_card = event_deck.choose_card()
-    print(event_card.name)
-    print(event_card.description)
-    print(event_card.action)
-
-    pygame.init()
-    screen = pygame.display.set_mode((s.SCREEN_W, s.SCREEN_H))
-    room_deck = Deck('../data/rooms.json', 'room')
-    room_tile = room_deck.choose_card(floor='basement')
-    print(room_tile.name)
-    print(room_tile.instructions)

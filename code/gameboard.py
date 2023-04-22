@@ -38,7 +38,9 @@ class Gameboard:
 
         # Players
         # TODO: make list of players and cycle through them
-        player = self.char_list.name_list['Persephone Puleri']
+        player = self.char_list.obj_dict['Persephone Puleri']
+        player.init_player(
+            (s.SCREEN_W // 2, s.SCREEN_H // 2), self.all_sprites)
 
     def place_tile(self, tile: Room, pos: tuple):
         tile.set_pos(pos)
@@ -49,4 +51,4 @@ class Gameboard:
         # drawing logic
         self.display_surf.fill(s.BG_COLOR)  # background
         self.all_sprites.draw(self.display_surf)
-        # self.all_sprites.update(dt)
+        self.all_sprites.update(dt)
