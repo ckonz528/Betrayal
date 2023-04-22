@@ -1,24 +1,16 @@
 import pygame
 from sys import exit
 import settings as s
-from rooms import RoomDeck
-from cards import ObjectDeck
+from gameboard import Gameboard
 
 
 class Game:
     def __init__(self) -> None:
-
-        # initialize pygame and create screen
         pygame.init()
         self.screen = pygame.display.set_mode((s.SCREEN_W, s.SCREEN_H))
         pygame.display.set_caption(s.TITLE)
-
-        self.bg = pygame.image.load(s.BG_IMAGE).convert()
-
-        # create decks
-        self.room_deck = RoomDeck()
-        self.omen_deck = ObjectDeck(s.OMEN_JSON)
-        self.item_deck = ObjectDeck(s.ITEM_JSON)
+        self.clock = pygame.time.Clock()
+        self.gameboard = Gameboard()
 
     def run(self):
         while True:
@@ -27,8 +19,8 @@ class Game:
                     pygame.quit()
                     exit()
 
-            self.screen.blit(self.bg, (0, 0))
-
+            dt = self.clock.tick() / 1000  # delta time
+            self.gameboard.run(dt)
             pygame.display.update()
 
 
