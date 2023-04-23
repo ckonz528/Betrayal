@@ -12,5 +12,5 @@ BG_COLOR = 'pink'
 LAYERS = {
     'board': 0,
     'token': 1,
-    'player': 2
+    'players': 2
 }

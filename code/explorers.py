@@ -1,4 +1,3 @@
-import json
 import pygame
 import settings as s
 from timer import Timer
@@ -18,13 +17,12 @@ class Explorer(pygame.sprite.Sprite):
         self.bio = char_info['bio']
 
         # images
-        image_name = self.char_name.lower().replace(
-            ' ', '_').replace('.', '').replace("'", '').replace(',', '')
+        image_name = self.char_name.lower().replace(' ', '_').replace('.', '').replace("'", '').replace(',', '')
 
-        self.image = pygame.image.load(
-            f'../graphics/characters/{image_name}.png').convert_alpha()
-        self.image = pygame.transform.scale(
-            self.image, (s.CHAR_SIZE, s.CHAR_SIZE))
+        self.image = pygame.image.load(f'../graphics/characters/{image_name}.png').convert_alpha()
+        self.image = pygame.transform.scale(self.image, (s.CHAR_SIZE, s.CHAR_SIZE))
+
+        self.layer = s.LAYERS['players']
 
         # traits
         self.speed_scale = char_info['speed scale']
@@ -63,19 +61,15 @@ class Explorer(pygame.sprite.Sprite):
 
         if not self.timers['move'].active:
             if keys[pygame.K_UP]:
-                print('up')
                 self.rect.centery -= s.TILE_SIZE
                 self.timers['move'].activate()
             elif keys[pygame.K_DOWN]:
-                print('down')
                 self.rect.centery += s.TILE_SIZE
                 self.timers['move'].activate()
             elif keys[pygame.K_LEFT]:
-                print('left')
                 self.rect.centerx -= s.TILE_SIZE
                 self.timers['move'].activate()
             elif keys[pygame.K_RIGHT]:
-                print('right')
                 self.rect.centerx += s.TILE_SIZE
                 self.timers['move'].activate()
 

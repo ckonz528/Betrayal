@@ -15,24 +15,20 @@ class Deck():
 
         # choose what type of card objects are created
         if object == 'object':
-            self.obj_dict = {card_info['name']: ObjectCard(
-                card_info) for card_info in info_list}
+            self.obj_dict = {card_info['name']: ObjectCard(card_info) for card_info in info_list}
         elif object == 'event':
-            self.obj_dict = {card_info['name']: Card(
-                card_info) for card_info in info_list}
+            self.obj_dict = {card_info['name']: Card(card_info) for card_info in info_list}
         elif object == 'room':
-            self.obj_dict = {card_info['name']: Room(
-                card_info) for card_info in info_list}
+            self.obj_dict = {card_info['name']: Room(card_info) for card_info in info_list}
         elif object == 'explorer':
-            self.obj_dict = {card_info['name']: Explorer(
-                card_info) for card_info in info_list}
+            self.obj_dict = {card_info['name']: Explorer(card_info) for card_info in info_list}
 
         self.name_list = list(self.obj_dict.keys())
 
         # shuffle deck after importing and creating card objs
-        self.shuffle()
+        self.shuffle_deck()
 
-    def shuffle(self):
+    def shuffle_deck(self):
         return shuffle(self.name_list)
 
     def choose_card(self, *args, **kwargs):
