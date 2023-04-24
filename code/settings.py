@@ -14,3 +14,5 @@ LAYERS = {
     'token': 1,
     'players': 2
 }
+
+INNATE_ROOMS = ['Entrance Hall', 'Hallway', 'Ground Floor Staircase', 'Basement Landing', 'Upper Landing']

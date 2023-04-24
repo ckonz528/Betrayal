@@ -21,9 +21,9 @@ class Gameboard:
         self.room_deck = RoomDeck('../data/rooms.json', 'room')
 
         # place starting room tiles
-        self.place_tile(self.room_deck.get_obj_by_name('Ground Floor Staircase'), (0, 0))
-        self.place_tile(self.room_deck.get_obj_by_name('Hallway'), (s.TILE_SIZE, 0))
-        self.place_tile(self.room_deck.get_obj_by_name('Entrance Hall'), (2 * s.TILE_SIZE, 0))
+        self.place_tile('Ground Floor Staircase', (0, 0))
+        self.place_tile('Hallway', (s.TILE_SIZE, 0))
+        self.place_tile('Entrance Hall', (2 * s.TILE_SIZE, 0))
 
         # TODO: dynamically choose the floor
         tile = self.room_deck.choose_card(floor="ground")  # test
@@ -40,9 +40,10 @@ class Gameboard:
         player = self.char_list.obj_dict['Persephone Puleri'] # test
         player.init_player((s.SCREEN_W // 2, s.SCREEN_H // 2), self.all_sprites) # test
 
-        self.place_tile(tile,(2 * s.TILE_SIZE,s.TILE_SIZE)) # test
+        self.place_tile(tile.name,(2 * s.TILE_SIZE,s.TILE_SIZE)) # test
 
-    def place_tile(self, tile: Room, pos: tuple):
+    def place_tile(self, tile_name: str, pos: tuple):
+        tile = self.room_deck.get_obj_by_name(tile_name)
         tile.set_pos(pos)
         self.all_sprites.add(tile)
         print(tile.name)  # test
@@ -61,7 +62,7 @@ class CameraGroup(pygame.sprite.Group):
         self.offset = pygame.math.Vector2()  # offsets the map to move player
 
         # camera speed
-        self.keyboard_speed = 5
+        self.keyboard_speed = 3
     
     def keyboard_ctrl(self):
         keys = pygame.key.get_pressed()
