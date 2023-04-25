@@ -1,0 +1,9 @@
+Player movement:
+Arrows
+
+Camera movement:
+WASD
+
+Tile rotation:
+right - ]
+left - [
