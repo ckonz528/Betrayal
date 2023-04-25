@@ -29,7 +29,7 @@ class Room(pygame.sprite.Sprite):
         
         # set up object for game use
         self.layer = s.LAYERS['board']
-
+        self.rotate_timer = Timer(500)
         self.set_pos((0, 0))
         
         self.last_placed_tile = False
@@ -44,22 +44,20 @@ class Room(pygame.sprite.Sprite):
     def rotate(self):
         keys = pygame.key.get_pressed()
 
-        key_timer = Timer(500)
-
-        if not key_timer.active:
+        if not self.rotate_timer.active:
             if keys[pygame.K_RIGHTBRACKET]:
                 self.image = pygame.transform.rotate(self.image, 90)
-                key_timer.activate()
+                self.rotate_timer.activate()
             elif keys[pygame.K_LEFTBRACKET]:
                 self.image = pygame.transform.rotate(self.image, -90)
-                key_timer.activate()
+                self.rotate_timer.activate()
             elif keys[pygame.K_RETURN]:
                 print(f'stop rotation for {self.name}')
                 self.last_placed_tile = False
 
             self.rect = self.image.get_rect(topleft=self.pos)
-            key_timer.update()
 
     def update(self, dt):
         if self.last_placed_tile:
             self.rotate()
+        self.rotate_timer.update()
