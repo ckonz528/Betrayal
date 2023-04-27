@@ -76,6 +76,12 @@ class CameraGroup(pygame.sprite.Group):
         if keys[pygame.K_s]:
             self.offset.y += self.keyboard_speed
 
+        # TODO: set up to snap camera to other positions
+        # snap camera to original position
+        if keys[pygame.K_c]:
+            self.set_camera(pygame.math.Vector2((-2 * s.TILE_SIZE, -s.TILE_SIZE)))
+
+
     def custom_draw(self):
         self.keyboard_ctrl()
 
@@ -86,3 +92,7 @@ class CameraGroup(pygame.sprite.Group):
                     offset_rect = sprite.rect.copy()
                     offset_rect.center -= self.offset
                     self.display_surface.blit(sprite.image, offset_rect)
+
+    def set_camera(self, set_pos):
+        # TODO: set up to snap camera to other positions
+        self.offset = set_pos
