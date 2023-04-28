@@ -3,6 +3,7 @@ import settings as s
 from decks import Deck, RoomDeck
 from rooms import Room
 from explorers import Explorer
+from timer import Timer
 
 
 class Gameboard:
@@ -43,8 +44,13 @@ class Gameboard:
         # Players
         # TODO: set up ability for players to select characters
         # TODO: make list of players and cycle through them
-        player = self.char_list.obj_dict['Persephone Puleri'] # test
-        player.init_player((0,0), self.all_sprites) # test
+        self.current_player = self.char_list.obj_dict['Persephone Puleri'] # test
+        self.current_player.init_player((0,0), self.all_sprites) # test
+
+        # Timers
+        self.timers = {
+            'player_move': Timer(300)
+        }
 
     def place_tile(self, tile_name: str, grid_pos: tuple):
         tile = self.room_deck.get_obj_by_name(tile_name)
@@ -52,12 +58,34 @@ class Gameboard:
         self.grid[grid_pos] = tile.name
         self.all_sprites.add(tile)
         print(tile.name)  # test
-        print(self.grid)
+
+    def player_input(self, player):
+        keys = pygame.key.get_pressed()
+
+        if not self.timers['player_move'].active:
+            if keys[pygame.K_UP]:
+                player.rect.centery -= s.TILE_SIZE
+                self.timers['player_move'].activate()
+            elif keys[pygame.K_DOWN]:
+                player.rect.centery += s.TILE_SIZE
+                self.timers['player_move'].activate()
+            elif keys[pygame.K_LEFT]:
+                player.rect.centerx -= s.TILE_SIZE
+                self.timers['player_move'].activate()
+            elif keys[pygame.K_RIGHT]:
+                player.rect.centerx += s.TILE_SIZE
+                self.timers['player_move'].activate()
+
+    def update_timers(self):
+        for timer in self.timers.values():
+            timer.update()
 
     def run(self, dt):
         # drawing logic
         self.display_surf.fill(s.BG_COLOR)  # background
         self.all_sprites.custom_draw()
+        self.player_input(self.current_player)
+        self.update_timers()
         self.all_sprites.update(dt)
 
 
@@ -85,7 +113,7 @@ class CameraGroup(pygame.sprite.Group):
         # TODO: set up to snap camera to player position
         # snap camera to original position
         if keys[pygame.K_g]: # ground floor (Entrance Hall)
-            self.set_camera(pygame.math.Vector2((-2 * s.TILE_SIZE, -s.TILE_SIZE)))
+            self.set_camera(pygame.math.Vector2((-3 * s.TILE_SIZE, -s.TILE_SIZE)))
         elif keys[pygame.K_u]: # upper landing
             self.set_camera(pygame.math.Vector2((98 * s.TILE_SIZE, -s.TILE_SIZE)))
         elif keys[pygame.K_b]: # basement landing
