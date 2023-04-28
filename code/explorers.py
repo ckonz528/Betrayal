@@ -52,8 +52,10 @@ class Explorer(pygame.sprite.Sprite):
             'move': Timer(300)
         }
 
-    def set_pos(self, new_pos: tuple):
-        self.pos = new_pos
+    def set_pos(self, grid_pos: tuple):
+        self.grid_pos = grid_pos
+        # TODO: figure out how to do this in terms of rect x and y?
+        self.pos = (self.grid_pos[0] * s.TILE_SIZE + s.TILE_SIZE//2, self.grid_pos[1] * s.TILE_SIZE + s.TILE_SIZE//2)
         self.rect = self.image.get_rect(center=self.pos)
 
     def input(self):

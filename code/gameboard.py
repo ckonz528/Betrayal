@@ -17,18 +17,24 @@ class Gameboard:
         self.setup()
 
     def setup(self):
-        # Build room deck
+        # Grid
+        self.grid = {}
+
+        # Room deck
         self.room_deck = RoomDeck('../data/rooms.json', 'room')
 
         # place starting room tiles
-        self.place_tile('Ground Floor Staircase', (0, 0))
-        self.place_tile('Hallway', (s.TILE_SIZE, 0))
-        self.place_tile('Entrance Hall', (2 * s.TILE_SIZE, 0))
+        self.place_tile('Ground Floor Staircase', (-2, 0))
+        self.place_tile('Hallway', (-1, 0))
+        self.place_tile('Entrance Hall', (0,0))
+        self.place_tile('Upper Landing', (100,0))
+        self.place_tile('Basement Landing', (-100,0))
 
         # TODO: dynamically choose the floor
         tile = self.room_deck.choose_card(floor="ground")  # test
+        self.place_tile(tile.name,(0,1)) # test
 
-        # build other decks
+        # Card decks
         self.omen_deck = Deck('../data/omens.json', 'object')
         self.item_deck = Deck('../data/items.json', 'object')
         self.event_deck = Deck('../data/events.json', 'event')
@@ -38,15 +44,15 @@ class Gameboard:
         # TODO: set up ability for players to select characters
         # TODO: make list of players and cycle through them
         player = self.char_list.obj_dict['Persephone Puleri'] # test
-        player.init_player((s.SCREEN_W // 2, s.SCREEN_H // 2), self.all_sprites) # test
+        player.init_player((0,0), self.all_sprites) # test
 
-        self.place_tile(tile.name,(2 * s.TILE_SIZE,s.TILE_SIZE)) # test
-
-    def place_tile(self, tile_name: str, pos: tuple):
+    def place_tile(self, tile_name: str, grid_pos: tuple):
         tile = self.room_deck.get_obj_by_name(tile_name)
-        tile.set_pos(pos)
+        tile.set_pos(grid_pos)
+        self.grid[grid_pos] = tile.name
         self.all_sprites.add(tile)
         print(tile.name)  # test
+        print(self.grid)
 
     def run(self, dt):
         # drawing logic
@@ -76,11 +82,14 @@ class CameraGroup(pygame.sprite.Group):
         if keys[pygame.K_s]:
             self.offset.y += self.keyboard_speed
 
-        # TODO: set up to snap camera to other positions
+        # TODO: set up to snap camera to player position
         # snap camera to original position
-        if keys[pygame.K_c]:
+        if keys[pygame.K_g]: # ground floor (Entrance Hall)
             self.set_camera(pygame.math.Vector2((-2 * s.TILE_SIZE, -s.TILE_SIZE)))
-
+        elif keys[pygame.K_u]: # upper landing
+            self.set_camera(pygame.math.Vector2((98 * s.TILE_SIZE, -s.TILE_SIZE)))
+        elif keys[pygame.K_b]: # basement landing
+            self.set_camera(pygame.math.Vector2((-102 * s.TILE_SIZE, -s.TILE_SIZE)))
 
     def custom_draw(self):
         self.keyboard_ctrl()

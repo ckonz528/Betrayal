@@ -34,8 +34,9 @@ class Room(pygame.sprite.Sprite):
         
         self.last_placed_tile = False
 
-    def set_pos(self, new_pos: tuple):
-        self.pos = new_pos
+    def set_pos(self, grid_pos: tuple):
+        self.grid_pos = grid_pos
+        self.pos = (self.grid_pos[0] * s.TILE_SIZE, self.grid_pos[1] * s.TILE_SIZE)
         self.rect = self.image.get_rect(topleft=self.pos)
 
         if self.name not in s.INNATE_ROOMS:
