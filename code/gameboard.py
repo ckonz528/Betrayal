@@ -105,7 +105,6 @@ class Gameboard:
         # check for adjacent tile & walls
         if direction == 'N':
             target_pos = (self.player.grid_pos[0], self.player.grid_pos[1] - 1)
-            print(f'Target pos: {target_pos}')
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
@@ -117,7 +116,6 @@ class Gameboard:
                 self.place_tile(new_tile.name, target_pos)
         elif direction == 'E':
             target_pos = (self.player.grid_pos[0] + 1, self.player.grid_pos[1])
-            print(f'Target pos: {target_pos}')
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
@@ -129,7 +127,6 @@ class Gameboard:
                 self.place_tile(new_tile.name, target_pos)
         elif direction == 'S':
             target_pos = (self.player.grid_pos[0], self.player.grid_pos[1] + 1)
-            print(f'Target pos: {target_pos}')
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
@@ -141,7 +138,6 @@ class Gameboard:
                 self.place_tile(new_tile.name, target_pos)
         elif direction == 'W':
             target_pos = (self.player.grid_pos[0] - 1, self.player.grid_pos[1])
-            print(f'Target pos: {target_pos}')
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors

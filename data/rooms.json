@@ -192,8 +192,8 @@
     "name": "Entrance Hall",
     "doors": [
       1,
-      0,
       1,
+      0,
       1
     ],
     "card": "none",
@@ -264,7 +264,7 @@
     "doors": [
       0,
       1,
-      1,
+      0,
       1
     ],
     "card": "none",
