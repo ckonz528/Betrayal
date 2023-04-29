@@ -22,8 +22,6 @@ class Explorer(pygame.sprite.Sprite):
         self.image = pygame.image.load(f'../graphics/characters/{image_name}.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (s.CHAR_SIZE, s.CHAR_SIZE))
 
-        self.layer = s.LAYERS['players']
-
         # traits
         self.speed_scale = char_info['speed scale']
         self.speed_base_pos = char_info['base speed pos']
@@ -40,6 +38,10 @@ class Explorer(pygame.sprite.Sprite):
         self.sanity_scale = char_info['sanity scale']
         self.sanity_base_pos = char_info['base sanity pos']
         self.sanity_pos = self.sanity_base_pos
+
+        # other attributes
+        self.layer = s.LAYERS['players']
+        self.direction = pygame.math.Vector2()
 
     def init_player(self, pos: tuple, group):
         # TODO: run when a player chooses a character

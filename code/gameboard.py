@@ -33,7 +33,7 @@ class Gameboard:
 
         # TODO: dynamically choose the floor
         tile = self.room_deck.choose_card(floor="ground")  # test
-        self.place_tile(tile.name,(0,1)) # test
+        self.place_tile(tile.name,(0,-1)) # test
 
         # Card decks
         self.omen_deck = Deck('../data/omens.json', 'object')
@@ -44,8 +44,8 @@ class Gameboard:
         # Players
         # TODO: set up ability for players to select characters
         # TODO: make list of players and cycle through them
-        self.current_player = self.char_list.obj_dict['Persephone Puleri'] # test
-        self.current_player.init_player((0,0), self.all_sprites) # test
+        self.player = self.char_list.obj_dict['Persephone Puleri'] # test
+        self.player.init_player((0,0), self.all_sprites) # test
 
         # Timers
         self.timers = {
@@ -59,22 +59,104 @@ class Gameboard:
         self.all_sprites.add(tile)
         print(tile.name)  # test
 
-    def player_input(self, player):
+    def player_input(self,):
         keys = pygame.key.get_pressed()
 
         if not self.timers['player_move'].active:
+            player_pos = self.player.grid_pos
             if keys[pygame.K_UP]:
-                player.rect.centery -= s.TILE_SIZE
                 self.timers['player_move'].activate()
+                if self.check_walls('N'):
+                    self.player.set_pos((player_pos[0], player_pos[1] - 1))
+                
             elif keys[pygame.K_DOWN]:
-                player.rect.centery += s.TILE_SIZE
                 self.timers['player_move'].activate()
+                if self.check_walls('S'):
+                    self.player.set_pos((player_pos[0], player_pos[1] + 1))
+
             elif keys[pygame.K_LEFT]:
-                player.rect.centerx -= s.TILE_SIZE
                 self.timers['player_move'].activate()
+                if self.check_walls('W'):
+                    self.player.set_pos((player_pos[0] - 1, player_pos[1]))
+
             elif keys[pygame.K_RIGHT]:
-                player.rect.centerx += s.TILE_SIZE
                 self.timers['player_move'].activate()
+                if self.check_walls('E'):
+                    self.player.set_pos((player_pos[0] + 1, player_pos[1]))
+
+    def check_walls(self, direction: str):
+        # Check for walls in current tile
+        room_name = self.grid[self.player.grid_pos]
+        doors = self.room_deck.obj_dict[room_name].doors
+
+        if direction == 'N':
+            if not doors[0]:
+                print(f'{room_name} {direction} blocked')
+                return False
+        elif direction == 'E':
+            if not doors[1]:
+                print(f'{room_name} {direction} blocked')
+                return False
+        elif direction == 'S':
+            if not doors[2]:
+                print(f'{room_name} {direction} blocked')
+                return False
+        elif direction == 'W':
+            if not doors[3]:
+                print(f'{room_name} {direction} blocked')
+                return False
+            
+        # check for adjacent tile & walls
+        if direction == 'N':
+            target_pos = (self.player.grid_pos[0], self.player.grid_pos[1] - 1)
+            print(f'Target pos: {target_pos}')
+            if target_pos in self.grid.keys():
+                target_room_name = self.grid[target_pos]
+                target_doors = self.room_deck.obj_dict[target_room_name].doors
+                if not target_doors[2]:
+                    print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
+                    return False
+            else:
+                print(f'No tile {direction} of {room_name}')
+                return False
+        elif direction == 'E':
+            target_pos = (self.player.grid_pos[0] - 1, self.player.grid_pos[1])
+            print(f'Target pos: {target_pos}')
+            if target_pos in self.grid.keys():
+                target_room_name = self.grid[target_pos]
+                target_doors = self.room_deck.obj_dict[target_room_name].doors
+                if not target_doors[1]:
+                    print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
+                    return False
+            else:
+                print(f'No tile {direction} of {room_name}')
+                return False
+        elif direction == 'S':
+            target_pos = (self.player.grid_pos[0], self.player.grid_pos[1] + 1)
+            print(f'Target pos: {target_pos}')
+            if target_pos in self.grid.keys():
+                target_room_name = self.grid[target_pos]
+                target_doors = self.room_deck.obj_dict[target_room_name].doors
+                if not target_doors[0]:
+                    print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
+                    return False
+            else:
+                print(f'No tile {direction} of {room_name}')
+                return False
+        elif direction == 'W':
+            target_pos = (self.player.grid_pos[0] + 1, self.player.grid_pos[1])
+            print(f'Target pos: {target_pos}')
+            if target_pos in self.grid.keys():
+                target_room_name = self.grid[target_pos]
+                target_doors = self.room_deck.obj_dict[target_room_name].doors
+                if not target_doors[3]:
+                    print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
+                    return False
+            else:
+                print(f'No tile {direction} of {room_name}')
+                return False
+
+        return True
 
     def update_timers(self):
         for timer in self.timers.values():
@@ -83,9 +165,9 @@ class Gameboard:
     def run(self, dt):
         # drawing logic
         self.display_surf.fill(s.BG_COLOR)  # background
-        self.all_sprites.custom_draw()
-        self.player_input(self.current_player)
+        self.player_input()
         self.update_timers()
+        self.all_sprites.custom_draw()
         self.all_sprites.update(dt)
 
 
@@ -93,7 +175,7 @@ class CameraGroup(pygame.sprite.Group):
     def __init__(self) -> None:
         super().__init__()
         self.display_surface = pygame.display.get_surface()
-        self.offset = pygame.math.Vector2()  # offsets the map to move player
+        self.offset = pygame.math.Vector2((-3 * s.TILE_SIZE, -s.TILE_SIZE))  # offsets the map to move player
 
         # camera speed
         self.keyboard_speed = 3
@@ -121,6 +203,7 @@ class CameraGroup(pygame.sprite.Group):
 
     def custom_draw(self):
         self.keyboard_ctrl()
+        # TODO: Add box that moves with player camera
 
         # cycle through layers dict and draw layers in order
         for layer in s.LAYERS.values():
