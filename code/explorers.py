@@ -42,6 +42,7 @@ class Explorer(pygame.sprite.Sprite):
         # other attributes
         self.layer = s.LAYERS['players']
         self.direction = pygame.math.Vector2()
+        self.floor = 'ground'
 
     def init_player(self, pos: tuple, group):
         # TODO: run when a player chooses a character

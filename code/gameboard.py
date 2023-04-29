@@ -31,10 +31,6 @@ class Gameboard:
         self.place_tile('Upper Landing', (100,0))
         self.place_tile('Basement Landing', (-100,0))
 
-        # TODO: dynamically choose the floor
-        tile = self.room_deck.choose_card(floor="ground")  # test
-        self.place_tile(tile.name,(0,-1)) # test
-
         # Card decks
         self.omen_deck = Deck('../data/omens.json', 'object')
         self.item_deck = Deck('../data/items.json', 'object')
@@ -117,10 +113,10 @@ class Gameboard:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
-                print(f'No tile {direction} of {room_name}')
-                return False
+                new_tile = self.room_deck.choose_card(floor=self.player.floor)
+                self.place_tile(new_tile.name, target_pos)
         elif direction == 'E':
-            target_pos = (self.player.grid_pos[0] - 1, self.player.grid_pos[1])
+            target_pos = (self.player.grid_pos[0] + 1, self.player.grid_pos[1])
             print(f'Target pos: {target_pos}')
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
@@ -129,8 +125,8 @@ class Gameboard:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
-                print(f'No tile {direction} of {room_name}')
-                return False
+                new_tile = self.room_deck.choose_card(floor=self.player.floor)
+                self.place_tile(new_tile.name, target_pos)
         elif direction == 'S':
             target_pos = (self.player.grid_pos[0], self.player.grid_pos[1] + 1)
             print(f'Target pos: {target_pos}')
@@ -141,10 +137,10 @@ class Gameboard:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
-                print(f'No tile {direction} of {room_name}')
-                return False
+                new_tile = self.room_deck.choose_card(floor=self.player.floor)
+                self.place_tile(new_tile.name, target_pos)
         elif direction == 'W':
-            target_pos = (self.player.grid_pos[0] + 1, self.player.grid_pos[1])
+            target_pos = (self.player.grid_pos[0] - 1, self.player.grid_pos[1])
             print(f'Target pos: {target_pos}')
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
@@ -153,8 +149,8 @@ class Gameboard:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
-                print(f'No tile {direction} of {room_name}')
-                return False
+                new_tile = self.room_deck.choose_card(floor=self.player.floor)
+                self.place_tile(new_tile.name, target_pos)
 
         return True
 
