@@ -19,6 +19,12 @@ class Game:
                     pygame.quit()
                     exit()
 
+                if event.type == pygame.KEYDOWN:
+                    keys = pygame.key.get_pressed()
+                    if keys[pygame.K_q]:
+                        pygame.quit()
+                        exit()
+
             dt = self.clock.tick() / 1000  # delta time
             self.gameboard.run(dt)
             pygame.display.update()
