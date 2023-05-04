@@ -39,9 +39,16 @@ class Gameboard:
 
         # Players
         # TODO: set up ability for players to select characters
+
         # TODO: make list of players and cycle through them
-        self.player = self.char_list.obj_dict['Persephone Puleri'] # test
-        self.player.init_player((0,0), self.all_sprites) # test
+        self.players = []
+        self.turn_index = 0
+        self.add_player('Persephone Puleri')
+        self.add_player('Isa Valencia')
+
+        current_player_name = self.players[self.turn_index]
+        self.current_player = self.char_list.obj_dict[f'{current_player_name}']
+        self.current_player.allow_move = True
 
         # Timers
         self.timers = {
@@ -53,36 +60,65 @@ class Gameboard:
         tile.set_pos(grid_pos)
         self.grid[grid_pos] = tile.name
         self.all_sprites.add(tile)
-        print(tile.name)  # test
+        print(tile.name)  
+
+    def add_player(self, char_name: str):
+        chosen_player = self.char_list.obj_dict[f'{char_name}']
+        chosen_player.set_pos((0,0))
+        self.all_sprites.add(chosen_player)
+        self.players.append(char_name)
+        print(self.players)
+
+    # def start_turn(self):
+    #     current_player_name = self.players[self.turn_index]
+    #     self.current_player = self.char_list.obj_dict[f'{current_player_name}']
+    #     self.current_player.allow_move = True
+
+    def end_turn(self):
+        # TODO: end tile rotation
+
+        # switch turn to next player
+        self.turn_index += 1
+        if self.turn_index >= len(self.players):
+            self.turn_index = 0
+        print(f'Turn index: {self.turn_index}')
+
+        current_player_name = self.players[self.turn_index]
+        self.current_player = self.char_list.obj_dict[f'{current_player_name}']
+        print(self.current_player.name)
+        self.current_player.allow_move = True
 
     def player_input(self,):
         keys = pygame.key.get_pressed()
 
-        if not self.timers['player_move'].active:
-            player_pos = self.player.grid_pos
+        if not self.timers['player_move'].active and self.current_player.allow_move:
+            player_pos = self.current_player.grid_pos
             if keys[pygame.K_UP]:
                 self.timers['player_move'].activate()
                 if self.check_walls('N'):
-                    self.player.set_pos((player_pos[0], player_pos[1] - 1))
+                    self.current_player.set_pos((player_pos[0], player_pos[1] - 1))
                 
             elif keys[pygame.K_DOWN]:
                 self.timers['player_move'].activate()
                 if self.check_walls('S'):
-                    self.player.set_pos((player_pos[0], player_pos[1] + 1))
+                    self.current_player.set_pos((player_pos[0], player_pos[1] + 1))
 
             elif keys[pygame.K_LEFT]:
                 self.timers['player_move'].activate()
                 if self.check_walls('W'):
-                    self.player.set_pos((player_pos[0] - 1, player_pos[1]))
+                    self.current_player.set_pos((player_pos[0] - 1, player_pos[1]))
 
             elif keys[pygame.K_RIGHT]:
                 self.timers['player_move'].activate()
                 if self.check_walls('E'):
-                    self.player.set_pos((player_pos[0] + 1, player_pos[1]))
+                    self.current_player.set_pos((player_pos[0] + 1, player_pos[1]))
+
+        if keys[pygame.K_e]:
+            self.end_turn()
 
     def check_walls(self, direction: str):
         # Check for walls in current tile
-        room_name = self.grid[self.player.grid_pos]
+        room_name = self.grid[self.current_player.grid_pos]
         doors = self.room_deck.obj_dict[room_name].doors
 
         if direction == 'N':
@@ -104,7 +140,7 @@ class Gameboard:
             
         # check for adjacent tile & walls
         if direction == 'N':
-            target_pos = (self.player.grid_pos[0], self.player.grid_pos[1] - 1)
+            target_pos = (self.current_player.grid_pos[0], self.current_player.grid_pos[1] - 1)
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
@@ -112,10 +148,12 @@ class Gameboard:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
-                new_tile = self.room_deck.choose_card(floor=self.player.floor)
+                new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
                 self.place_tile(new_tile.name, target_pos)
+                self.current_player.allow_move = False
+                print(f'Movement stopped for {self.current_player.name}')
         elif direction == 'E':
-            target_pos = (self.player.grid_pos[0] + 1, self.player.grid_pos[1])
+            target_pos = (self.current_player.grid_pos[0] + 1, self.current_player.grid_pos[1])
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
@@ -123,10 +161,12 @@ class Gameboard:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
-                new_tile = self.room_deck.choose_card(floor=self.player.floor)
+                new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
                 self.place_tile(new_tile.name, target_pos)
+                self.current_player.allow_move = False
+                print(f'Movement stopped for {self.current_player.name}')
         elif direction == 'S':
-            target_pos = (self.player.grid_pos[0], self.player.grid_pos[1] + 1)
+            target_pos = (self.current_player.grid_pos[0], self.current_player.grid_pos[1] + 1)
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
@@ -134,10 +174,12 @@ class Gameboard:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
-                new_tile = self.room_deck.choose_card(floor=self.player.floor)
+                new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
                 self.place_tile(new_tile.name, target_pos)
+                self.current_player.allow_move = False
+                print(f'Movement stopped for {self.current_player.name}')
         elif direction == 'W':
-            target_pos = (self.player.grid_pos[0] - 1, self.player.grid_pos[1])
+            target_pos = (self.current_player.grid_pos[0] - 1, self.current_player.grid_pos[1])
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
@@ -145,8 +187,10 @@ class Gameboard:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
-                new_tile = self.room_deck.choose_card(floor=self.player.floor)
+                new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
                 self.place_tile(new_tile.name, target_pos)
+                self.current_player.allow_move = False
+                print(f'Movement stopped for {self.current_player.name}')
 
         return True
 

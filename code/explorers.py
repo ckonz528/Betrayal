@@ -8,7 +8,7 @@ class Explorer(pygame.sprite.Sprite):
         super().__init__()
 
         # character info
-        self.char_name = char_info['name']
+        self.name = char_info['name']
         self.color = char_info['color']
         self.age = char_info['age']
         self.birthday = char_info['birthday']
@@ -17,7 +17,7 @@ class Explorer(pygame.sprite.Sprite):
         self.bio = char_info['bio']
 
         # images
-        image_name = self.char_name.lower().replace(' ', '_').replace('.', '').replace("'", '').replace(',', '')
+        image_name = self.name.lower().replace(' ', '_').replace('.', '').replace("'", '').replace(',', '')
 
         self.image = pygame.image.load(f'../graphics/characters/{image_name}.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (s.CHAR_SIZE, s.CHAR_SIZE))
@@ -42,13 +42,8 @@ class Explorer(pygame.sprite.Sprite):
         # other attributes
         self.layer = s.LAYERS['players']
         self.direction = pygame.math.Vector2()
-        self.floor = 'ground'
-
-    def init_player(self, pos: tuple, group):
-        # TODO: run when a player chooses a character
-        # TODO: associate a player with a character
-        self.set_pos(pos)
-        group.add(self)
+        self.floor: str = 'ground'
+        self.allow_move = False
 
     def set_pos(self, grid_pos: tuple):
         self.grid_pos = grid_pos
