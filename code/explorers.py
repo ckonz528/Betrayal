@@ -39,7 +39,11 @@ class Explorer(pygame.sprite.Sprite):
         self.sanity_base_pos = char_info['base sanity pos']
         self.sanity_pos = self.sanity_base_pos
 
-        # other attributes
+        # inventory
+        self.item_inventory = []
+        self.omen_inventory = []
+
+        # game attributes
         self.layer = s.LAYERS['players']
         self.direction = pygame.math.Vector2()
         self.floor: str = 'ground'
