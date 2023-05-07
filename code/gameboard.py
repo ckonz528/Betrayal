@@ -233,7 +233,7 @@ class CameraGroup(pygame.sprite.Group):
         self.display_surface = pygame.display.get_surface()
         self.offset = pygame.math.Vector2((-3 * s.TILE_SIZE, -s.TILE_SIZE))  # offsets the map to move player
 
-        # camera speed
+        # camera speed for keyboard
         self.keyboard_speed = 3
     
     def keyboard_ctrl(self):
