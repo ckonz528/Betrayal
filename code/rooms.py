@@ -49,12 +49,12 @@ class Room(pygame.sprite.Sprite):
             if keys[pygame.K_RIGHTBRACKET]: # rotate right
                 self.doors = self.doors[-1:] + self.doors[:-1]
                 print(f'{self.name} doors: {self.doors}')
-                self.image = pygame.transform.rotate(self.image, 90)
+                self.image = pygame.transform.rotate(self.image, -90)
                 self.rotate_timer.activate()
             elif keys[pygame.K_LEFTBRACKET]: # rotate left
                 self.doors = self.doors[1:] + self.doors[:1]
                 print(f'{self.name} doors: {self.doors}')
-                self.image = pygame.transform.rotate(self.image, -90)
+                self.image = pygame.transform.rotate(self.image, 90)
                 self.rotate_timer.activate()
             elif keys[pygame.K_RETURN]: # confirm position
                 # TODO: add visual indicator that a tile can still rotate
