@@ -7,3 +7,6 @@ WASD
 Tile rotation:
 right - ]
 left - [
+
+Player turn:
+e = end turn

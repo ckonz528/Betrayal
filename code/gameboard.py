@@ -99,8 +99,9 @@ class Gameboard:
         self.current_player = self.char_list.obj_dict[f'{current_player_name}']
         print(f"{self.current_player.name}'s turn")
         self.current_player.allow_move = True
+        # self.all_sprites.set_camera(pygame.math.Vector2((self.current_player.rect.centerx + s.SCREEN_W / 2, self.current_player.rect.centery + s.SCREEN_H / 2)))
 
-    def player_input(self,):
+    def player_input(self):
         keys = pygame.key.get_pressed()
 
         if not self.timers['player_move'].active and self.current_player.allow_move:
@@ -177,7 +178,7 @@ class Gameboard:
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
-                if not target_doors[1]:
+                if not target_doors[3]:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
@@ -203,7 +204,7 @@ class Gameboard:
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
-                if not target_doors[3]:
+                if not target_doors[1]:
                     print(f'Movement blocked by {target_room_name}; doors = {target_doors}')
                     return False
             else:
