@@ -4,6 +4,7 @@ from decks import Deck, RoomDeck
 from rooms import Room
 from explorers import Explorer
 from timer import Timer
+from overlay import Overlay
 
 
 class Gameboard:
@@ -16,6 +17,7 @@ class Gameboard:
         self.all_sprites = CameraGroup()
 
         self.setup()
+        self.overlay = Overlay()
 
     def setup(self):
         # Grid
@@ -55,6 +57,13 @@ class Gameboard:
             'player_move': Timer(300)
         }
 
+    def add_player(self, char_name: str):
+        chosen_player = self.char_list.obj_dict[f'{char_name}']
+        chosen_player.set_pos((0,0))
+        self.all_sprites.add(chosen_player)
+        self.players.append(char_name)
+        print(f'{chosen_player.name} added to player list')
+
     def place_tile(self, tile_name: str, grid_pos: tuple):
         tile = self.room_deck.get_obj_by_name(tile_name)
 
@@ -80,16 +89,7 @@ class Gameboard:
             card_obj = self.event_deck.choose_card()
             print(f'Event: {card_obj.name}')
 
-    def add_player(self, char_name: str):
-        chosen_player = self.char_list.obj_dict[f'{char_name}']
-        chosen_player.set_pos((0,0))
-        self.all_sprites.add(chosen_player)
-        self.players.append(char_name)
-        print(f'{chosen_player.name} added to player list')
-
     def end_turn(self):
-        # TODO: end tile rotation
-
         # switch turn to next player
         self.turn_index += 1
         if self.turn_index >= len(self.players):
@@ -104,6 +104,7 @@ class Gameboard:
     def player_input(self):
         keys = pygame.key.get_pressed()
 
+        # player movement
         if not self.timers['player_move'].active and self.current_player.allow_move:
             player_pos = self.current_player.grid_pos
             if keys[pygame.K_UP]:
@@ -130,6 +131,7 @@ class Gameboard:
                 if self.check_walls('E'):
                     self.current_player.set_pos((player_pos[0] + 1, player_pos[1]))
 
+        # end turn
         if not self.timers['player_move'].active and keys[pygame.K_e]:
             self.timers['player_move'].activate()
             print(f'Turn ended for {self.current_player.name}')
@@ -225,7 +227,12 @@ class Gameboard:
         self.player_input()
         self.update_timers()
         self.all_sprites.custom_draw()
+
+        # updates
         self.all_sprites.update(dt)
+
+        # overlay
+        self.overlay.display(self.current_player)
 
 
 class CameraGroup(pygame.sprite.Group):
@@ -250,7 +257,7 @@ class CameraGroup(pygame.sprite.Group):
             self.offset.y += self.keyboard_speed
 
         # TODO: set up to snap camera to player position
-        # snap camera to original position
+        # snap camera to specific position
         if keys[pygame.K_g]: # ground floor (Entrance Hall)
             self.set_camera(pygame.math.Vector2((-3 * s.TILE_SIZE, -s.TILE_SIZE)))
         elif keys[pygame.K_u]: # upper landing

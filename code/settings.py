@@ -6,8 +6,14 @@ SCREEN_H = 768
 TILE_SIZE = 64 * 4
 CHAR_SIZE = int(TILE_SIZE / 4)
 
+# window settings
 TITLE = 'Betrayal at House on the Hill'
 BG_COLOR = 'pink'
+
+# overlay positions
+OVERLAY_POSITIONS = {
+    'char': (40, SCREEN_H - 15)
+}
 
 LAYERS = {
     'board': 0,
