@@ -66,12 +66,13 @@ class Gameboard:
 
     def place_tile(self, tile_name: str, grid_pos: tuple, direction:str = 'N'):
         tile = self.room_deck.get_obj_by_name(tile_name)
+        self.recent_room = tile
 
         # add tile to grid
         tile.set_pos(grid_pos, direction)
         self.grid[grid_pos] = tile.name
         self.all_sprites.add(tile)
-        print(f'Placed {tile.name} at {grid_pos}')  
+        print(f'Placed {tile.name} at {grid_pos}')
 
         # draw designated card
         self.draw_tile_card(tile.card)
@@ -90,20 +91,24 @@ class Gameboard:
             print(f'Event: {card_obj.name}')
 
     def end_turn(self):
-        # switch turn to next player
-        self.turn_index += 1
-        if self.turn_index >= len(self.players):
-            self.turn_index = 0
+        # check last placed tile rotation
+        if not self.recent_room.rotation_check(): # if rotation check is invalid
+            print(f'Rotation not valid for {self.recent_room.name}')
+        else:  
+            # stop room rotation
+            self.recent_room.stop_rotation()
 
-        current_player_name = self.players[self.turn_index]
-        self.current_player = self.char_list.obj_dict[f'{current_player_name}']
-        print(f"{self.current_player.name}'s turn")
-        self.current_player.allow_move = True
-       
-        # stop tile rotation
-        #TODO: find a shorter way to do this lol
-        for room in self.room_deck.obj_dict.values():
-            room.stop_rotation()
+            # switch turn to next player
+            print(f'Turn ended for {self.current_player.name}')
+            self.turn_index += 1
+            if self.turn_index >= len(self.players):
+                self.turn_index = 0
+
+            current_player_name = self.players[self.turn_index]
+            self.current_player = self.char_list.obj_dict[f'{current_player_name}']
+            print(f"{self.current_player.name}'s turn")
+            self.current_player.allow_move = True
+
 
         #TODO: center camera on next player 
         # self.all_sprites.set_camera(pygame.math.Vector2((self.current_player.rect.centerx + s.SCREEN_W / 2, self.current_player.rect.centery + s.SCREEN_H / 2)))
@@ -141,7 +146,6 @@ class Gameboard:
         # end turn
         if not self.timers['player_move'].active and keys[pygame.K_e]:
             self.timers['player_move'].activate()
-            print(f'Turn ended for {self.current_player.name}')
             self.end_turn()
 
     def check_walls(self, direction: str):
