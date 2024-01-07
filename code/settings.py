@@ -9,6 +9,7 @@ CHAR_SIZE = int(TILE_SIZE / 4)
 # window settings
 TITLE = 'Betrayal at House on the Hill'
 BG_COLOR = 'pink'
+TRANSPARENCY = 0.8
 
 # overlay positions
 OVERLAY_POSITIONS = {
