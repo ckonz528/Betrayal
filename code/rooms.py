@@ -34,13 +34,15 @@ class Room(pygame.sprite.Sprite):
         
         self.rotateable = False
 
-    def set_pos(self, grid_pos: tuple):
+    def set_pos(self, grid_pos: tuple, direction:str = 'N'):
         self.grid_pos = grid_pos
         self.pos = (self.grid_pos[0] * s.TILE_SIZE, self.grid_pos[1] * s.TILE_SIZE)
         self.rect = self.image.get_rect(topleft=self.pos)
 
         if self.name not in s.INNATE_ROOMS:
             self.rotateable = True
+
+        self.direction_entered = direction
 
     def rotate(self):
         keys = pygame.key.get_pressed()
@@ -58,14 +60,29 @@ class Room(pygame.sprite.Sprite):
                 self.rotate_timer.activate()
             elif keys[pygame.K_RETURN]: # confirm position
                 # TODO: add visual indicator that a tile can still rotate
-                print(f'stop rotation for {self.name}')
-                self.stop_rotation()
+                self.rotate_timer.activate()
+                if self.rotation_check():
+                    print(f'Stop rotation for {self.name}')
+                    self.stop_rotation()
 
             self.rect = self.image.get_rect(topleft=self.pos)
 
     def stop_rotation(self):
-        # TODO: confirm that tile rotation is valid
         self.rotateable = False
+        
+    def rotation_check(self):
+        #TODO: find a way to run this with the end turn proceedure and keep turn from ending if invalid
+        if self.direction_entered == 'N' and self.doors[2]:
+            return True
+        elif self.direction_entered == 'S' and self.doors[0]:
+            return True
+        elif self.direction_entered == 'E' and self.doors[3]:
+            return True
+        elif self.direction_entered == 'W' and self.doors[1]:
+            return True
+
+        print(f'Rotation not valid for {self.name}')
+        return False
 
     def update(self, dt):
         if self.rotateable:

@@ -64,11 +64,11 @@ class Gameboard:
         self.players.append(char_name)
         print(f'{chosen_player.name} added to player list')
 
-    def place_tile(self, tile_name: str, grid_pos: tuple):
+    def place_tile(self, tile_name: str, grid_pos: tuple, direction:str = 'N'):
         tile = self.room_deck.get_obj_by_name(tile_name)
 
         # add tile to grid
-        tile.set_pos(grid_pos)
+        tile.set_pos(grid_pos, direction)
         self.grid[grid_pos] = tile.name
         self.all_sprites.add(tile)
         print(f'Placed {tile.name} at {grid_pos}')  
@@ -101,6 +101,7 @@ class Gameboard:
         self.current_player.allow_move = True
        
         # stop tile rotation
+        #TODO: find a shorter way to do this lol
         for room in self.room_deck.obj_dict.values():
             room.stop_rotation()
 
@@ -178,7 +179,7 @@ class Gameboard:
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
-                self.place_tile(new_tile.name, target_pos)
+                self.place_tile(new_tile.name, target_pos, direction)
                 self.current_player.allow_move = False
                 print(f'Movement stopped for {self.current_player.name}')
         elif direction == 'E':
@@ -191,7 +192,7 @@ class Gameboard:
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
-                self.place_tile(new_tile.name, target_pos)
+                self.place_tile(new_tile.name, target_pos, direction)
                 self.current_player.allow_move = False
                 print(f'Movement stopped for {self.current_player.name}')
         elif direction == 'S':
@@ -204,7 +205,7 @@ class Gameboard:
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
-                self.place_tile(new_tile.name, target_pos)
+                self.place_tile(new_tile.name, target_pos, direction)
                 self.current_player.allow_move = False
                 print(f'Movement stopped for {self.current_player.name}')
         elif direction == 'W':
@@ -217,7 +218,7 @@ class Gameboard:
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
-                self.place_tile(new_tile.name, target_pos)
+                self.place_tile(new_tile.name, target_pos, direction)
                 self.current_player.allow_move = False
                 print(f'Movement stopped for {self.current_player.name}')
 
