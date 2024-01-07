@@ -99,6 +99,12 @@ class Gameboard:
         self.current_player = self.char_list.obj_dict[f'{current_player_name}']
         print(f"{self.current_player.name}'s turn")
         self.current_player.allow_move = True
+       
+        # stop tile rotation
+        for room in self.room_deck.obj_dict.values():
+            room.stop_rotation()
+
+        #TODO: center camera on next player 
         # self.all_sprites.set_camera(pygame.math.Vector2((self.current_player.rect.centerx + s.SCREEN_W / 2, self.current_player.rect.centery + s.SCREEN_H / 2)))
 
     def player_input(self):

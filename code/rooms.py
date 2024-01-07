@@ -32,7 +32,7 @@ class Room(pygame.sprite.Sprite):
         self.rotate_timer = Timer(500)
         self.set_pos((0, 0))
         
-        self.last_placed_tile = False
+        self.rotateable = False
 
     def set_pos(self, grid_pos: tuple):
         self.grid_pos = grid_pos
@@ -40,7 +40,7 @@ class Room(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=self.pos)
 
         if self.name not in s.INNATE_ROOMS:
-            self.last_placed_tile = True
+            self.rotateable = True
 
     def rotate(self):
         keys = pygame.key.get_pressed()
@@ -58,13 +58,16 @@ class Room(pygame.sprite.Sprite):
                 self.rotate_timer.activate()
             elif keys[pygame.K_RETURN]: # confirm position
                 # TODO: add visual indicator that a tile can still rotate
-                # TODO: confirm that tile rotation is valid
                 print(f'stop rotation for {self.name}')
-                self.last_placed_tile = False
+                self.stop_rotation()
 
             self.rect = self.image.get_rect(topleft=self.pos)
 
+    def stop_rotation(self):
+        # TODO: confirm that tile rotation is valid
+        self.rotateable = False
+
     def update(self, dt):
-        if self.last_placed_tile:
+        if self.rotateable:
             self.rotate()
         self.rotate_timer.update()
