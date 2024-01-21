@@ -7,14 +7,21 @@ TILE_SIZE = 64 * 4
 CHAR_SIZE = int(TILE_SIZE / 4)
 MENU_WIDTH = SCREEN_W / 5
 
+# font
+TITLE_FONT_SIZE = 40
+LIST_FONT_SIZE = 20
+SPACE = 10
+
 # window settings
 TITLE = 'Betrayal at House on the Hill'
 BG_COLOR = 'pink'
+
 TRANSPARENCY = 0.8
+PANEL_BKG = (31,31,31)
 
 # overlay positions
 OVERLAY_POSITIONS = {
-    'char': (40, 15)
+    'char': (SPACE, SPACE)
 }
 
 LAYERS = {

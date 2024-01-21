@@ -22,10 +22,10 @@ class Overlay:
         # inventory panel
         inv_surf = pygame.Surface((s.MENU_WIDTH, s.SCREEN_H), pygame.SRCALPHA)
         inv_rect = pygame.Rect((0, 0), (s.MENU_WIDTH, s.SCREEN_H))
-        pygame.draw.rect(inv_surf, (0,0,0,255*s.TRANSPARENCY), inv_rect)
+        pygame.draw.rect(inv_surf, s.PANEL_BKG, inv_rect)
         self.display_surface.blit(inv_surf, inv_rect)
 
         # current player
         char_surf = current_player.image
-        char_rect = char_surf.get_rect(midtop=s.OVERLAY_POSITIONS['char'])
+        char_rect = char_surf.get_rect(topleft=s.OVERLAY_POSITIONS['char'])
         self.display_surface.blit(char_surf, char_rect)

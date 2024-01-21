@@ -245,10 +245,10 @@ class Gameboard:
 
         # updates
         self.all_sprites.update(dt)
-        self.stat_display.update(self.current_player)
 
         # overlay
         self.overlay.display(self.current_player)
+        self.stat_display.update(self.current_player)
 
 
 class CameraGroup(pygame.sprite.Group):
