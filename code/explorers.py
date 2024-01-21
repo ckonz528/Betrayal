@@ -26,18 +26,27 @@ class Explorer(pygame.sprite.Sprite):
         self.speed_scale = char_info['speed scale']
         self.speed_base_pos = char_info['base speed pos']
         self.speed_pos = self.speed_base_pos
+        # self.speed = self.speed_scale[self.speed_pos]
 
         self.might_scale = char_info['might scale']
         self.might_base_pos = char_info['base might pos']
         self.might_pos = self.might_base_pos
+        # self.might = self.might_scale[self.might_pos]
 
         self.knowledge_scale = char_info['knowledge scale']
         self.knowledge_base_pos = char_info['base knowledge pos']
         self.knowledge_pos = self.knowledge_base_pos
+        # self.knowledge = self.knowledge_scale[self.knowledge_pos]
 
         self.sanity_scale = char_info['sanity scale']
         self.sanity_base_pos = char_info['base sanity pos']
         self.sanity_pos = self.sanity_base_pos
+        # self.sanity = self.sanity_scale[self.sanity_pos]
+
+        self.traits = {'speed': self.speed_scale[self.speed_pos],
+                       'might': self.might_scale[self.might_pos],
+                       'knowledge': self.knowledge_scale[self.knowledge_pos],
+                       'sanity': self.sanity_scale[self.sanity_pos]}
 
         # inventory
         self.item_inventory = []

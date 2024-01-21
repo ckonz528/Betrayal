@@ -5,6 +5,7 @@ from rooms import Room
 from explorers import Explorer
 from timer import Timer
 from overlay import Overlay
+from menu import Menu
 
 
 class Gameboard:
@@ -51,6 +52,9 @@ class Gameboard:
         current_player_name = self.players[self.turn_index]
         self.current_player = self.char_list.obj_dict[f'{current_player_name}']
         self.current_player.allow_move = True
+
+        # menu
+        self.stat_display = Menu(self.current_player)
 
         # Timers
         self.timers = {
@@ -241,6 +245,7 @@ class Gameboard:
 
         # updates
         self.all_sprites.update(dt)
+        self.stat_display.update(self.current_player)
 
         # overlay
         self.overlay.display(self.current_player)

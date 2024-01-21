@@ -5,6 +5,7 @@ SCREEN_H = 768
 # piece sizes
 TILE_SIZE = 64 * 4
 CHAR_SIZE = int(TILE_SIZE / 4)
+MENU_WIDTH = SCREEN_W / 5
 
 # window settings
 TITLE = 'Betrayal at House on the Hill'
@@ -13,7 +14,7 @@ TRANSPARENCY = 0.8
 
 # overlay positions
 OVERLAY_POSITIONS = {
-    'char': (40, SCREEN_H - 15)
+    'char': (40, 15)
 }
 
 LAYERS = {
