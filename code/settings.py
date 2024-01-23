@@ -12,6 +12,7 @@ TITLE_FONT_SIZE = 40
 LIST_FONT_SIZE = 20
 MSG_FONT_SIZE = 12
 SPACE = 10
+MENU_CHARS = 30 #number of characters that fit across menu
 
 # window settings
 TITLE = 'Betrayal at House on the Hill'
@@ -24,7 +25,7 @@ PANEL_BKG = (31,31,31)
 OVERLAY_POSITIONS = {
     'char': (SPACE, SPACE), 
     'stats': (0, SPACE + CHAR_SIZE + SPACE),
-    'msg': (0, SPACE + CHAR_SIZE + SPACE + 200 + SPACE)
+    'msg': (0, SPACE + CHAR_SIZE + SPACE + 250 + SPACE)
 }
 
 LAYERS = {
