@@ -20,7 +20,8 @@ class Message:
         # entries
         self.entry_list = []
 
-    def add_entry(self, entry:str):
+    def add_entry(self, entry:str, color:str = 'white'):
+        entry = (entry, color)
         if len(self.entry_list) <5:
             self.entry_list.append(entry)
         else: 
@@ -31,9 +32,9 @@ class Message:
         rev_entry_list = list(reversed(self.entry_list))
         top = s.OVERLAY_POSITIONS['msg'][1]
 
-        for item in rev_entry_list:
+        for item, color in rev_entry_list:
             for line in textwrap.wrap(item,30):
-                text_surf = self.font.render(line, False, 'White')
+                text_surf = self.font.render(line, False, color)
                 
                 # background
                 bg_rect = pygame.Rect(s.OVERLAY_POSITIONS['msg'][0], top, self.width, text_surf.get_height())

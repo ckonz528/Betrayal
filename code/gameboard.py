@@ -66,6 +66,8 @@ class Gameboard:
             'player_move': Timer(300)
         }
 
+        self.message_queue.clear_queue()
+
     def add_player(self, char_name: str):
         chosen_player = self.char_list.obj_dict[f'{char_name}']
         chosen_player.set_pos((0,0))
@@ -164,21 +166,21 @@ class Gameboard:
 
         if direction == 'N':
             if not doors[0]:
-                self.message_queue.add_entry(f'{room_name} {direction} blocked')
+                self.message_queue.add_entry(f'{room_name} {direction} blocked', 'red')
                 return False
         elif direction == 'E':
             if not doors[1]:
-                self.message_queue.add_entry(f'{room_name} {direction} blocked')
+                self.message_queue.add_entry(f'{room_name} {direction} blocked', 'red')
                 return False
         elif direction == 'S':
             if not doors[2]:
-                self.message_queue.add_entry(f'{room_name} {direction} blocked')
+                self.message_queue.add_entry(f'{room_name} {direction} blocked', 'red')
                 return False
         elif direction == 'W':
             if room_name == 'Ground Floor Staircase':
                 return True
             elif not doors[3]:
-                self.message_queue.add_entry(f'{room_name} {direction} blocked')
+                self.message_queue.add_entry(f'{room_name} {direction} blocked', 'red')
                 return False
             
         # check for adjacent tile & walls
@@ -188,52 +190,52 @@ class Gameboard:
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
                 if not target_doors[2]:
-                    self.message_queue.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}')
+                    self.message_queue.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}', 'red')
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
                 self.place_tile(new_tile.name, target_pos, direction)
                 self.current_player.allow_move = False
-                self.message_queue.add_entry(f'Movement stopped for {self.current_player.name}')
+                self.message_queue.add_entry(f'Movement stopped for {self.current_player.name}', 'red')
         elif direction == 'E':
             target_pos = (self.current_player.grid_pos[0] + 1, self.current_player.grid_pos[1])
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
                 if not target_doors[3]:
-                    self.message_queue.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}')
+                    self.message_queue.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}', 'red')
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
                 self.place_tile(new_tile.name, target_pos, direction)
                 self.current_player.allow_move = False
-                self.message_queue.add_entry(f'Movement stopped for {self.current_player.name}')
+                self.message_queue.add_entry(f'Movement stopped for {self.current_player.name}', 'red')
         elif direction == 'S':
             target_pos = (self.current_player.grid_pos[0], self.current_player.grid_pos[1] + 1)
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
                 if not target_doors[0]:
-                    self.message_queue.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}')
+                    self.message_queue.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}', 'red')
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
                 self.place_tile(new_tile.name, target_pos, direction)
                 self.current_player.allow_move = False
-                self.message_queue.add_entry(f'Movement stopped for {self.current_player.name}')
+                self.message_queue.add_entry(f'Movement stopped for {self.current_player.name}', 'red')
         elif direction == 'W':
             target_pos = (self.current_player.grid_pos[0] - 1, self.current_player.grid_pos[1])
             if target_pos in self.grid.keys():
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
                 if not target_doors[1]:
-                    self.message_queue.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}')
+                    self.message_queue.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}', 'red')
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
                 self.place_tile(new_tile.name, target_pos, direction)
                 self.current_player.allow_move = False
-                self.message_queue.add_entry(f'Movement stopped for {self.current_player.name}')
+                self.message_queue.add_entry(f'Movement stopped for {self.current_player.name}', 'red')
 
         return True
 
