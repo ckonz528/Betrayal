@@ -8,7 +8,7 @@ CHAR_SIZE = int(TILE_SIZE / 4)
 MENU_WIDTH = SCREEN_W / 5
 
 # font
-TITLE_FONT_SIZE = 40
+TITLE_FONT_SIZE = 20
 LIST_FONT_SIZE = 20
 MSG_FONT_SIZE = 12
 SPACE = 10
@@ -25,7 +25,8 @@ PANEL_BKG = (31,31,31)
 OVERLAY_POSITIONS = {
     'char': (SPACE, SPACE), 
     'stats': (0, SPACE + CHAR_SIZE + SPACE),
-    'msg': (0, SPACE + CHAR_SIZE + SPACE + 250 + SPACE)
+    'msg': (0, SPACE + CHAR_SIZE + SPACE + 250 + SPACE),
+    'name': (SPACE + CHAR_SIZE + SPACE, SPACE)
 }
 
 LAYERS = {

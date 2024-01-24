@@ -250,7 +250,7 @@ class Gameboard:
         self.update_timers()
         self.all_sprites.custom_draw()
 
-        # updates
+        # sprite updates
         self.all_sprites.update(dt)
 
         # overlay

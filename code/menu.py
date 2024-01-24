@@ -35,8 +35,6 @@ class Menu:
             self.total_height += text_surf.get_height() + (self.padding * 2)
 
         self.total_height += (len(self.text_surfs) - 1) * self.space
-        # self.menu_top = s.SCREEN_H / 2 - self.total_height / 2
-        # self.menu_top = s.OVERLAY_POSITIONS['stats'][0]
         self.main_rect = pygame.Rect(s.OVERLAY_POSITIONS['stats'][0], s.OVERLAY_POSITIONS['stats'][1], self.width, self.total_height)
 
     def input(self):
