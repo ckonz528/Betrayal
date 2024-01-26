@@ -8,14 +8,14 @@ from explorers import Explorer
 
 
 class Deck():
-    def __init__(self, info_path: str, object: str) -> None:
+    def __init__(self, info_path: str, object: str, obj_type: str = None) -> None:
         # construct deck of tiles
         with open(info_path, "r", encoding='utf-8') as data_file:
             info_list = json.load(data_file)
 
         # choose what type of card objects are created
         if object == 'object':
-            self.obj_dict = {card_info['name']: ObjectCard(card_info) for card_info in info_list}
+            self.obj_dict = {card_info['name']: ObjectCard(card_info, obj_type) for card_info in info_list}
         elif object == 'event':
             self.obj_dict = {card_info['name']: Card(card_info) for card_info in info_list}
         elif object == 'room':

@@ -64,6 +64,14 @@ class Explorer(pygame.sprite.Sprite):
         self.pos = (self.grid_pos[0] * s.TILE_SIZE + s.TILE_SIZE//2, self.grid_pos[1] * s.TILE_SIZE + s.TILE_SIZE//2)
         self.rect = self.image.get_rect(center=self.pos)
 
+    def add_item(self, item):
+        if item.type == 'item':
+            self.item_inventory.append(item)
+            print(self.item_inventory)
+        elif item.type == 'omen':
+            self.omen_inventory.append(item)
+            print(self.omen_inventory)
+
     def trait_roll(self):
         pass
 

@@ -39,8 +39,8 @@ class Gameboard:
         self.place_tile('Basement Landing', (-100,0))
 
         # Card decks
-        self.omen_deck = Deck('../data/omens.json', 'object')
-        self.item_deck = Deck('../data/items.json', 'object')
+        self.omen_deck = Deck('../data/omens.json', 'object', "omen")
+        self.item_deck = Deck('../data/items.json', 'object', "item")
         self.event_deck = Deck('../data/events.json', 'event')
         self.char_list = Deck('../data/characters.json', 'explorer')
 
@@ -93,9 +93,11 @@ class Gameboard:
             self.message_queue.add_entry('No cards drawn for this tile')
         elif card_type == 'omen':
             card_obj = self.omen_deck.choose_card()
+            self.current_player.add_item(card_obj)
             self.message_queue.add_entry(f'Omen: {card_obj.name}')
         elif card_type == 'item':
             card_obj = self.item_deck.choose_card()
+            self.current_player.add_item(card_obj)
             self.message_queue.add_entry(f'Item: {card_obj.name}')
         elif card_type == 'event':
             card_obj = self.event_deck.choose_card()
