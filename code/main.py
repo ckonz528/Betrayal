@@ -2,6 +2,7 @@ import pygame
 from sys import exit
 import settings as s
 from gameboard import Gameboard
+from messenger import Messenger
 
 
 class Game:
@@ -10,7 +11,8 @@ class Game:
         self.screen = pygame.display.set_mode((s.SCREEN_W, s.SCREEN_H))
         pygame.display.set_caption(s.TITLE)
         self.clock = pygame.time.Clock()
-        self.gameboard = Gameboard()
+        self.messenger = Messenger()
+        self.gameboard = Gameboard(self.messenger)
 
     def run(self):
         while True:

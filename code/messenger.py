@@ -4,7 +4,7 @@ import textwrap
 from timer import Timer
 
 
-class Message:
+class Messenger:
     def __init__(self) -> None:
 
         # general setup

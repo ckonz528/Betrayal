@@ -4,8 +4,9 @@ from timer import Timer
 
 
 class Room(pygame.sprite.Sprite):
-    def __init__(self, tile_info: dict) -> None:
+    def __init__(self, tile_info: dict, messenger: object) -> None:
         super().__init__()
+        self.messenger = messenger
 
         # basic info
         self.name = tile_info['name']
@@ -50,19 +51,17 @@ class Room(pygame.sprite.Sprite):
         if not self.rotate_timer.active:
             if keys[pygame.K_RIGHTBRACKET]: # rotate right
                 self.doors = self.doors[-1:] + self.doors[:-1]
-                print(f'{self.name} doors: {self.doors}')
                 self.image = pygame.transform.rotate(self.image, -90)
                 self.rotate_timer.activate()
             elif keys[pygame.K_LEFTBRACKET]: # rotate left
                 self.doors = self.doors[1:] + self.doors[:1]
-                print(f'{self.name} doors: {self.doors}')
                 self.image = pygame.transform.rotate(self.image, 90)
                 self.rotate_timer.activate()
             elif keys[pygame.K_RETURN]: # confirm position
                 # TODO: add visual indicator that a tile can still rotate
                 self.rotate_timer.activate()
                 if self.rotation_check():
-                    print(f'Stop rotation for {self.name}')
+                    self.messenger.add_entry(f'Rotation stopped for {self.name}')
                     self.stop_rotation()
 
             self.rect = self.image.get_rect(topleft=self.pos)
@@ -81,7 +80,7 @@ class Room(pygame.sprite.Sprite):
         elif self.direction_entered == 'W' and self.doors[1]:
             return True
 
-        print(f'Rotation not valid for {self.name}')
+        self.messenger.add_entry(f'Rotation not valid for {self.name}', 'red')
         return False
 
     def update(self, dt):

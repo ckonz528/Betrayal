@@ -67,10 +67,8 @@ class Explorer(pygame.sprite.Sprite):
     def add_item(self, item):
         if item.type == 'item':
             self.item_inventory.append(item)
-            print(self.item_inventory)
         elif item.type == 'omen':
             self.omen_inventory.append(item)
-            print(self.omen_inventory)
 
     def trait_roll(self):
         pass

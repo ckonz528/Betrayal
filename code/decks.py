@@ -8,7 +8,7 @@ from explorers import Explorer
 
 
 class Deck():
-    def __init__(self, info_path: str, object: str, obj_type: str = None) -> None:
+    def __init__(self, info_path: str, object: str, messenger: object = None, obj_type: str = None) -> None:
         # construct deck of tiles
         with open(info_path, "r", encoding='utf-8') as data_file:
             info_list = json.load(data_file)
@@ -19,7 +19,7 @@ class Deck():
         elif object == 'event':
             self.obj_dict = {card_info['name']: Card(card_info) for card_info in info_list}
         elif object == 'room':
-            self.obj_dict = {card_info['name']: Room(card_info) for card_info in info_list}
+            self.obj_dict = {card_info['name']: Room(card_info, messenger) for card_info in info_list}
         elif object == 'explorer':
             self.obj_dict = {card_info['name']: Explorer(card_info) for card_info in info_list}
 
@@ -53,8 +53,8 @@ class Deck():
 
 
 class RoomDeck(Deck):
-    def __init__(self, info_path: str, object: str) -> None:
-        super().__init__(info_path, object)
+    def __init__(self, info_path: str, object: str, messenger: object) -> None:
+        super().__init__(info_path, object, messenger)
 
     def choose_card(self, floor):
         # draw tiles in order of "stack"
