@@ -24,8 +24,8 @@ PANEL_BKG = (31,31,31)
 # overlay positions
 OVERLAY_POSITIONS = {
     'char': (SPACE, SPACE), 
-    'stats': (0, SPACE + CHAR_SIZE + SPACE),
-    'msg': (0, SPACE + CHAR_SIZE + SPACE + 250 + SPACE),
+    'traits': (0, SPACE + CHAR_SIZE + SPACE*2),
+    'msg': (0, TILE_SIZE),
     'name': (SPACE + CHAR_SIZE + SPACE, SPACE)
 }
 

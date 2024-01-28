@@ -19,10 +19,11 @@ class Messenger:
 
         # entries
         self.entry_list = []
+        self.queue_length = 8
 
     def add_entry(self, entry:str, color:str = 'white'):
         entry = (entry, color)
-        if len(self.entry_list) <5:
+        if len(self.entry_list) <self.queue_length:
             self.entry_list.append(entry)
         else: 
             self.entry_list = self.entry_list[1:]

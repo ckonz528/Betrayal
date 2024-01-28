@@ -5,7 +5,6 @@ from rooms import Room
 from explorers import Explorer
 from timer import Timer
 from overlay import Overlay
-from menu import Menu
 
 
 class Gameboard:
@@ -19,7 +18,6 @@ class Gameboard:
         self.messenger = messenger
 
         self.setup()
-        self.overlay = Overlay()
 
     def setup(self):
         # Grid
@@ -54,14 +52,13 @@ class Gameboard:
         self.current_player = self.char_list.obj_dict[f'{current_player_name}']
         self.current_player.allow_move = True
 
-        # display panels
-        self.stat_display = Menu(self.current_player)
-        print(f'{self.stat_display.total_height}')
-
         # Timers
         self.timers = {
             'player_move': Timer(300)
         }
+
+        # overlay
+        self.overlay = Overlay()
 
         self.messenger.clear_queue()
 
@@ -254,7 +251,6 @@ class Gameboard:
 
         # overlay
         self.overlay.display(self.current_player)
-        self.stat_display.update(self.current_player)
         self.messenger.update()
 
 
