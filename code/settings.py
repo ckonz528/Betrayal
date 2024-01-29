@@ -21,8 +21,8 @@ BG_COLOR = 'pink'
 TRANSPARENCY = 0.8
 PANEL_BKG = (31,31,31)
 
-# overlay positions
-OVERLAY_POSITIONS = {
+# set positions
+POSITIONS = {
     'char': (SPACE, SPACE), 
     'traits': (0, SPACE + CHAR_SIZE + SPACE*2),
     'msg': (0, TILE_SIZE),

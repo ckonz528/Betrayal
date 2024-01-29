@@ -31,14 +31,14 @@ class Messenger:
 
     def show_entries(self):
         rev_entry_list = list(reversed(self.entry_list))
-        top = s.OVERLAY_POSITIONS['msg'][1]
+        top = s.POSITIONS['msg'][1]
 
         for item, color in rev_entry_list:
             for line in textwrap.wrap(item,30):
                 text_surf = self.font.render(line, False, color)
                 
                 # background
-                bg_rect = pygame.Rect(s.OVERLAY_POSITIONS['msg'][0], top, self.width, text_surf.get_height())
+                bg_rect = pygame.Rect(s.POSITIONS['msg'][0], top, self.width, text_surf.get_height())
                 pygame.draw.rect(self.display_surface, s.PANEL_BKG, bg_rect)
 
                 # text

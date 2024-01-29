@@ -11,7 +11,7 @@ class Menu:
         self.display_surface = pygame.display.get_surface()
         self.font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.LIST_FONT_SIZE)
 
-        # trait_list
+        # spacing and positioning
         self.width = s.MENU_WIDTH
         self.space = 0  # space between elements
         self.padding = s.SPACE
@@ -62,6 +62,6 @@ class Menu:
 
         for text_index, text_surf in enumerate(self.text_surfs):
             top = self.main_rect.top + text_index * (text_surf.get_height() + (self.padding * 2) + self.space)
-            value_list = list(self.player.traits.values()) + list(self.player.traits.values())
+            value_list = list(self.player.traits.values())
             value = value_list[text_index]
             self.show_entry(text_surf, value, top)

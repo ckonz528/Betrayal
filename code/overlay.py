@@ -22,13 +22,13 @@ class Overlay:
 
         # current player
         char_surf = self.player.image
-        char_rect = char_surf.get_rect(topleft=s.OVERLAY_POSITIONS['char'])
+        char_rect = char_surf.get_rect(topleft=s.POSITIONS['char'])
         self.display_surface.blit(char_surf, char_rect)
 
         # current player name
         name_list = textwrap.wrap(self.player.name, 12)
         name_surfs = self.list_setup(name_list)
-        left, top = s.OVERLAY_POSITIONS['name']
+        left, top = s.POSITIONS['name']
         self.show_entries(name_surfs, left, top, s.MENU_WIDTH - left)
 
         # current player traits
@@ -36,7 +36,7 @@ class Overlay:
         trait_surfs = self.list_setup(trait_names)
         trait_values = self.player.traits.values()
         value_surfs = self.list_setup(trait_values)
-        left, top = s.OVERLAY_POSITIONS['traits'] #TODO: change naming to traits
+        left, top = s.POSITIONS['traits'] #TODO: change naming to traits
         self.show_entries(trait_surfs, left, top, s.MENU_WIDTH, value_surfs)
         
 

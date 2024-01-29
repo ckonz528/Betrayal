@@ -5,6 +5,7 @@ from rooms import Room
 from explorers import Explorer
 from timer import Timer
 from overlay import Overlay
+from inventory import Inventory
 
 
 class Gameboard:
@@ -34,8 +35,8 @@ class Gameboard:
         self.place_tile('Basement Landing', (-100,0))
 
         # Card decks
-        self.omen_deck = Deck('../data/omens.json', 'object', "omen")
-        self.item_deck = Deck('../data/items.json', 'object', "item")
+        self.omen_deck = Deck('../data/omens.json', 'object', obj_type='omen')
+        self.item_deck = Deck('../data/items.json', 'object', obj_type='item')
         self.event_deck = Deck('../data/events.json', 'event')
         self.char_list = Deck('../data/characters.json', 'explorer')
 
@@ -54,11 +55,16 @@ class Gameboard:
 
         # Timers
         self.timers = {
-            'player_move': Timer(300)
+            'player_move': Timer(300),
+            'inv_panel': Timer(200)
         }
 
         # overlay
         self.overlay = Overlay()
+
+        # inventory panel
+        self.inventory_panel = Inventory(self.current_player)
+        self.inventory_active = False
 
         self.messenger.clear_queue()
 
@@ -99,9 +105,7 @@ class Gameboard:
 
     def end_turn(self):
         # check last placed tile rotation
-        if not self.recent_room.rotation_check(): # if rotation check is invalid
-            self.messenger.add_entry(f'Rotation not valid for {self.recent_room.name}')
-        else:  
+        if self.recent_room.rotation_check(): # if rotation check is invalid
             # stop room rotation
             self.recent_room.stop_rotation()
 
@@ -123,19 +127,23 @@ class Gameboard:
     def player_input(self):
         keys = pygame.key.get_pressed()
 
+        move_criteria = [
+            not self.timers['player_move'].active,
+            self.current_player.allow_move,
+            not self.inventory_active
+        ]
+
         # player movement
-        if not self.timers['player_move'].active and self.current_player.allow_move:
+        if all(move_criteria):
             player_pos = self.current_player.grid_pos
             if keys[pygame.K_UP]:
                 self.timers['player_move'].activate()
                 if self.check_walls('N'):
-                    self.current_player.set_pos((player_pos[0], player_pos[1] - 1))
-                
+                    self.current_player.set_pos((player_pos[0], player_pos[1] - 1))                
             elif keys[pygame.K_DOWN]:
                 self.timers['player_move'].activate()
                 if self.check_walls('S'):
                     self.current_player.set_pos((player_pos[0], player_pos[1] + 1))
-
             elif keys[pygame.K_LEFT]:
                 self.timers['player_move'].activate()
                 if self.check_walls('W'):
@@ -144,11 +152,16 @@ class Gameboard:
                         self.current_player.floor = 'upper'
                     else:
                         self.current_player.set_pos((player_pos[0] - 1, player_pos[1]))
-
             elif keys[pygame.K_RIGHT]:
                 self.timers['player_move'].activate()
                 if self.check_walls('E'):
                     self.current_player.set_pos((player_pos[0] + 1, player_pos[1]))
+
+        if not self.timers['inv_panel'].active:
+            if keys[pygame.K_i]:
+                self.timers['inv_panel'].activate()
+                self.inventory_active = not self.inventory_active
+
 
         # end turn
         if not self.timers['player_move'].active and keys[pygame.K_e]:
@@ -246,8 +259,13 @@ class Gameboard:
         self.update_timers()
         self.all_sprites.custom_draw()
 
-        # sprite updates
-        self.all_sprites.update(dt)
+        # updates
+        if self.inventory_active:
+            self.inventory_panel.update(self.current_player)
+        else:
+            self.all_sprites.update(dt)
+        # self.all_sprites.update(dt)
+        # self.inventory_panel.update(self.current_player)
 
         # overlay
         self.overlay.display(self.current_player)
