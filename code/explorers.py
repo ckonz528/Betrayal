@@ -49,8 +49,7 @@ class Explorer(pygame.sprite.Sprite):
                        'sanity': self.sanity_scale[self.sanity_pos]}
 
         # inventory
-        self.item_inventory = {}
-        self.omen_inventory = {}
+        self.inventory = {}
 
         # game attributes
         self.layer = s.LAYERS['players']
@@ -65,10 +64,7 @@ class Explorer(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=self.pos)
 
     def add_item(self, item: object):
-        if item.type == 'item':
-            self.item_inventory[item.name] = item
-        elif item.type == 'omen':
-            self.omen_inventory[item.name] = item
+        self.inventory[item.name] = item
 
     def trait_roll(self):
         pass

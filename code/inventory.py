@@ -1,6 +1,7 @@
 import pygame
 import settings as s
 from timer import Timer
+import textwrap
 
 
 class Inventory:
@@ -50,7 +51,6 @@ class Inventory:
         self.title_surf = self.title_font.render('Inventory', False, 'white')
         self.show_entry(self.title_surf, 0, False)
 
-
     def input(self):
         keys = pygame.key.get_pressed()
         self.timer.update()
@@ -67,11 +67,11 @@ class Inventory:
                 self.index += 1
                 self.timer.activate()
 
-            if keys[pygame.K_SPACE]:
-                self.timer.activate()
+            # if keys[pygame.K_SPACE]:
+            #     self.timer.activate()
 
-                # get item
-                current_item = self.inventory_list[self.index]
+            #     # get item
+            #     current_item = self.inventory_list[self.index]
 
                 # use
 
@@ -95,20 +95,63 @@ class Inventory:
             pygame.draw.rect(self.display_surface, 'white', bg_rect, width=4)
             pos_rect = self.use_text.get_rect(midright=(bg_rect.right - self.padding, bg_rect.centery))
             self.display_surface.blit(self.use_text, pos_rect)
+            self.show_info()
+
+    def show_info(self):
+        if 'Inventory empty' not in self.inventory_list:
+            item = self.player.inventory[self.inventory_list[self.index]]
+
+            # display item name
+            top = self.inv_top + self.total_height + self.space
+            for line in textwrap.wrap(item.name,20):
+                text_surf = self.title_font.render(line, False, 'yellow')
+                text_rect = text_surf.get_rect(topleft=(self.main_rect.left + self.padding, top))
+                self.display_surface.blit(text_surf, text_rect)
+                top += text_surf.get_height()
+
+            top += self.space
+
+            # display item type
+            text_surf = self.font.render(item.type, False, 'white')
+            text_rect = text_surf.get_rect(topleft=(self.main_rect.left + self.padding, top))
+            self.display_surface.blit(text_surf, text_rect)
+            top += text_surf.get_height() + self.space
+
+            # display item description
+            for line in textwrap.wrap(item.description,30):
+                text_surf = self.font.render(line, False, 'white')
+                text_rect = text_surf.get_rect(topleft=(self.main_rect.left + self.padding, top))
+                self.display_surface.blit(text_surf, text_rect)
+                top += text_surf.get_height()
+
+            top += self.space
+
+            # display action
+            for line in textwrap.wrap(item.action,30):
+                text_surf = self.font.render(line, False, 'white')
+                text_rect = text_surf.get_rect(topleft=(self.main_rect.left + self.padding, top))
+                self.display_surface.blit(text_surf, text_rect)
+                top += text_surf.get_height()
+
+        # TODO: clean up, consolidate, and simplify code
+        # TODO: add check to make sure text doesn't run off bottom of window
+        # TODO: add line breaks in descriptions if possible
 
     def update(self, current_player):
         self.player = current_player
-        # self.input()
+        self.input()
 
         # create entry list
-        self.inventory_list = list(self.player.item_inventory.keys()) + list(self.player.omen_inventory.keys())
+        # self.inventory_list = list(self.player.item_inventory.keys()) + list(self.player.omen_inventory.keys())
+        self.inventory_list = list(self.player.inventory.keys())
         if not self.inventory_list:
             self.inventory_list = ['Inventory empty']
 
         self.setup()
 
         # display entries
-        top = self.main_rect.top + self.title_surf.get_height() + self.padding*2 + self.space
+        self.inv_top = self.main_rect.top + self.title_surf.get_height() + self.padding*2 + self.space
+        top = self.inv_top
         for text_index, text_surf in enumerate(self.text_surfs):
             top += text_index * (text_surf.get_height() + (self.padding * 2))
             self.show_entry(text_surf, top, self.index == text_index)
