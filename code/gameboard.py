@@ -83,7 +83,7 @@ class Gameboard:
         tile.set_pos(grid_pos, direction)
         self.grid[grid_pos] = tile.name
         self.all_sprites.add(tile)
-        self.messenger.add_entry(f'Placed {tile.name} at {grid_pos}')
+        self.messenger.add_entry(f'Discovered: {tile.name}', 'green')
 
         # draw designated card
         self.draw_tile_card(tile.card)
@@ -199,7 +199,7 @@ class Gameboard:
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
                 if not target_doors[2]:
-                    self.messenger.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}', 'red')
+                    self.messenger.add_entry(f'Movement blocked by {target_room_name}', 'red')
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
@@ -212,7 +212,7 @@ class Gameboard:
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
                 if not target_doors[3]:
-                    self.messenger.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}', 'red')
+                    self.messenger.add_entry(f'Movement blocked by {target_room_name}', 'red')
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
@@ -225,7 +225,7 @@ class Gameboard:
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
                 if not target_doors[0]:
-                    self.messenger.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}', 'red')
+                    self.messenger.add_entry(f'Movement blocked by {target_room_name}', 'red')
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
@@ -238,7 +238,7 @@ class Gameboard:
                 target_room_name = self.grid[target_pos]
                 target_doors = self.room_deck.obj_dict[target_room_name].doors
                 if not target_doors[1]:
-                    self.messenger.add_entry(f'Movement blocked by {target_room_name}; doors = {target_doors}', 'red')
+                    self.messenger.add_entry(f'Movement blocked by {target_room_name}', 'red')
                     return False
             else:
                 new_tile = self.room_deck.choose_card(floor=self.current_player.floor)
@@ -257,15 +257,13 @@ class Gameboard:
         self.display_surf.fill(s.BG_COLOR)  # background
         self.player_input()
         self.update_timers()
-        self.all_sprites.custom_draw()
+        self.all_sprites.custom_draw(self.current_player)
 
         # updates
         if self.inventory_active:
             self.inventory_panel.update(self.current_player)
         else:
             self.all_sprites.update(dt)
-        # self.all_sprites.update(dt)
-        # self.inventory_panel.update(self.current_player)
 
         # overlay
         self.overlay.display(self.current_player)
@@ -281,7 +279,7 @@ class CameraGroup(pygame.sprite.Group):
         # camera speed for keyboard
         self.keyboard_speed = 3
     
-    def keyboard_ctrl(self):
+    def keyboard_ctrl(self, player):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_a]:
@@ -301,9 +299,13 @@ class CameraGroup(pygame.sprite.Group):
             self.set_camera(pygame.math.Vector2((98 * s.TILE_SIZE, -s.TILE_SIZE)))
         elif keys[pygame.K_b]: # basement landing
             self.set_camera(pygame.math.Vector2((-102 * s.TILE_SIZE, -s.TILE_SIZE)))
+        elif keys[pygame.K_p]: # player
+            x = player.grid_pos[0] * s.TILE_SIZE - 2 * s.TILE_SIZE
+            y = player.grid_pos[1]* s.TILE_SIZE + 1 * s.TILE_SIZE
+            self.set_camera(pygame.math.Vector2((x, -y)))
 
-    def custom_draw(self):
-        self.keyboard_ctrl()
+    def custom_draw(self, player):
+        self.keyboard_ctrl(player)
         # TODO: Add box that moves with player camera
 
         # cycle through layers dict and draw layers in order
