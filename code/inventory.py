@@ -91,11 +91,12 @@ class Inventory:
         self.display_surface.blit(text_surf, text_rect)
 
         # selected
-        if selected:
-            pygame.draw.rect(self.display_surface, 'white', bg_rect, width=4)
-            pos_rect = self.use_text.get_rect(midright=(bg_rect.right - self.padding, bg_rect.centery))
-            self.display_surface.blit(self.use_text, pos_rect)
-            self.show_info()
+        if 'Inventory empty' not in self.inventory_list:
+            if selected:
+                pygame.draw.rect(self.display_surface, 'white', bg_rect, width=4)
+                pos_rect = self.use_text.get_rect(midright=(bg_rect.right - self.padding, bg_rect.centery))
+                self.display_surface.blit(self.use_text, pos_rect)
+                self.show_info()
 
     def show_info(self):
         if 'Inventory empty' not in self.inventory_list:

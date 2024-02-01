@@ -16,7 +16,7 @@ MENU_CHARS = 30 #number of characters that fit across menu
 
 # window settings
 TITLE = 'Betrayal at House on the Hill'
-BG_COLOR = 'pink'
+BG_COLOR = (8,25,14)
 
 TRANSPARENCY = 0.8
 PANEL_BKG = (31,31,31)
