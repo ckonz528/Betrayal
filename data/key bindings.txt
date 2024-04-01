@@ -3,6 +3,10 @@ Arrows
 
 Camera movement:
 WASD
+g = ground floor
+b = basement
+u = upper 
+p = player
 
 Tile rotation:
 right - ]
@@ -10,3 +14,4 @@ left - [
 
 Player turn:
 e = end turn
+i = toggle inventory panel

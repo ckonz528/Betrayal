@@ -6,6 +6,7 @@ from explorers import Explorer
 from timer import Timer
 from overlay import Overlay
 from inventory import Inventory
+from roller import Roller
 
 
 class Gameboard:
@@ -56,15 +57,20 @@ class Gameboard:
         # Timers
         self.timers = {
             'player_move': Timer(300),
-            'inv_panel': Timer(200)
+            'inv_panel': Timer(),
+            'roller': Timer()
         }
 
         # overlay
         self.overlay = Overlay()
 
         # inventory panel
-        self.inventory_panel = Inventory(self.current_player)
+        self.inventory_panel = Inventory()
         self.inventory_active = False
+
+        # dice roller
+        self.roller = Roller()
+        self.roller_active = False
 
         self.messenger.clear_queue()
 
@@ -162,6 +168,10 @@ class Gameboard:
                 self.timers['inv_panel'].activate()
                 self.inventory_active = not self.inventory_active
 
+        if not self.timers['roller'].active:
+            if keys[pygame.K_r]:
+                self.timers['roller'].activate()
+                self.roller_active = not self.roller_active
 
         # end turn
         if not self.timers['player_move'].active and keys[pygame.K_e]:
@@ -262,6 +272,8 @@ class Gameboard:
         # updates
         if self.inventory_active:
             self.inventory_panel.update(self.current_player)
+        elif self.roller_active:
+            self.roller.update()
         else:
             self.all_sprites.update(dt)
 

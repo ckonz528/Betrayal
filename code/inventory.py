@@ -5,11 +5,9 @@ import textwrap
 
 
 class Inventory:
-    def __init__(self, current_player) -> None:
+    def __init__(self) -> None:
 
         # general setup
-        self.player = current_player
-        # self.toggle_menu = toggle_menu
         self.display_surface = pygame.display.get_surface()
         self.font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.MSG_FONT_SIZE)
         self.title_font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.TITLE_FONT_SIZE)
