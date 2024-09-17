@@ -171,6 +171,7 @@ class Gameboard:
         if not self.timers['roller'].active:
             if keys[pygame.K_r]:
                 self.timers['roller'].activate()
+                self.roller.dice_rolled = False
                 self.roller_active = not self.roller_active
 
         # end turn

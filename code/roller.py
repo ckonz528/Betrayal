@@ -2,12 +2,14 @@ import pygame
 import settings as s
 from timer import Timer
 import random as r
+import time
 
 class Roller:
     def __init__(self) -> None:
         self.display_surface = pygame.display.get_surface()
         self.input_timer = Timer()
         self.animation_timer = Timer(3000)
+        self.dice_rolled = False
 
         self.setup()
 
@@ -25,17 +27,38 @@ class Roller:
 
 
     def roll_dice(self, num_dice:str):
-        for i in range(num_dice):
-            self.dice_objs[i].visible = True
+        self.roll_result = 0
+        roll_frames = 5
+        
+        for frame in range(roll_frames):
+            for i, die in enumerate(self.dice_objs[:num_dice]):
+                die.visible = True
+                die_result = die.roll()
+
+                print(f'die {i+1} result {die_result}')
+
+                if frame == roll_frames - 1:
+                    self.roll_result += die_result
+
+            print(f'frame {frame + 1}')
+
+            time.sleep(1)
+
+        # self.dice_rolled = True  
 
 
     def roller_window(self):
         self.roller_rect = pygame.Rect((s.POSITIONS['roller']), (s.SCREEN_W - s.TILE_SIZE - 200, s.SCREEN_H - 200))
         pygame.draw.rect(self.display_surface, s.ROLLER_BKG, self.roller_rect, border_radius=12)
 
+        # print('update roller window')
+
+    def display_dice(self):
         for die in self.dice_objs:
             if die.visible:
                 self.display_surface.blit(die.image, die.rect)
+
+        # print('update dice display')
 
     def input(self):
         keys = pygame.key.get_pressed()
@@ -48,10 +71,13 @@ class Roller:
                 for die in self.dice_objs:
                     die.visible = False
 
-                self.roll_dice(r.randint(1,8))
+                num_dice = r.randint(1,8)
+                print(f'rolling {num_dice} dice')
+                self.roll_dice(num_dice)
 
     def update(self):
         self.roller_window()
+        self.display_dice()
         self.input()
 
 
@@ -78,3 +104,5 @@ class Die():
         result = r.choice(self.sides)
         self.image = self.faces[result]
         self.rect = self.image.get_rect(center=(self.die_x,self.die_y))
+
+        return result
