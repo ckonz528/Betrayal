@@ -8,8 +8,9 @@ class Roller:
     def __init__(self) -> None:
         self.display_surface = pygame.display.get_surface()
         self.input_timer = Timer()
-        self.animation_timer = Timer(3000)
+        self.animation_timer = Timer(3000, self.roll_dice)
         self.dice_rolled = False
+        self.state = 'pre-roll' # states = pre-roll, rolling, post-roll
 
         self.setup()
 
@@ -26,23 +27,33 @@ class Roller:
                 x += s.DIE_SIZE * 1.5
 
 
-    def roll_dice(self, num_dice:str):
+    def roll_dice(self):
         self.roll_result = 0
-        roll_frames = 5
+
+        for i, die in enumerate(self.dice_objs):
+            die_result = die.roll()
+
+            print(f'die {i+1} result {die_result}')
+
+            self.roll_result += die_result
         
-        for frame in range(roll_frames):
-            for i, die in enumerate(self.dice_objs[:num_dice]):
-                die.visible = True
-                die_result = die.roll()
+        print(f'total result = {self.roll_result}')
 
-                print(f'die {i+1} result {die_result}')
+        # roll_frames = 5
 
-                if frame == roll_frames - 1:
-                    self.roll_result += die_result
+        # for frame in range(roll_frames):
+        #     for i, die in enumerate(self.dice_objs[:num_dice]):
+        #         die.visible = True
+        #         die_result = die.roll()
 
-            print(f'frame {frame + 1}')
+        #         print(f'die {i+1} result {die_result}')
 
-            time.sleep(1)
+        #         if frame == roll_frames - 1:
+        #             self.roll_result += die_result
+
+        #     print(f'frame {frame + 1}; total result = {self.roll_result}')
+
+        #     time.sleep(1)
 
         # self.dice_rolled = True  
 
@@ -51,14 +62,10 @@ class Roller:
         self.roller_rect = pygame.Rect((s.POSITIONS['roller']), (s.SCREEN_W - s.TILE_SIZE - 200, s.SCREEN_H - 200))
         pygame.draw.rect(self.display_surface, s.ROLLER_BKG, self.roller_rect, border_radius=12)
 
-        # print('update roller window')
-
-    def display_dice(self):
         for die in self.dice_objs:
             if die.visible:
                 self.display_surface.blit(die.image, die.rect)
 
-        # print('update dice display')
 
     def input(self):
         keys = pygame.key.get_pressed()
@@ -68,16 +75,21 @@ class Roller:
             if keys[pygame.K_SPACE]:
                 self.input_timer.activate()
 
-                for die in self.dice_objs:
-                    die.visible = False
-
                 num_dice = r.randint(1,8)
                 print(f'rolling {num_dice} dice')
-                self.roll_dice(num_dice)
+
+                for i, die in enumerate(self.dice_objs):
+                    if i < num_dice:
+                        die.visible = True
+                    else:
+                        die.visible = False
+                
+                self.animation_timer.activate()
+                # self.roll_dice(num_dice)
 
     def update(self):
         self.roller_window()
-        self.display_dice()
+        # self.display_dice()
         self.input()
 
 
