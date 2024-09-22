@@ -12,6 +12,7 @@ DIE_SIZE = 2*CHAR_SIZE
 TITLE_FONT_SIZE = 20
 LIST_FONT_SIZE = 20
 MSG_FONT_SIZE = 12
+ROLLER_FONT_SIZE = int(DIE_SIZE / 4)
 SPACE = 10
 MENU_CHARS = 30 #number of characters that fit across menu
 

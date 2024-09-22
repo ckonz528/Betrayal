@@ -3,14 +3,21 @@ import settings as s
 from timer import Timer
 import random as r
 import time
+import textwrap
 
 class Roller:
     def __init__(self) -> None:
         self.display_surface = pygame.display.get_surface()
-        self.input_timer = Timer()
-        self.animation_timer = Timer(1000, self.roll_dice)
+        self.font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.ROLLER_FONT_SIZE)
+
+        # timers
+        self.roller_timers = {
+            'input': Timer(),
+            'frame': Timer(50, self.roll_dice),
+            'animation': Timer(2000, self.end_animation)
+        }
+
         self.dice_rolled = False
-        self.state = 'pre-roll' # states = pre-roll, rolling, post-roll
 
         self.setup()
 
@@ -33,12 +40,18 @@ class Roller:
         for i, die in enumerate(self.dice_objs):
             if die.visible:
                 die_result = die.roll()
-                print(f'die {i+1} result {die_result}')
+                # print(f'die {i+1} result {die_result}')
                 self.roll_result += die_result
         
-        print(f'total result = {self.roll_result}')
+        # print(f'total result = {self.roll_result}')
 
-        self.animation_timer.activate()
+        if not self.dice_rolled:
+            self.roller_timers['frame'].activate()
+
+    
+    def end_animation(self):
+        self.dice_rolled = True
+        print(f'Final result = {self.roll_result}')
 
 
     def roller_window(self):
@@ -49,14 +62,19 @@ class Roller:
             if die.visible:
                 self.display_surface.blit(die.image, die.rect)
 
+        if self.dice_rolled:
+            text = f'Roll Result: {self.roll_result}'
+            text_surf = self.font.render(text, False, 'white')
+            text_rect = text_surf.get_rect(midbottom=(self.roller_rect.midbottom[0], self.roller_rect.midbottom[1]- s.DIE_SIZE/2))
+            self.display_surface.blit(text_surf, text_rect)
+
 
     def input(self):
         keys = pygame.key.get_pressed()
-        self.input_timer.update()
 
-        if not self.input_timer.active:
-            if keys[pygame.K_SPACE]:
-                self.input_timer.activate()
+        if not self.roller_timers['input'].active:
+            if keys[pygame.K_SPACE] and not self.dice_rolled:
+                self.roller_timers['input'].activate()
 
                 num_dice = r.randint(1,8)
                 print(f'rolling {num_dice} dice')
@@ -67,10 +85,14 @@ class Roller:
                     else:
                         die.visible = False
 
+                self.roller_timers['frame'].activate()
+                self.roller_timers['animation'].activate()
+
 
     def update(self):
         self.roller_window()
-        self.animation_timer.update()
+        for timer in self.roller_timers.values():
+            timer.update()
         self.input()
 
 
