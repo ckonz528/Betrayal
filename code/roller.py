@@ -40,10 +40,7 @@ class Roller:
         for i, die in enumerate(self.dice_objs):
             if die.visible:
                 die_result = die.roll()
-                # print(f'die {i+1} result {die_result}')
                 self.roll_result += die_result
-        
-        # print(f'total result = {self.roll_result}')
 
         if not self.dice_rolled:
             self.roller_timers['frame'].activate()
@@ -51,7 +48,6 @@ class Roller:
     
     def end_animation(self):
         self.dice_rolled = True
-        print(f'Final result = {self.roll_result}')
 
 
     def roller_window(self):
@@ -64,9 +60,14 @@ class Roller:
 
         if self.dice_rolled:
             text = f'Roll Result: {self.roll_result}'
-            text_surf = self.font.render(text, False, 'white')
-            text_rect = text_surf.get_rect(midbottom=(self.roller_rect.midbottom[0], self.roller_rect.midbottom[1]- s.DIE_SIZE/2))
-            self.display_surface.blit(text_surf, text_rect)
+        elif self.roller_timers['animation'].active:
+            text = 'Rolling...'
+        else:
+            text = '[PRESS SPACE TO ROLL]'
+
+        text_surf = self.font.render(text, False, 'white')
+        text_rect = text_surf.get_rect(midbottom=(self.roller_rect.midbottom[0], self.roller_rect.midbottom[1]- s.DIE_SIZE/2))
+        self.display_surface.blit(text_surf, text_rect)
 
 
     def input(self):
@@ -77,7 +78,6 @@ class Roller:
                 self.roller_timers['input'].activate()
 
                 num_dice = r.randint(1,8)
-                print(f'rolling {num_dice} dice')
 
                 for i, die in enumerate(self.dice_objs):
                     if i < num_dice:
