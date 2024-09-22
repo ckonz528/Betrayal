@@ -7,6 +7,7 @@ from timer import Timer
 from overlay import Overlay
 from inventory import Inventory
 from roller import Roller
+from event import Event
 
 
 class Gameboard:
@@ -68,9 +69,11 @@ class Gameboard:
         self.inventory_panel = Inventory()
         self.inventory_active = False
 
-        # dice roller
+        # pop up windows
         self.roller = Roller()
         self.roller_active = False
+        self.event = Event()
+        self.event_active = False
 
         self.messenger.clear_queue()
 
@@ -108,6 +111,9 @@ class Gameboard:
         elif card_type == 'event':
             card_obj = self.event_deck.choose_card()
             self.messenger.add_entry(f'Event: {card_obj.name}')
+            #TODO: settle room rotation before event starts
+            self.event_active = True
+            self.event.run_event(card_obj)
 
     def end_turn(self):
         # check last placed tile rotation
@@ -173,6 +179,10 @@ class Gameboard:
                 self.timers['roller'].activate()
                 self.roller.dice_rolled = False
                 self.roller_active = not self.roller_active
+
+        if self.event_active:
+            if keys[pygame.K_RETURN]:
+                self.event_active = False
 
         # end turn
         if not self.timers['player_move'].active and keys[pygame.K_e]:
@@ -275,6 +285,8 @@ class Gameboard:
             self.inventory_panel.update(self.current_player)
         elif self.roller_active:
             self.roller.update()
+        elif self.event_active:
+            self.event.update()
         else:
             self.all_sprites.update(dt)
 
