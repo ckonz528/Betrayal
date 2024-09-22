@@ -2,8 +2,6 @@ import pygame
 import settings as s
 from timer import Timer
 import random as r
-import time
-import textwrap
 
 class Roller:
     def __init__(self) -> None:
