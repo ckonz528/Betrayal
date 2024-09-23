@@ -128,13 +128,22 @@ class Gameboard:
                 self.turn_index = 0
 
             current_player_name = self.players[self.turn_index]
-            self.current_player = self.char_list.obj_dict[f'{current_player_name}']
+            self.current_player = self.char_list.obj_dict[current_player_name]
             self.messenger.add_entry(f"{self.current_player.name}'s turn")
             self.current_player.allow_move = True
 
 
         #TODO: center camera on next player 
         # self.all_sprites.set_camera(pygame.math.Vector2((self.current_player.rect.centerx + s.SCREEN_W / 2, self.current_player.rect.centery + s.SCREEN_H / 2)))
+
+    def adjust_tokens(self):
+        directions = ['NW','N','NE','E','SE','S','SW','W']
+        adjust_counter = 0
+        for token in self.players:
+            token = self.char_list.obj_dict[token]
+            if token.name != self.current_player.name and token.grid_pos == self.current_player.grid_pos:
+                token.adjust_pos(directions[adjust_counter])
+                adjust_counter += 1
 
     def player_input(self):
         keys = pygame.key.get_pressed()
@@ -169,12 +178,15 @@ class Gameboard:
                 if self.check_walls('E'):
                     self.current_player.set_pos((player_pos[0] + 1, player_pos[1]))
 
+        self.adjust_tokens()
+
         if not self.timers['inv_panel'].active:
             if keys[pygame.K_i]:
                 self.timers['inv_panel'].activate()
                 self.inventory_active = not self.inventory_active
 
         if not self.timers['roller'].active:
+            #TODO: activate roller automatically / keep roller from activating during events
             if keys[pygame.K_r]:
                 self.timers['roller'].activate()
                 self.roller.dice_rolled = False

@@ -63,6 +63,27 @@ class Explorer(pygame.sprite.Sprite):
         self.pos = (self.grid_pos[0] * s.TILE_SIZE + s.TILE_SIZE//2, self.grid_pos[1] * s.TILE_SIZE + s.TILE_SIZE//2)
         self.rect = self.image.get_rect(center=self.pos)
 
+    def adjust_pos(self, direction):
+        self.pos = (self.grid_pos[0] * s.TILE_SIZE + s.TILE_SIZE//2, self.grid_pos[1] * s.TILE_SIZE + s.TILE_SIZE//2)
+        if direction == "NW":
+            self.pos = (self.pos[0] - s.CHAR_SIZE, self.pos[1] - s.CHAR_SIZE)
+        elif direction == "N":
+            self.pos = (self.pos[0], self.pos[1] - s.CHAR_SIZE)
+        elif direction == "NE":
+            self.pos = (self.pos[0] + s.CHAR_SIZE, self.pos[1] - s.CHAR_SIZE)
+        elif direction == "E":
+            self.pos = (self.pos[0] + s.CHAR_SIZE, self.pos[1])
+        elif direction == "SE":
+            self.pos = (self.pos[0] + s.CHAR_SIZE, self.pos[1] + s.CHAR_SIZE)
+        elif direction == "S":
+            self.pos = (self.pos[0], self.pos[1] + s.CHAR_SIZE)
+        elif direction == "SW":
+            self.pos = (self.pos[0] - s.CHAR_SIZE, self.pos[1] + s.CHAR_SIZE)
+        elif direction == "W":
+            self.pos = (self.pos[0] - s.CHAR_SIZE, self.pos[1])
+
+        self.rect = self.image.get_rect(center=self.pos)
+
     def add_item(self, item: object):
         self.inventory[item.name] = item
 
