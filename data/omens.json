@@ -3,54 +3,54 @@
     "name": "Armor",
     "weapon": false,
     "description": "Rusty, but sturdy.",
-    "action": "Whenever you take any Physical damage, reduce that damage by 1 (The Armor does not prevent General damage or the direct loss of Might and/or Speed)"
+    "action_text": "Whenever you take any Physical damage, reduce that damage by 1 (The Armor does not prevent General damage or the direct loss of Might and/or Speed)"
   },
   {
     "name": "Book",
     "weapon": false,
     "description": "Strange scribbles cover the pages.",
-    "action": "Add 1 to the result of your Knowledge rolls. Once during your turn, you may use the Book to lose 1 Sanity. On the next trait roll you make this turn that isn't an attack, you may use your Knowledge in place of the named trait."
+    "action_text": "Add 1 to the result of your Knowledge rolls. Once during your turn, you may use the Book to lose 1 Sanity. On the next trait roll you make this turn that isn't an attack, you may use your Knowledge in place of the named trait."
   },
   {
     "name": "Dagger",
     "weapon": true,
     "description": "It smells sharply of blood. Your blood.",
-    "action": "When you use the Dagger to attack, lose 1 Speed. Roll two extra dice on the attack."
+    "action_text": "When you use the Dagger to attack, lose 1 Speed. Roll two extra dice on the attack."
   },
   {
     "name": "Dog",
     "weapon": false,
     "description": "It stares at you with a keen intelligence.",
-    "action": "Add 1 to the result of your Speed rolls. Once during your turn, you may use the Dog to trade any number of Items or Omens with another player up to 4 tiles away, using the normal trading rules."
+    "action_text": "Add 1 to the result of your Speed rolls. Once during your turn, you may use the Dog to trade any number of Items or Omens with another player up to 4 tiles away, using the normal trading rules."
   },
   {
     "name": "Holy Symbol",
     "weapon": false,
     "description": "A silver symbol that glows in the dark.",
-    "action": "Add 1 to the result of your Sanity rolls. Whenever you discover a tile you may choose to bury it and discover the next tile instead. If you do, do not resolve any effects for the first tile."
+    "action_text": "Add 1 to the result of your Sanity rolls. Whenever you discover a tile you may choose to bury it and discover the next tile instead. If you do, do not resolve any effects for the first tile."
   },
   {
     "name": "Idol",
     "weapon": false,
     "description": "The idol is made of a strange, worn stone. You can't quite make out what it is supposed to represent.",
-    "action": "Add 1 to the result of your Might rolls. When you discover a tile with an Event symbol, you may choose to not draw an Event card"
+    "action_text": "Add 1 to the result of your Might rolls. When you discover a tile with an Event symbol, you may choose to not draw an Event card"
   },
   {
     "name": "Mask",
     "weapon": false,
     "description": "You can't tell what it's made of, but it's very smooth and slightly warm",
-    "action": "Add 1 to the result of your Speed rolls. Once during your turn, you may use the Mask to move everyone else on your tile (explorers and monsters) to any adjacent tiles. This effect may not be used to discover new tiles."
+    "action_text": "Add 1 to the result of your Speed rolls. Once during your turn, you may use the Mask to move everyone else on your tile (explorers and monsters) to any adjacent tiles. This effect may not be used to discover new tiles."
   },
   {
     "name": "Ring",
     "weapon": true,
     "description": "It twists on itself.",
-    "action": "Add 1 to the result of your Sanity rolls. When you use the Ring to attack, you and the defender each roll Sanity instead of Might. The loser takes Mental damage."
+    "action_text": "Add 1 to the result of your Sanity rolls. When you use the Ring to attack, you and the defender each roll Sanity instead of Might. The loser takes Mental damage."
   },
   {
     "name": "Skull",
     "weapon": false,
     "description": "Delicately etched with strange marks",
-    "action": "Add 1 to the result of your Knowledge rolls. If something would cause your explorer to die, first roll 3 dice. 4-6: Instead of dying, set all your traits to critical. Memento vivere. 0-3: You die as normal."
+    "action_text": "Add 1 to the result of your Knowledge rolls. If something would cause your explorer to die, first roll 3 dice. 4-6: Instead of dying, set all your traits to critical. Memento vivere. 0-3: You die as normal."
   }
 ]

@@ -2,216 +2,216 @@
   {
     "name": "Alien Geometry",
     "description": "The angles of this room don't add up. The room is square, but it has five corners. One of the corners is inside out. You try for the door, but it is always on the other side of the room.",
-    "action": "Make a Knowledge roll. \n4+: Gain 1 Sanity. It starts to make sense! \n0-3: Lose 1 Speed. You experience vertigo."
+    "action_text": "Make a Knowledge roll. \n4+: Gain 1 Sanity. It starts to make sense! \n0-3: Lose 1 Speed. You experience vertigo."
   },
   {
     "name": "An Eerie Feeling",
     "description": "As you step over the threshold, you get a strange feeling in your chest, like someone's rummaging around in your lungs.",
-    "action": "Roll 2 dice.\n4: Nothing happens. That was weird.\n3: Lose 1 Speed.\n2: Lose 1 Sanity.\n1: Lose 1 Knowledge.\n0: Lose 1 Might."
+    "action_text": "Roll 2 dice.\n4: Nothing happens. That was weird.\n3: Lose 1 Speed.\n2: Lose 1 Sanity.\n1: Lose 1 Knowledge.\n0: Lose 1 Might."
   },
   {
     "name": "Bat Out of Hell",
     "description": "A flaming bat flies toward you. It screeches, then dives for your face!",
-    "action": "Make a Speed roll.\n4+: Place your explorer on an adjacent tile. You dodge out of the way.\n0-3: Take 1 Physical damage. It burns!"
+    "action_text": "Make a Speed roll.\n4+: Place your explorer on an adjacent tile. You dodge out of the way.\n0-3: Take 1 Physical damage. It burns!"
   },
   {
     "name": "Behind You!",
     "description": "Just as you walk through the door, something tabs you on the shoulder. You turn to see who it is.",
-    "action": "Make a Speed roll.\n4+: Gain 1 Sanity. There's no one there. It must have been the wind.\n0-3: Take 1 Physical damage. Large claws swipe at your face."
+    "action_text": "Make a Speed roll.\n4+: Gain 1 Sanity. There's no one there. It must have been the wind.\n0-3: Take 1 Physical damage. Large claws swipe at your face."
   },
   {
     "name": "Bite",
     "description": "Something lunges out of the shadows and tries to bite you!",
-    "action": "Make a Might roll.\n4+: Nothing happens. You fight off whatever it was. It flees to the shadows.\n2-3: Take 1 Physical damage. Just a small nip. Probably not even worth mentioning to the others.\n0-1: Take 3 Physical damage. Ouch! That's a bad bite."
+    "action_text": "Make a Might roll.\n4+: Nothing happens. You fight off whatever it was. It flees to the shadows.\n2-3: Take 1 Physical damage. Just a small nip. Probably not even worth mentioning to the others.\n0-1: Take 3 Physical damage. Ouch! That's a bad bite."
   },
   {
     "name": "Brain Food",
     "description": "A quivering gelatin mold on a silver platter. It smells inviting.",
-    "action": "Make a Might roll. \n5+: Gain 1 in Might or Speed. Delicious. \n1-4: Gain 1 Speed and lose 1 Sanity. You gag, but manage to choke it down. \n0: Take 2 General damage. Now you know what brains taste like."
+    "action_text": "Make a Might roll. \n5+: Gain 1 in Might or Speed. Delicious. \n1-4: Gain 1 Speed and lose 1 Sanity. You gag, but manage to choke it down. \n0: Take 2 General damage. Now you know what brains taste like."
   },
   {
     "name": "Burning Figure",
     "description": "A man on fire runs through the room. His skin bubbles and cracks falling away from him and leaving a fiery skull. The skull clatters to the ground, bounces, rolls away, and vanishes. ",
-    "action": "Make a sanity roll. \n4+: Gain 1 Sanity. You feel a little hot under the collar but otherwise fine. \n2-3: Place your explorer in the Entrance Hall. Out, out, you must get OUT!\n0-1: Take 1 die of Physical damage then take 1 die of Mental damage. You burst into flame. "
+    "action_text": "Make a sanity roll. \n4+: Gain 1 Sanity. You feel a little hot under the collar but otherwise fine. \n2-3: Place your explorer in the Entrance Hall. Out, out, you must get OUT!\n0-1: Take 1 die of Physical damage then take 1 die of Mental damage. You burst into flame."
   },
   {
     "name": "Cassette Player",
     "description": "A cassette player sits on a table in this room. You pick it up and press play and it hisses to life. A recorded voice whispers, 'If you can hear this it's too late for me, but maybe I can still help you.'",
-    "action": "Make a Sanity roll. \n4+: Gain 1 Knowledge. The voice tells you the secrets of the house. \n0-3: Take 1 Mental damage. The voice tells you how you will die."
+    "action_text": "Make a Sanity roll. \n4+: Gain 1 Knowledge. The voice tells you the secrets of the house. \n0-3: Take 1 Mental damage. The voice tells you how you will die."
   },
   {
     "name": "Clown Room",
     "description": "All of the fixtures and furniture seem to have little faces on them. All are smiling. All are staring. ",
-    "action": "Make a Sanity roll.\n4+: Nothing happens. It's creepy, but it's just furniture.\n0-3: Take 2 Mental damage. The lamp and chair begin to laugh at you. Ha! Haha! HAHAHAHAHA!!!"
+    "action_text": "Make a Sanity roll.\n4+: Nothing happens. It's creepy, but it's just furniture.\n0-3: Take 2 Mental damage. The lamp and chair begin to laugh at you. Ha! Haha! HAHAHAHAHA!!!"
   },
   {
     "name": "Creaking Door",
     "description": "A door that wasn't there before creaks open. On the other side, a man holds a lantern. As the light flickers through the doorway, the man beckons you forward.",
-    "action": "Make a Knowledge roll.\n6+: Place your explorer on any Upper or Ground Floor tile. Over here?\n4-5: Place your explorer on any Ground Floor tile. Maybe there?\n0-3: Place your explorer on the Basement Landing tile. What about down there?"
+    "action_text": "Make a Knowledge roll.\n6+: Place your explorer on any Upper or Ground Floor tile. Over here?\n4-5: Place your explorer on any Ground Floor tile. Maybe there?\n0-3: Place your explorer on the Basement Landing tile. What about down there?"
   },
   {
     "name": "Cry For Help",
     "description": "A man's voice echoes through the hallways, calling you by name. It shouts in pain, 'Help me!' ",
-    "action": "Make a Knowledge roll.\n4+: Place your explorer on any tile in your region. Where could it be coming from?\n0-3: Take 1 Mental damage. The voice cries out, then goes silent."
+    "action_text": "Make a Knowledge roll.\n4+: Place your explorer on any tile in your region. Where could it be coming from?\n0-3: Take 1 Mental damage. The voice cries out, then goes silent."
   },
   {
     "name": "Dark and Stormy Night",
     "description": "Thunder crashes outside, and wind whips against the walls. Something knocks at the door. Everything gets louder and louder, until your ears begin to hurt.",
-    "action": "Make a Knowledge roll. \n4+: Gain 1 Sanity. You hide under a table until the noise ceases. \n0-3: Take 1 Mental damage. Will this noise ever stop?"
+    "action_text": "Make a Knowledge roll. \n4+: Gain 1 Sanity. You hide under a table until the noise ceases. \n0-3: Take 1 Mental damage. Will this noise ever stop?"
   },
   {
     "name": "Eerie Mirror",
     "description": "There's a mirror on the wall. Someone is behind you, reaching for you.",
-    "action": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 7 in the Secrets of Survival book. This haunt has no traitor. You are the haunt revealer.\n0-4: Gain 1 Sanity. You turn around, but there is no one there.\nIf the haunt has started, or if you chose not to make a haunt roll, draw an Item card."
+    "action_text": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 7 in the Secrets of Survival book. This haunt has no traitor. You are the haunt revealer.\n0-4: Gain 1 Sanity. You turn around, but there is no one there.\nIf the haunt has started, or if you chose not to make a haunt roll, draw an Item card."
   },
   {
     "name": "Flickering Lights",
     "description": "The lights dim and begin to flicker. A door opens from the other end of the room. Between flickers, a figure blinks in and out of sight. ",
-    "action": "Make a Speed or Might roll. \n5+: Gain 1 Speed. You wrestle the figure to the ground, and it disappears. \n0-4: Take one die of Physical damage. It attacks!"
+    "action_text": "Make a Speed or Might roll. \n5+: Gain 1 Speed. You wrestle the figure to the ground, and it disappears. \n0-4: Take one die of Physical damage. It attacks!"
   },
   {
     "name": "Forbidden Knowledge",
     "description": "You blow away some dust on the floor and find etchings in the floorboards. They describe secrets best kept hidden.",
-    "action": "Make a Sanity roll. \n4+: Gain 1 Knowledge. Now those secrets are yours. \n2-3: Gain 1 Knowledge and lose 1 Sanity. The knowledge unnerves you. \n0-1: Take 2 Mental damage. You can't even remember what you read, only the horror you felt."
+    "action_text": "Make a Sanity roll. \n4+: Gain 1 Knowledge. Now those secrets are yours. \n2-3: Gain 1 Knowledge and lose 1 Sanity. The knowledge unnerves you. \n0-1: Take 2 Mental damage. You can't even remember what you read, only the horror you felt."
   },
   {
     "name": "Full Table",
     "description": "A dozen wax figures are sitting at a fully set table. A seat has been reserved for you.",
-    "action": "Make a Knowledge roll.\n5+: Gain 1 Speed. The turkey is cooked to perfection.\n0-4: Take 1 General damage. You spit out a mouthful of wax."
+    "action_text": "Make a Knowledge roll.\n5+: Gain 1 Speed. The turkey is cooked to perfection.\n0-4: Take 1 General damage. You spit out a mouthful of wax."
   },
   {
     "name": "Funeral",
     "description": "You have a vision of an open coffin, and you're lying in it.",
-    "action": "Make a Sanity roll. \n4+: You blink, and it’s gone. Gain 1 Sanity. \n2-3: The vision disturbs you. Lose 1 Sanity. \n0-1: You’re really in that coffin. Lose 1 Sanity and 1 Might. \nIf the Graveyard or the Catacombs tiles have been discovered, place your explorer on one of those tiles (you choose which one)."
+    "action_text": "Make a Sanity roll. \n4+: You blink, and it’s gone. Gain 1 Sanity. \n2-3: The vision disturbs you. Lose 1 Sanity. \n0-1: You’re really in that coffin. Lose 1 Sanity and 1 Might. \nIf the Graveyard or the Catacombs tiles have been discovered, place your explorer on one of those tiles (you choose which one)."
   },
   {
     "name": "Hanged Men",
     "description": "A breeze chills the room. Before you three men hang from frayed ropes. They stare at you with cold, dead eyes/ The trio swing silently, then fade into dust that falls to the ground. You start to choke. ",
-    "action": "Roll each trait, one at a time. \n2+: that trait is unaffected. \n0-1: lose 1 from that trait. \nIf you roll a 2+ on all 4 rolls, gain 1 additional point in a trait of your choice."
+    "action_text": "Roll each trait, one at a time. \n2+: that trait is unaffected. \n0-1: lose 1 from that trait. \nIf you roll a 2+ on all 4 rolls, gain 1 additional point in a trait of your choice."
   },
   {
     "name": "Impossible Architecture",
     "description": "This room is much larger than it should be. A dresser appears before you. Inside, something begins to shake. ",
-    "action": "Make a Sanity roll. \n4+: Draw an Item card. Helpful! \n0-3: Take one die of Mental damage. Disembodied hands and feet crawl out from the dresser."
+    "action_text": "Make a Sanity roll. \n4+: Draw an Item card. Helpful! \n0-3: Take one die of Mental damage. Disembodied hands and feet crawl out from the dresser."
   },
   {
     "name": "Jar of Organs",
     "description": "You discover an enormous jar containing a well-preserved stomach and a few less-identifiable organs. The stomach bulges suspiciously. You can't help yourself, and you cautiously reach inside.",
-    "action": "Make a Sanity roll. \n4+: Draw an Item card. Ew, slimy. \n0-3: Lose 1 Might. Stomach acid!"
+    "action_text": "Make a Sanity roll. \n4+: Draw an Item card. Ew, slimy. \n0-3: Lose 1 Might. Stomach acid!"
   },
   {
     "name": "Jonah's Turn",
     "description": "Two boys are playing with a wooden top. “Would you like a turn Jonah?” one asks. \n“No,” says Jonah, “I want all the turns.” Jonah takes the top and hits the other boy in the face. The boy falls. Jonah keeps hitting him as they fade from view. ",
-    "action": "You may discard any Item that is not a weapon. If you do, gain 1 Sanity. Otherwise, take one die of Mental damage."
+    "action_text": "You may discard any Item that is not a weapon. If you do, gain 1 Sanity. Otherwise, take one die of Mental damage."
   },
   {
     "name": "Meat Moss",
     "description": "The room is covered in strange plants. They have an earthy, almost gamy fragrance. They move on their own, almost as though they were breathing.",
-    "action": "You may inhale the scent. If you do, roll 2 dice.\n3-4: Gain 1 in any trait. Invigorating!\n0-2: Take 1 die of mental damage. Ugh! It smells like death."
+    "action_text": "You may inhale the scent. If you do, roll 2 dice.\n3-4: Gain 1 in any trait. Invigorating!\n0-2: Take 1 die of mental damage. Ugh! It smells like death."
   },
   {
     "name": "Moment Of Hope",
     "description": "Something feels strangely right about this room. Something is resisting the evil of the house. ",
-    "action": "Place the Blessing token on your tile. \nA hero on the same tile as the Blessing token must roll an extra die on all trait rolls."
+    "action_text": "Place the Blessing token on your tile. \nA hero on the same tile as the Blessing token must roll an extra die on all trait rolls."
   },
   {
     "name": "Mysterious Fluid",
     "description": "It sparkles and shines in the light, and smells of berries.",
-    "action": "You may drink the fluid. If you do, roll 3 dice.\n6: Gain 1 in each trait.\n5: Gain 1 Might and 1 Speed.\n4: Gain 1 Knowledge and 1 Sanity.\n3: Gain 1 Knowledge and lose 1 Might.\n2: Lose 1 Knowledge and 1 Sanity.\n1: Lose 1 Might and 1 Speed.\n0: Lose 1 in each trait."
+    "action_text": "You may drink the fluid. If you do, roll 3 dice.\n6: Gain 1 in each trait.\n5: Gain 1 Might and 1 Speed.\n4: Gain 1 Knowledge and 1 Sanity.\n3: Gain 1 Knowledge and lose 1 Might.\n2: Lose 1 Knowledge and 1 Sanity.\n1: Lose 1 Might and 1 Speed.\n0: Lose 1 in each trait."
   },
   {
     "name": "Phone Call",
     "description": "A phone rings in the room. You answer, and a sweet, elderly woman's voice speaks from the other end. ",
-    "action": "Roll 2 dice. \n4+: Gain 1 Sanity. “Tea and cakes! Tea and cakes! You always were my favorite!” \n3: Gain 1 Knowledge. “I’m always here for you. Watching.”\n1-2: Take 1 die of mental damage. “I’m here sweetums! Give us a kiss!” \n0: Take 2 dice of physical damage. “Bad little children must be punished!” "
+    "action_text": "Roll 2 dice. \n4+: Gain 1 Sanity. “Tea and cakes! Tea and cakes! You always were my favorite!” \n3: Gain 1 Knowledge. “I’m always here for you. Watching.”\n1-2: Take 1 die of mental damage. “I’m here sweetums! Give us a kiss!” \n0: Take 2 dice of physical damage. “Bad little children must be punished!” "
   },
   {
     "name": "Poor Yorick",
     "description": "A skull on the table recites words from an open book.\n'To be, or not to be? That is the question - \nWhether 'tis nobler in the mind to suffer\nThe slings and arrows of outrageous fortune...'",
-    "action": "Make a Sanity roll.\n4+: Gain 1 Knowledge. Inspiring!\n0-3: Take 1 Mental damage. The words are haunting."
+    "action_text": "Make a Sanity roll.\n4+: Gain 1 Knowledge. Inspiring!\n0-3: Take 1 Mental damage. The words are haunting."
   },
   {
     "name": "Radio Broadcast",
     "description": "A radio hisses on behind you, and a crackly voice begins to read news from years gone by. 'On this day in 1980...'",
-    "action": "Roll 2 dice.\n3-4: Gain 1 Knowledge. '...this song came out!' A poppy tune begins to play.\n0-2: Take 1 die of Mental damage. '...a nuclear attack was launched on Washington, D.C.'"
+    "action_text": "Roll 2 dice.\n3-4: Gain 1 Knowledge. '...this song came out!' A poppy tune begins to play.\n0-2: Take 1 die of Mental damage. '...a nuclear attack was launched on Washington, D.C.'"
   },
   {
     "name": "Say Cheese",
     "description": "A brilliant flash goes off as you enter the room. Specks dance in your eyes as your vision returns. They seem to be leading you to something.",
-    "action": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 33 in the Traitor's Tome. If a hero has the Magic Camera, they are the traitor. Otherwise, you are the traitor.\n0-4: Draw an item card. The specks lead to a corner of the room.\nIf the haunt has started, or if you choose not to make a haunt roll, draw an item card."
+    "action_text": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 33 in the Traitor's Tome. If a hero has the Magic Camera, they are the traitor. Otherwise, you are the traitor.\n0-4: Draw an item card. The specks lead to a corner of the room.\nIf the haunt has started, or if you choose not to make a haunt roll, draw an item card."
   },
   {
     "name": "Secret Elevator",
     "description": "A wall swings open to reveal a dumbwaiter. It's cramped, but you could crawl inside if you needed to.",
-    "action": "You may place yourself on any tile in a different region."
+    "action_text": "You may place yourself on any tile in a different region."
   },
   {
     "name": "Secret Passage",
     "description": "There's something off about this wall. You knock, and it makes a hollow sound.",
-    "action": "Place a Secret Passage token on your tile. Make a Knowledge roll.\n5+: Place another Secret Passage token on any other tile. Gain 1 Knowledge.\n3-4: Place another Secret Passage token on any Ground Floor tile.\n0-2: Place another Secret Passage token on any Basement tile. Lose 1 Sanity.\nPlayers may move between tiles marked with Secret Passages."
+    "action_text": "Place a Secret Passage token on your tile. Make a Knowledge roll.\n5+: Place another Secret Passage token on any other tile. Gain 1 Knowledge.\n3-4: Place another Secret Passage token on any Ground Floor tile.\n0-2: Place another Secret Passage token on any Basement tile. Lose 1 Sanity.\nPlayers may move between tiles marked with Secret Passages."
   },
   {
     "name": "Severed Hand",
     "description": "The hand is holding...something. What is it?",
-    "action": "You may take 2 Physical damage. If you do, draw an Item card."
+    "action_text": "You may take 2 Physical damage. If you do, draw an Item card."
   },
   {
     "name": "Spiders!",
     "description": "There must be thousands of them. They're everywhere - falling, crawling, skittering. They crawl up your legs, trying to bite you!",
-    "action": "Make a Sanity roll.\n4+: Gain 1 Sanity or 1 Speed. Place your explorer on an adjacent tile. You keep your wits about you.\n2-3: Gain 1 Speed and lose 1 Sanity. You leave. Quickly.\n0-1: Lose 1 Speed. You are frozen to the spot. Eventually the spiders crawl away."
+    "action_text": "Make a Sanity roll.\n4+: Gain 1 Sanity or 1 Speed. Place your explorer on an adjacent tile. You keep your wits about you.\n2-3: Gain 1 Speed and lose 1 Sanity. You leave. Quickly.\n0-1: Lose 1 Speed. You are frozen to the spot. Eventually the spiders crawl away."
   },
   {
     "name": "Splash of Crimson",
     "description": "Bloody footprints appear on the ground. They're moving toward you. Fast.",
-    "action": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 1 in the Traitor's Tome. You are the traitor.\n0-4: Gain 1 Speed. You back away quickly.\nIf the haunt has started or if you chose not to make a haunt roll, take one die of Physical damage."
+    "action_text": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 1 in the Traitor's Tome. You are the traitor.\n0-4: Gain 1 Speed. You back away quickly.\nIf the haunt has started or if you chose not to make a haunt roll, take one die of Physical damage."
   },
   {
     "name": "Taxidermy",
     "description": "An absolutely enormous amalgam of various animals, haphazardly sewn together. You give the thing a shove.",
-    "action": "Make a Might roll.\n5+: Gain 1 Sanity. Who could have made such a thing?\n0-4: Take 1 Physical damage. Place an Obstacle token on this tile. It falls onto you, exploding into wet stuffing."
+    "action_text": "Make a Might roll.\n5+: Gain 1 Sanity. Who could have made such a thing?\n0-4: Take 1 Physical damage. Place an Obstacle token on this tile. It falls onto you, exploding into wet stuffing."
   },
   {
     "name": "Technical Difficulties",
     "description": "You open a closet to find a man arranging wires. He looks at you, surprised, and says 'You're not supposed to be here!' He pulls a lever, and the floor drops out from under you.",
-    "action": "Place your explorer on the Landing of the floor below. If you are already in the Basement, place your explorer on the Upper Landing tile instead and take 1 Mental damage."
+    "action_text": "Place your explorer on the Landing of the floor below. If you are already in the Basement, place your explorer on the Upper Landing tile instead and take 1 Mental damage."
   },
   {
     "name": "The Deepest Closet",
     "description": "This closet is deeper than the wall. Much deeper. You begin to rummage around inside, but you can't find the back.",
-    "action": "Make a Speed roll. \n4+: Draw an Item card. Oh, what's this? \n1-3: Take 1 Mental damage. You recoil in panic as you feel hot breath on your hands. \n0: Take one die of Physical damage. Place your explorer on the Basement Landing. You fall through!"
+    "action_text": "Make a Speed roll. \n4+: Draw an Item card. Oh, what's this? \n1-3: Take 1 Mental damage. You recoil in panic as you feel hot breath on your hands. \n0: Take one die of Physical damage. Place your explorer on the Basement Landing. You fall through!"
   },
   {
     "name": "The Flowering",
     "description": "A giant, colorful flower takes up an entire wall. Its petals bloom into a large, open pathway.",
-    "action": "Take 1 General damage. Place your explorer on any Basement or Ground Floor tile. If the Conservatory tile has been discovered, you must place your explorer there."
+    "action_text": "Take 1 General damage. Place your explorer on any Basement or Ground Floor tile. If the Conservatory tile has been discovered, you must place your explorer there."
   },
   {
     "name": "The House is Hungry",
     "description": "There is a rumbling all around you, like an empty stomach.",
-    "action": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 12 in the Traitor's Tome. This haunt has no traitor. You are the haunt revealer.\n0-4: Gain 1 Might. The rumbling subsides.\nIf the haunt has started, or if you choose not to make a haunt roll, gain 1 in any trait."
+    "action_text": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 12 in the Traitor's Tome. This haunt has no traitor. You are the haunt revealer.\n0-4: Gain 1 Might. The rumbling subsides.\nIf the haunt has started, or if you choose not to make a haunt roll, gain 1 in any trait."
   },
   {
     "name": "The Oldest House",
     "description": "The air feels different here...older. Distance seems arbitrary. You quickly lose track of time.",
-    "action": "Make a Speed or Might roll.\n5+: Place your explorer on any tile. You make the connection.\n3-4: Place your explorer on any Ground Floor tile. Take 1 General damage.\n0-2: Place your explorer on any Basement tile. Take 1 Mental damage. What time is it? What YEAR is it?"
+    "action_text": "Make a Speed or Might roll.\n5+: Place your explorer on any tile. You make the connection.\n3-4: Place your explorer on any Ground Floor tile. Take 1 General damage.\n0-2: Place your explorer on any Basement tile. Take 1 Mental damage. What time is it? What YEAR is it?"
   },
   {
     "name": "The Stars at Night",
     "description": "There are lights in the dim ceiling, twinkling across the entire room. There are too many of them to count. What are they? Stars? Eyes?",
-    "action": "Choose a trait to roll.\n5+: Gain 1 in the chosen trait.\n4: Lose 1 in the chosen trait.\n0-3: Heal the chosen trait."
+    "action_text": "Choose a trait to roll.\n5+: Gain 1 in the chosen trait.\n4: Lose 1 in the chosen trait.\n0-3: Heal the chosen trait."
   },
   {
     "name": "Tiny Robot",
     "description": "A tiny, whirring robot sits near your feet. It beeps at you: -.. --- / -.--- --- ..- / .-- .- -. - / - --- / .--. .-.. .- -.-- / .- / --. .- -- . ..--..",
-    "action": "Make a Knowledge roll. \n5+: Draw an Item card. The robot beeps happily and hands you something. \n0-4: Take one die of Physical damage. It stabs your legs."
+    "action_text": "Make a Knowledge roll. \n5+: Draw an Item card. The robot beeps happily and hands you something. \n0-4: Take one die of Physical damage. It stabs your legs."
   },
   {
     "name": "Vial of Dust",
     "description": "A bell jar, holding a strange particulate. Looking closer, you find that it's a fine dust. It coats the inside of the glass.",
-    "action": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 3 in the Traitor's Tome. You are the haunt revealer.\n0-4: Gain 1 Sanity. It's probably better to keep it inside the jar.\nIf the haunt has started, or if you chose not to make a haunt roll, lose 1 Might and gain 1 Sanity."
+    "action_text": "If the haunt has not started, you may make a haunt roll.\n5+: Turn to haunt 3 in the Traitor's Tome. You are the haunt revealer.\n0-4: Gain 1 Sanity. It's probably better to keep it inside the jar.\nIf the haunt has started, or if you chose not to make a haunt roll, lose 1 Might and gain 1 Sanity."
   },
   {
     "name": "Wandering Ghost",
     "description": "A shrouded figure emerges from the wall, holding out a translucent hand. Is it offering you something? Beckoning you into its arms?",
-    "action": "You may bury one of your Items. If you do, gain 1 in any trait. Otherwise, make a Sanity roll.\n4+: Draw an Item card. It must have been a trick of the light, What's that on the ground?\n0-3: Take 1 General damage. The figure is displeased. It lashes out."
+    "action_text": "You may bury one of your Items. If you do, gain 1 in any trait. Otherwise, make a Sanity roll.\n4+: Draw an Item card. It must have been a trick of the light, What's that on the ground?\n0-3: Take 1 General damage. The figure is displeased. It lashes out."
   }
 ]

@@ -57,7 +57,7 @@ class Event:
         top += self.space
 
         # display action
-        for line in textwrap.wrap(self.card.action, self.window_width_chars, replace_whitespace=False):
+        for line in textwrap.wrap(self.card.action_text, self.window_width_chars):
             text_surf = self.font.render(line, False, 'white')
             text_rect = text_surf.get_rect(topleft=(self.event_rect.left + self.padding, top))
             self.display_surface.blit(text_surf, text_rect)

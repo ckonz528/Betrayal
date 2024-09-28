@@ -3,132 +3,132 @@
     "name": "Angel's Feather",
     "weapon": false,
     "description": "Holding it gives you a feeling of peace.",
-    "action": "When you are required to make a trait roll, you may instead bury the Angel's Feather. If you do, choose a number from 0-8. Use that number as the result of the required roll. "
+    "action_text": "When you are required to make a trait roll, you may instead bury the Angel's Feather. If you do, choose a number from 0-8. Use that number as the result of the required roll. "
   },
   {
     "name": "Brooch",
     "weapon": false,
     "description": "Icy to the touch, but somehow comforting.",
-    "action": "Whenever you take Physical or Mental damage, you may instead take it as General damage."
+    "action_text": "Whenever you take Physical or Mental damage, you may instead take it as General damage."
   },
   {
     "name": "Chainsaw",
     "weapon": true,
     "description": "It has a start button - how convenient!",
-    "action": "When you use the Chainsaw to attack, add one die to your attack"
+    "action_text": "When you use the Chainsaw to attack, add one die to your attack"
   },
   {
     "name": "Creepy Doll",
     "weapon": false,
     "description": "Its eyes are oddly soft... and judgmental.",
-    "action": "Once during your turn, you may use the Creepy Doll to reroll all dice on a trait roll you just made. Then, lose 1 Sanity."
+    "action_text": "Once during your turn, you may use the Creepy Doll to reroll all dice on a trait roll you just made. Then, lose 1 Sanity."
   },
   {
     "name": "Crossbow",
     "weapon": true,
     "description": "Old, but effective. ",
-    "action": "When you use the Crossbow to attack, you may attack any character (explorer or monster) on your tile or an adjacent tile. You and the defender each roll Speed. Roll one extra die on that attack. If you lose, you take no damage."
+    "action_text": "When you use the Crossbow to attack, you may attack any character (explorer or monster) on your tile or an adjacent tile. You and the defender each roll Speed. Roll one extra die on that attack. If you lose, you take no damage."
   },
   {
     "name": "Dynamite",
     "weapon": true,
     "description": "It's probably still stable.",
-    "action": "You may use Dynamite in place of a regular attack. To do so, bury the Dynamite and then choose your tile or an adjacent one. Everyone (explorers and monsters) on the chosen tile must make a Speed roll. 4+: Nothing happens. 0-3: Take 4 physical damage."
+    "action_text": "You may use Dynamite in place of a regular attack. To do so, bury the Dynamite and then choose your tile or an adjacent one. Everyone (explorers and monsters) on the chosen tile must make a Speed roll. 4+: Nothing happens. 0-3: Take 4 physical damage."
   },
   {
     "name": "First Aid Kit",
     "weapon": false,
     "description": "Something for everyone.",
-    "action": "On your turn, you may bury the First Aid Kit. If you do, heal all of your critical traits. You may use the First Aid Kit to heal another explorer on your tile."
+    "action_text": "On your turn, you may bury the First Aid Kit. If you do, heal all of your critical traits. You may use the First Aid Kit to heal another explorer on your tile."
   },
   {
     "name": "Flashlight",
     "weapon": false,
     "description": "Caution: Do not point at eyes.",
-    "action": "During Events, you may roll 2 extra dice on trait rolls."
+    "action_text": "During Events, you may roll 2 extra dice on trait rolls."
   },
   {
     "name": "Gun",
     "weapon": true,
     "description": "Fully loaded.",
-    "action": "When you use the Gun to attack, you may attack any target in line of sight. .you and the defender each roll Speed. If you lose, you take no damage."
+    "action_text": "When you use the Gun to attack, you may attack any target in line of sight. .you and the defender each roll Speed. If you lose, you take no damage."
   },
   {
     "name": "Headphones",
     "weapon": false,
     "description": "They aren't connected to anything, but they still play a tune. It's soothing.",
-    "action": "Whenever you take Mental damage, reduce that damage by 1."
+    "action_text": "Whenever you take Mental damage, reduce that damage by 1."
   },
   {
     "name": "Leather Jacket",
     "weapon": false,
     "description": "It's very heavy. You aren't sure what kind of animal it's from.",
-    "action": "Roll an extra die whenever you defend against an attack."
+    "action_text": "Roll an extra die whenever you defend against an attack."
   },
   {
     "name": "Lucky Coin",
     "weapon": false,
     "description": "The faces change every time you flip it.",
-    "action": "Once during your turn, you may use the Lucky Coin to reroll all blank dice on a trait roll that you just made. For each blank die on the reroll, take 1 Mental damage"
+    "action_text": "Once during your turn, you may use the Lucky Coin to reroll all blank dice on a trait roll that you just made. For each blank die on the reroll, take 1 Mental damage"
   },
   {
     "name": "Machete",
     "weapon": true,
     "description": "Still razor sharp.",
-    "action": "When you use the Machete to attack, add 1 to the result of your roll."
+    "action_text": "When you use the Machete to attack, add 1 to the result of your roll."
   },
   {
     "name": "Magic Camera",
     "weapon": false,
     "description": "Click!",
-    "action": "You may use your Sanity to make Knowledge rolls."
+    "action_text": "You may use your Sanity to make Knowledge rolls."
   },
   {
     "name": "Map",
     "weapon": false,
     "description": "Part of it keeps shifting. Somehow, different doors keep leading to the same place. ",
-    "action": "On your turn, you may bury the Map. If you do, place your explorer on any tile."
+    "action_text": "On your turn, you may bury the Map. If you do, place your explorer on any tile."
   },
   {
     "name": "Mirror",
     "weapon": false,
     "description": "The face in the mirror is calmer, and more knowing.",
-    "action": "On your turn, you may bury the Mirror. If you do, heal your Knowledge and Sanity."
+    "action_text": "On your turn, you may bury the Mirror. If you do, heal your Knowledge and Sanity."
   },
   {
     "name": "Mystical Stopwatch",
     "weapon": false,
     "description": "When you start it, the hands go backwards.",
-    "action": "On your turn, you may bury the Stopwatch. If you do, take another turn after this one. You may only use this ability after the haunt has started."
+    "action_text": "On your turn, you may bury the Stopwatch. If you do, take another turn after this one. You may only use this ability after the haunt has started."
   },
   {
     "name": "Necklace of Teeth",
     "weapon": false,
     "description": "Most of them aren't even human.",
-    "action": "At the end of your turn, you may gain 1 in a critical trait of your choice."
+    "action_text": "At the end of your turn, you may gain 1 in a critical trait of your choice."
   },
   {
     "name": "Rabbit's Foot",
     "weapon": false,
     "description": "Lucky for some, but not for others. It certainly wasn't lucky for the rabbit.",
-    "action": "Once during your turn, you may use the Rabbit's Foot to reroll one die that you just rolled."
+    "action_text": "Once during your turn, you may use the Rabbit's Foot to reroll one die that you just rolled."
   },
   {
     "name": "Skeleton Key",
     "weapon": false,
     "description": "Made with real bone.",
-    "action": "You may move through walls. Whenever you do so, roll a die. If you roll a blank, bury the Skeleton Key. You may not use the Skeleton Key to discover new rooms."
+    "action_text": "You may move through walls. Whenever you do so, roll a die. If you roll a blank, bury the Skeleton Key. You may not use the Skeleton Key to discover new rooms."
   },
   {
     "name": "Strange Amulet",
     "weapon": false,
     "description": "Wearing it makes your thoughts feel remarkably clear.",
-    "action": "Whenever you take Physical damage, gain 1 Sanity."
+    "action_text": "Whenever you take Physical damage, gain 1 Sanity."
   },
   {
     "name": "Strange Medicine",
     "weapon": false,
     "description": "Side effects include jitters, nausea, and paranoia.",
-    "action": "On your turn, you may bury the Strange Medicine. If you do, heal your Might and Speed."
+    "action_text": "On your turn, you may bury the Strange Medicine. If you do, heal your Might and Speed."
   }
 ]

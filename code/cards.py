@@ -2,7 +2,7 @@ class Card():
     def __init__(self, card_info: dict) -> None:
         self.name = card_info['name']
         self.description = card_info['description']
-        self.action = card_info['action']
+        self.action_text = card_info['action_text']
 
 
 class ObjectCard(Card):
