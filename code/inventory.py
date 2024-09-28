@@ -126,7 +126,7 @@ class Inventory:
             top += self.space
 
             # display action
-            for line in textwrap.wrap(item.action,30):
+            for line in textwrap.wrap(item.action_text,30):
                 text_surf = self.font.render(line, False, 'white')
                 text_rect = text_surf.get_rect(topleft=(self.main_rect.left + self.padding, top))
                 self.display_surface.blit(text_surf, text_rect)
