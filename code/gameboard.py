@@ -8,17 +8,18 @@ from overlay import Overlay
 from inventory import Inventory
 from roller import Roller
 from event import Event
+from messenger import Messenger
 
 
 class Gameboard:
-    def __init__(self, messenger):
+    def __init__(self):
 
         # get the display surface
         self.display_surf = pygame.display.get_surface()
 
         # sprite groups (to draw and update sprites)
         self.all_sprites = CameraGroup()
-        self.messenger = messenger
+        self.messenger = Messenger()
 
         self.setup()
 
