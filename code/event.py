@@ -20,10 +20,12 @@ class Event:
         self.space = 20  # space between elements
         self.padding = s.SPACE
 
+        self.event_state = ["description", "action", "result"]
+
         # self.input_timer = Timer()
 
     def run_event(self, event_card):
-        self.card = event_card
+        self.event = event_card
 
     def event_window(self):
         self.event_rect = pygame.Rect((s.POSITIONS['roller']), (self.window_width, self.window_height))
@@ -39,7 +41,7 @@ class Event:
     def show_info(self):
         # display event name
         top = self.event_rect.top + self.space
-        for line in textwrap.wrap(self.card.name, 20):
+        for line in textwrap.wrap(self.event.name, 20):
             text_surf = self.title_font.render(line, False, 'white')
             text_rect = text_surf.get_rect(topleft=(self.event_rect.left + self.padding, top))
             self.display_surface.blit(text_surf, text_rect)
@@ -48,7 +50,7 @@ class Event:
         top += self.space
 
         # display item description
-        for line in textwrap.wrap(self.card.description, self.window_width_chars):
+        for line in textwrap.wrap(self.event.description, self.window_width_chars):
             text_surf = self.font.render(line, False, 'white')
             text_rect = text_surf.get_rect(topleft=(self.event_rect.left + self.padding, top))
             self.display_surface.blit(text_surf, text_rect)
@@ -57,7 +59,7 @@ class Event:
         top += self.space
 
         # display action
-        for line in textwrap.wrap(self.card.action_text, self.window_width_chars):
+        for line in textwrap.wrap(self.event.action_text, self.window_width_chars):
             text_surf = self.font.render(line, False, 'white')
             text_rect = text_surf.get_rect(topleft=(self.event_rect.left + self.padding, top))
             self.display_surface.blit(text_surf, text_rect)

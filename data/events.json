@@ -2,27 +2,33 @@
   {
     "name": "Alien Geometry",
     "description": "The angles of this room don't add up. The room is square, but it has five corners. One of the corners is inside out. You try for the door, but it is always on the other side of the room.",
-    "action_text": "Make a Knowledge roll. \n4+: Gain 1 Sanity. It starts to make sense! \n0-3: Lose 1 Speed. You experience vertigo."
+    "action_text": "Make a Knowledge roll.",
+    "result_text": "4+: Gain 1 Sanity. It starts to make sense! \n0-3: Lose 1 Speed. You experience vertigo.",
+    "function": "alien_geometry"
   },
   {
     "name": "An Eerie Feeling",
     "description": "As you step over the threshold, you get a strange feeling in your chest, like someone's rummaging around in your lungs.",
-    "action_text": "Roll 2 dice.\n4: Nothing happens. That was weird.\n3: Lose 1 Speed.\n2: Lose 1 Sanity.\n1: Lose 1 Knowledge.\n0: Lose 1 Might."
+    "action_text": "Roll 2 dice.",
+    "result_text": "4: Nothing happens. That was weird.\n3: Lose 1 Speed.\n2: Lose 1 Sanity.\n1: Lose 1 Knowledge.\n0: Lose 1 Might."
   },
   {
     "name": "Bat Out of Hell",
     "description": "A flaming bat flies toward you. It screeches, then dives for your face!",
-    "action_text": "Make a Speed roll.\n4+: Place your explorer on an adjacent tile. You dodge out of the way.\n0-3: Take 1 Physical damage. It burns!"
+    "action_text": "Make a Speed roll.",
+    "result_text": "4+: Place your explorer on an adjacent tile. You dodge out of the way.\n0-3: Take 1 Physical damage. It burns!"
   },
   {
     "name": "Behind You!",
-    "description": "Just as you walk through the door, something tabs you on the shoulder. You turn to see who it is.",
-    "action_text": "Make a Speed roll.\n4+: Gain 1 Sanity. There's no one there. It must have been the wind.\n0-3: Take 1 Physical damage. Large claws swipe at your face."
+    "description": "Just as you walk through the door, something taps you on the shoulder. You turn to see who it is.",
+    "action_text": "Make a Speed roll.",
+    "result_text": "4+: Gain 1 Sanity. There's no one there. It must have been the wind.\n0-3: Take 1 Physical damage. Large claws swipe at your face."
   },
   {
     "name": "Bite",
     "description": "Something lunges out of the shadows and tries to bite you!",
-    "action_text": "Make a Might roll.\n4+: Nothing happens. You fight off whatever it was. It flees to the shadows.\n2-3: Take 1 Physical damage. Just a small nip. Probably not even worth mentioning to the others.\n0-1: Take 3 Physical damage. Ouch! That's a bad bite."
+    "action_text": "Make a Might roll.",
+    "result_text": "4+: Nothing happens. You fight off whatever it was. It flees to the shadows.\n2-3: Take 1 Physical damage. Just a small nip. Probably not even worth mentioning to the others.\n0-1: Take 3 Physical damage. Ouch! That's a bad bite."
   },
   {
     "name": "Brain Food",

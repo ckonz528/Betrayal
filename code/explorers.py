@@ -57,6 +57,9 @@ class Explorer(pygame.sprite.Sprite):
         self.floor: str = 'ground'
         self.allow_move = False
 
+        # player life status
+        self.dead = False
+
     def set_pos(self, grid_pos: tuple):
         self.grid_pos = grid_pos
         # TODO: figure out how to do this in terms of rect x and y?
@@ -87,8 +90,30 @@ class Explorer(pygame.sprite.Sprite):
     def add_item(self, item: object):
         self.inventory[item.name] = item
 
-    def trait_roll(self):
-        pass
+    def adjust_stat(self, stat:str, amnt:int):
+        '''
+        Adjusts a player stat by specified ammount
+        '''
+        # get current stat info
+        stat_pos = f'{stat}_pos'
+        stat_scale = f'{stat}_scale'
+
+        len_scale = len(getattr(self, stat_scale))
+
+        # adjust stat
+        if getattr(self, stat_pos) + amnt >= len_scale:
+            setattr(self, stat_pos, len_scale)
+        elif getattr(self, stat_pos) + amnt <= 0:
+            setattr(self, stat_pos, 0)
+            self.dead = True        
+        else:
+            setattr(self, stat_pos, getattr(self, stat_pos) + amnt)
+        
+        # update trait dictionary
+        self.traits[stat] = stat_scale[stat_pos]
+
+        #TODO: add message indicating stat change
+
 
     def update(self,dt):
         pass
