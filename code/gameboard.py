@@ -9,6 +9,7 @@ from inventory import Inventory
 from roller import Roller
 from event import Event
 from messenger import Messenger
+from start_screen import StartScreen
 
 
 class Gameboard:
@@ -77,6 +78,9 @@ class Gameboard:
         self.event_active = False
 
         self.messenger.clear_queue()
+
+        self.start_screen = StartScreen()
+        self.start_active = True
 
     def add_player(self, char_name: str):
         chosen_player = self.char_list.obj_dict[f'{char_name}']
@@ -149,58 +153,66 @@ class Gameboard:
     def player_input(self):
         keys = pygame.key.get_pressed()
 
-        move_criteria = [
-            not self.timers['player_move'].active,
-            self.current_player.allow_move,
-            not self.inventory_active
-        ]
+        # start screen
+        if self.start_active:
+            if keys[pygame.K_SPACE]:
+                self.start_active = False
+        else:
+            move_criteria = [
+                not self.timers['player_move'].active,
+                self.current_player.allow_move,
+                not self.inventory_active
+            ]
 
-        # player movement
-        if all(move_criteria):
-            player_pos = self.current_player.grid_pos
-            if keys[pygame.K_UP]:
+            # player movement
+            if all(move_criteria):
+                player_pos = self.current_player.grid_pos
+                if keys[pygame.K_UP]:
+                    self.timers['player_move'].activate()
+                    if self.check_walls('N'):
+                        self.current_player.set_pos((player_pos[0], player_pos[1] - 1))                
+                elif keys[pygame.K_DOWN]:
+                    self.timers['player_move'].activate()
+                    if self.check_walls('S'):
+                        self.current_player.set_pos((player_pos[0], player_pos[1] + 1))
+                elif keys[pygame.K_LEFT]:
+                    self.timers['player_move'].activate()
+                    if self.check_walls('W'):
+                        if self.current_player.grid_pos == self.room_deck.obj_dict['Ground Floor Staircase'].grid_pos:
+                            self.current_player.set_pos(self.room_deck.obj_dict['Upper Landing'].grid_pos)
+                            self.current_player.floor = 'upper'
+                        else:
+                            self.current_player.set_pos((player_pos[0] - 1, player_pos[1]))
+                elif keys[pygame.K_RIGHT]:
+                    self.timers['player_move'].activate()
+                    if self.check_walls('E'):
+                        self.current_player.set_pos((player_pos[0] + 1, player_pos[1]))
+
+            self.adjust_tokens()
+
+            # inventory panel toggle
+            if not self.timers['inv_panel'].active:
+                if keys[pygame.K_i]:
+                    self.timers['inv_panel'].activate()
+                    self.inventory_active = not self.inventory_active
+
+            # roller toggle
+            if not self.timers['roller'].active:
+                #TODO: activate roller automatically / keep roller from activating during events
+                if keys[pygame.K_r]:
+                    self.timers['roller'].activate()
+                    self.roller.dice_rolled = False
+                    self.roller_active = not self.roller_active
+
+            # event window
+            if self.event_active:
+                if keys[pygame.K_RETURN]:
+                    self.event_active = False
+
+            # end turn
+            if not self.timers['player_move'].active and keys[pygame.K_e]:
                 self.timers['player_move'].activate()
-                if self.check_walls('N'):
-                    self.current_player.set_pos((player_pos[0], player_pos[1] - 1))                
-            elif keys[pygame.K_DOWN]:
-                self.timers['player_move'].activate()
-                if self.check_walls('S'):
-                    self.current_player.set_pos((player_pos[0], player_pos[1] + 1))
-            elif keys[pygame.K_LEFT]:
-                self.timers['player_move'].activate()
-                if self.check_walls('W'):
-                    if self.current_player.grid_pos == self.room_deck.obj_dict['Ground Floor Staircase'].grid_pos:
-                        self.current_player.set_pos(self.room_deck.obj_dict['Upper Landing'].grid_pos)
-                        self.current_player.floor = 'upper'
-                    else:
-                        self.current_player.set_pos((player_pos[0] - 1, player_pos[1]))
-            elif keys[pygame.K_RIGHT]:
-                self.timers['player_move'].activate()
-                if self.check_walls('E'):
-                    self.current_player.set_pos((player_pos[0] + 1, player_pos[1]))
-
-        self.adjust_tokens()
-
-        if not self.timers['inv_panel'].active:
-            if keys[pygame.K_i]:
-                self.timers['inv_panel'].activate()
-                self.inventory_active = not self.inventory_active
-
-        if not self.timers['roller'].active:
-            #TODO: activate roller automatically / keep roller from activating during events
-            if keys[pygame.K_r]:
-                self.timers['roller'].activate()
-                self.roller.dice_rolled = False
-                self.roller_active = not self.roller_active
-
-        if self.event_active:
-            if keys[pygame.K_RETURN]:
-                self.event_active = False
-
-        # end turn
-        if not self.timers['player_move'].active and keys[pygame.K_e]:
-            self.timers['player_move'].activate()
-            self.end_turn()
+                self.end_turn()
 
     def check_walls(self, direction: str):
         # Check for walls in current tile
@@ -287,25 +299,29 @@ class Gameboard:
             timer.update()
 
     def run(self, dt):
-        # drawing logic
-        self.display_surf.fill(s.BG_COLOR)  # background
         self.player_input()
-        self.update_timers()
-        self.all_sprites.custom_draw(self.current_player)
+        
+        if self.start_active:
+            self.start_screen.update()
+        else:        
+            # drawing logic
+            self.display_surf.fill(s.BG_COLOR)  # background
+            self.update_timers()
+            self.all_sprites.custom_draw(self.current_player)
 
-        # updates
-        if self.inventory_active:
-            self.inventory_panel.update(self.current_player)
-        elif self.roller_active:
-            self.roller.update()
-        elif self.event_active:
-            self.event.update()
-        else:
-            self.all_sprites.update(dt)
+            # updates
+            if self.inventory_active:
+                self.inventory_panel.update(self.current_player)
+            elif self.roller_active:
+                self.roller.update()
+            elif self.event_active:
+                self.event.update()
+            else:
+                self.all_sprites.update(dt)
 
-        # overlay
-        self.overlay.display(self.current_player)
-        self.messenger.update()
+            # overlay
+            self.overlay.display(self.current_player)
+            self.messenger.update()
 
 
 class CameraGroup(pygame.sprite.Group):
