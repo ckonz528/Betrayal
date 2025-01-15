@@ -2,11 +2,19 @@
 SCREEN_W = 1280
 SCREEN_H = 768
 
+# window settings
+TITLE = 'Betrayal at House on the Hill'
+
 # piece sizes
 TILE_SIZE = 64 * 4
 CHAR_SIZE = int(TILE_SIZE / 4)
-MENU_WIDTH = SCREEN_W / 5
 DIE_SIZE = 2*CHAR_SIZE
+PORTRAIT_SIZE = (TILE_SIZE / 2, SCREEN_H // 5)
+
+# panel & pop up sizes
+PANEL_WIDTH = SCREEN_W / 5
+POPUP_WIDTH = SCREEN_W - TILE_SIZE - 200
+POPUP_HEIGHT = SCREEN_H - 200
 
 # font sizes
 TITLE_FONT_SIZE = 20
@@ -18,10 +26,8 @@ EVENT_TEXT_SIZE = 20
 
 # other font settings
 SPACE = 10
+MARGIN = 10
 MENU_CHARS = 30 # number of characters that fit across menu
-
-# window settings
-TITLE = 'Betrayal at House on the Hill'
 
 # colors
 BG_COLOR = (16, 41,0) # Pakistand green, HEX 102900

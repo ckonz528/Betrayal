@@ -42,7 +42,7 @@ class Gameboard:
         self.omen_deck = Deck('../data/omens.json', 'object', obj_type='omen')
         self.item_deck = Deck('../data/items.json', 'object', obj_type='item')
         self.event_deck = Deck('../data/events.json', 'event')
-        self.char_list = Deck('../data/characters.json', 'explorer')
+        self.char_deck = Deck('../data/characters.json', 'explorer')
 
         # Players
         # TODO: set up ability for players to select characters
@@ -54,7 +54,7 @@ class Gameboard:
         self.add_player('Isa Valencia')
 
         current_player_name = self.players[self.turn_index]
-        self.current_player = self.char_list.obj_dict[f'{current_player_name}']
+        self.current_player = self.char_deck.obj_dict[f'{current_player_name}']
         self.current_player.allow_move = True
 
         # Timers
@@ -83,7 +83,7 @@ class Gameboard:
         self.start_active = True
 
     def add_player(self, char_name: str):
-        chosen_player = self.char_list.obj_dict[f'{char_name}']
+        chosen_player = self.char_deck.obj_dict[f'{char_name}']
         chosen_player.set_pos((0,0))
         self.all_sprites.add(chosen_player)
         self.players.append(char_name)
@@ -133,7 +133,7 @@ class Gameboard:
                 self.turn_index = 0
 
             current_player_name = self.players[self.turn_index]
-            self.current_player = self.char_list.obj_dict[current_player_name]
+            self.current_player = self.char_deck.obj_dict[current_player_name]
             self.messenger.add_entry(f"{self.current_player.name}'s turn")
             self.current_player.allow_move = True
 
@@ -145,7 +145,7 @@ class Gameboard:
         directions = ['NW','N','NE','E','SE','S','SW','W']
         adjust_counter = 0
         for token in self.players:
-            token = self.char_list.obj_dict[token]
+            token = self.char_deck.obj_dict[token]
             if token.name != self.current_player.name and token.grid_pos == self.current_player.grid_pos:
                 token.adjust_pos(directions[adjust_counter])
                 adjust_counter += 1

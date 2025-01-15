@@ -14,8 +14,8 @@ class Event:
         self.title_font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.EVENT_TITLE_SIZE)
 
         # display parameters
-        self.window_width = s.SCREEN_W - s.TILE_SIZE - 200
-        self.window_height = s.SCREEN_H - 200
+        self.window_width = s.POPUP_WIDTH
+        self.window_height = s.POPUP_HEIGHT
         self.window_width_chars = 62
         self.space = 20  # space between elements
         self.padding = s.SPACE

@@ -13,7 +13,7 @@ class Inventory:
         self.title_font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.TITLE_FONT_SIZE)
 
         # display parameters
-        self.width = s.MENU_WIDTH
+        self.width = s.PANEL_WIDTH
         self.space = 10  # space between elements
         self.padding = s.SPACE
 

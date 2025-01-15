@@ -3,7 +3,7 @@ import settings as s
 from timer import Timer
 
 
-class Menu:
+class InfoPanel:
     def __init__(self, current_player) -> None:
 
         # general setup
@@ -12,7 +12,7 @@ class Menu:
         self.font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.LIST_FONT_SIZE)
 
         # spacing and positioning
-        self.width = s.MENU_WIDTH
+        self.width = s.PANEL_WIDTH
         self.space = 0  # space between elements
         self.padding = s.SPACE
 

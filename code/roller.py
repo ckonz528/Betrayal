@@ -8,6 +8,9 @@ class Roller:
         self.display_surface = pygame.display.get_surface()
         self.font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.ROLLER_FONT_SIZE)
 
+        self.window_width = s.POPUP_WIDTH
+        self.window_height = s.POPUP_HEIGHT
+
         # timers
         self.roller_timers = {
             'input': Timer(),
@@ -49,7 +52,7 @@ class Roller:
 
 
     def roller_window(self):
-        self.roller_rect = pygame.Rect((s.POSITIONS['roller']), (s.SCREEN_W - s.TILE_SIZE - 200, s.SCREEN_H - 200))
+        self.roller_rect = pygame.Rect((s.POSITIONS['roller']), (self.window_width, self.window_height))
         pygame.draw.rect(self.display_surface, s.ROLLER_BKG, self.roller_rect, border_radius=12)
 
         for die in self.dice_objs:

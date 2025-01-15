@@ -13,7 +13,7 @@ class Messenger:
         self.font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.MSG_FONT_SIZE)
 
         # design parameters
-        self.width = s.MENU_WIDTH
+        self.width = s.PANEL_WIDTH
         self.space = s.SPACE * 2  # space between entries
         self.padding = s.SPACE
 

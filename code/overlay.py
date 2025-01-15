@@ -10,13 +10,15 @@ class Overlay:
         self.font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.TITLE_FONT_SIZE)
 
         self.padding = s.SPACE
+        self.width = s.PANEL_WIDTH
+        self.height = s.SCREEN_H
 
     def display(self, current_player):
         self.player = current_player
 
         # stats panel
-        inv_surf = pygame.Surface((s.MENU_WIDTH, s.SCREEN_H), pygame.SRCALPHA)
-        inv_rect = pygame.Rect((0, 0), (s.MENU_WIDTH, s.SCREEN_H))
+        inv_surf = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
+        inv_rect = pygame.Rect((0, 0), (self.width, self.height))
         pygame.draw.rect(inv_surf, s.PANEL_BKG, inv_rect)
         self.display_surface.blit(inv_surf, inv_rect)
 
@@ -29,7 +31,7 @@ class Overlay:
         name_list = textwrap.wrap(self.player.name, 12)
         name_surfs = self.list_setup(name_list)
         left, top = s.POSITIONS['name']
-        self.show_entries(name_surfs, left, top, s.MENU_WIDTH - left)
+        self.show_entries(name_surfs, left, top, self.width - left)
 
         # current player traits
         trait_names = self.player.traits.keys()
@@ -37,7 +39,7 @@ class Overlay:
         trait_values = self.player.traits.values()
         value_surfs = self.list_setup(trait_values)
         left, top = s.POSITIONS['traits'] #TODO: change naming to traits
-        self.show_entries(trait_surfs, left, top, s.MENU_WIDTH, value_surfs)
+        self.show_entries(trait_surfs, left, top, self.width, value_surfs)
         
 
     def list_setup(self, entry_list):
