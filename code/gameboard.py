@@ -10,6 +10,7 @@ from roller import Roller
 from event import Event
 from messenger import Messenger
 from start_screen import StartScreen
+from character_select import Selector
 
 
 class Gameboard:
@@ -46,6 +47,7 @@ class Gameboard:
 
         # Players
         # TODO: set up ability for players to select characters
+        self.selector = Selector(self.char_deck)
 
         # TODO: make list of players and cycle through them
         self.players = []
@@ -61,7 +63,8 @@ class Gameboard:
         self.timers = {
             'player_move': Timer(300),
             'inv_panel': Timer(),
-            'roller': Timer()
+            'roller': Timer(),
+            'game_play': Timer()
         }
 
         # overlay
@@ -80,7 +83,7 @@ class Gameboard:
         self.messenger.clear_queue()
 
         self.start_screen = StartScreen()
-        self.start_active = True
+        self.game_state = "start" # options: start, select, play
 
     def add_player(self, char_name: str):
         chosen_player = self.char_deck.obj_dict[f'{char_name}']
@@ -154,9 +157,20 @@ class Gameboard:
         keys = pygame.key.get_pressed()
 
         # start screen
-        if self.start_active:
+        if self.game_state == "start":
             if keys[pygame.K_SPACE]:
-                self.start_active = False
+                self.timers['game_play'].activate()
+                self.game_state = "select"
+                print(f'after start screen: {self.game_state}')
+
+        # character selection
+        elif self.game_state == "select" and not(self.timers['game_play'].active):
+            print(f'game state: {self.game_state}')
+            if keys[pygame.K_SPACE]:
+                self.game_state = "play"
+                print(f'after selection: {self.game_state}')
+
+        # game play
         else:
             move_criteria = [
                 not self.timers['player_move'].active,
@@ -301,8 +315,10 @@ class Gameboard:
     def run(self, dt):
         self.player_input()
         
-        if self.start_active:
+        if self.game_state == "start":
             self.start_screen.update()
+        elif self.game_state == "select":
+            self.selector.update()
         else:        
             # drawing logic
             self.display_surf.fill(s.BG_COLOR)  # background

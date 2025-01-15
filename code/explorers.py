@@ -19,8 +19,11 @@ class Explorer(pygame.sprite.Sprite):
         # images
         image_name = self.name.lower().replace(' ', '_').replace('.', '').replace("'", '').replace(',', '')
 
-        self.image = pygame.image.load(f'../graphics/characters/{image_name}.png').convert_alpha()
+        self.image = pygame.image.load(f'../graphics/characters/tokens/{image_name}.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (s.CHAR_SIZE, s.CHAR_SIZE))
+
+        self.portrait = pygame.image.load(f'../graphics/characters/portraits/{image_name}.png').convert_alpha()
+        self.portrait = pygame.transform.scale(self.portrait, s.PORTRAIT_SIZE)
 
         # traits
         self.speed_scale = char_info['speed scale']
