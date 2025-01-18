@@ -10,7 +10,7 @@ from roller import Roller
 from event import Event
 from messenger import Messenger
 from start_screen import StartScreen
-from character_select import Selector
+from character_selector import Selector
 
 
 class Gameboard:
@@ -161,14 +161,11 @@ class Gameboard:
             if keys[pygame.K_SPACE]:
                 self.timers['game_play'].activate()
                 self.game_state = "select"
-                print(f'after start screen: {self.game_state}')
 
         # character selection
         elif self.game_state == "select" and not(self.timers['game_play'].active):
-            print(f'game state: {self.game_state}')
             if keys[pygame.K_SPACE]:
                 self.game_state = "play"
-                print(f'after selection: {self.game_state}')
 
         # game play
         else:
@@ -314,6 +311,7 @@ class Gameboard:
 
     def run(self, dt):
         self.player_input()
+        self.update_timers()
         
         if self.game_state == "start":
             self.start_screen.update()
@@ -322,7 +320,6 @@ class Gameboard:
         else:        
             # drawing logic
             self.display_surf.fill(s.BG_COLOR)  # background
-            self.update_timers()
             self.all_sprites.custom_draw(self.current_player)
 
             # updates

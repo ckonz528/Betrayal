@@ -1,0 +1,158 @@
+import pygame
+import pygame.draw
+import pygame.font
+import settings as s
+from decks import Deck
+from timer import Timer
+import textwrap
+
+class Selector():
+    def __init__(self, char_deck:Deck):
+        # general setup
+        self.display_surf = pygame.display.get_surface()
+
+        # font sizes
+        self.title_font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.TITLE_FONT_SIZE)
+        self.font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.INFO_FONT_SIZE)
+
+        self.window_width_chars = 78
+
+        # setup
+        self.char_deck = char_deck
+
+        self.timer = Timer()
+
+        self.portrait_list = []
+        self.portrait_setup()
+
+        # window properties
+        self.window_width = s.POPUP_WIDTH
+        self.window_height = s.POPUP_HEIGHT
+
+        self.bg_color = s.DKGRAY
+        self.panel_color = s.DKGRAY
+
+        # status
+        self.index = 0
+        self.active = False
+
+    def portrait_setup(self):
+        for i, character in enumerate(self.char_deck.obj_dict.values()):
+            if i % 2 == 0:
+                portrait_x = 0 + 2 * s.MARGIN
+            else:
+                portrait_x = portrait_x + s.PORTRAIT_SIZE[0] + 2 * s.MARGIN
+            portrait_y = s.MARGIN + i // 2 * s.PORTRAIT_SIZE[1]
+
+            self.portrait_list.append([character.name, portrait_x, portrait_y])
+
+            portrait_rect = character.portrait.get_rect(topleft=(portrait_x,portrait_y))
+            self.display_surf.blit(character.portrait, portrait_rect)
+    
+    def display(self):
+        self.display_surf.fill(self.bg_color)
+
+        # display portraits
+        for i in range(len(self.portrait_list)):
+            self.char_display(self.portrait_list[i][0],
+                              self.portrait_list[i][1],
+                              self.portrait_list[i][2],
+                              self.index == i)
+        
+        # display text window & text
+        self.info_window()
+        self.info_text()
+
+    def char_display(self, char_name:str, x:int, y:int, selected:bool):
+        character = self.char_deck.obj_dict[char_name]
+        portrait_rect = character.portrait.get_rect(topleft=(x, y))
+        self.display_surf.blit(character.portrait, portrait_rect)
+
+        if selected:
+            pygame.draw.rect(self.display_surf, 'white', portrait_rect, 4, 0)
+
+    def info_window(self):
+        # get character object
+        char_obj = self.char_deck.obj_dict[self.portrait_list[self.index][0]]
+
+        # get window color
+        self.panel_color = s.PANEL_COLORS[char_obj.color]
+
+        # create info window
+        self.info_rect = pygame.Rect((s.POSITIONS['roller']), (self.window_width, self.window_height))
+        pygame.draw.rect(self.display_surf, self.panel_color, self.info_rect, border_radius=12)
+
+    def info_text(self):
+        char_obj = self.char_deck.obj_dict[self.portrait_list[self.index][0]]
+
+        self.text_top = self.info_rect.top + s.MARGIN
+            
+        # character info
+        self.display_single_line(char_obj.name, self.title_font)
+        self.display_single_line(f'Age: {char_obj.age}', self.font)
+        self.display_single_line(f'Birthday: {char_obj.birthday}', self.font)
+        self.display_single_line(f'Hobbies: {char_obj.hobbies}', self.font)
+        self.display_single_line(char_obj.fact, self.font)
+
+        # bio
+        self.text_top += s.LINE_SPACE
+        for line in textwrap.wrap(char_obj.bio, self.window_width_chars):
+            text_surf = self.font.render(line, False, 'white')
+            text_rect = text_surf.get_rect(topleft=(self.info_rect.left + s.MARGIN, self.text_top))
+            self.display_surf.blit(text_surf, text_rect)
+            self.text_top += text_surf.get_height()
+
+        # traits
+        #TODO: figure out how to show base trait position / value somehow
+        self.text_top += s.MARGIN
+        self.display_single_line('Traits:', self.title_font)
+        self.display_single_line(f'Speed: {char_obj.speed_scale}', self.font)
+        self.display_single_line(f'Might: {char_obj.might_scale}', self.font)
+        self.display_single_line(f'Knowledge: {char_obj.knowledge_scale}', self.font)
+        self.display_single_line(f'Sanity: {char_obj.sanity_scale}', self.font)
+
+    def display_single_line(self, text:str, font:pygame.font.Font):
+
+        text_surf = font.render(text, False, 'white')
+        text_rect = text_surf.get_rect(topleft=(self.info_rect.left + s.MARGIN, self.text_top))
+        self.display_surf.blit(text_surf, text_rect)
+        self.text_top += text_surf.get_height()
+
+        self.text_top += s.LINE_SPACE
+
+    def select_char(self):
+        pass
+
+    def remove_char_option(self):
+        pass
+
+    def input(self):
+        keys = pygame.key.get_pressed()
+
+        if not self.timer.active:
+            if keys[pygame.K_UP]:
+                self.index -= 2
+                self.timer.activate()
+
+            if keys[pygame.K_DOWN]:
+                self.index += 2
+                self.timer.activate()
+
+            if keys[pygame.K_LEFT]:
+                self.index -= 1
+                self.timer.activate()
+
+            if keys[pygame.K_RIGHT]:
+                self.index += 1
+                self.timer.activate()
+
+        # clamp values
+        if self.index < 0:
+            self.index = len(self.char_deck.name_list) - 1
+        if self.index > len(self.char_deck.name_list) - 1:
+            self.index = 0
+
+    def update(self):
+        self.display()
+        self.input()
+        self.timer.update()
