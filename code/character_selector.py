@@ -22,7 +22,7 @@ class Selector():
 
         self.timer = Timer()
 
-        self.portrait_list = []
+        self.portrait_dict = {}
         self.portrait_setup()
 
         # window properties
@@ -35,6 +35,8 @@ class Selector():
         # status
         self.index = 0
         self.active = False
+        self.player_counter = 0
+        self.selected_chars = []
 
     def portrait_setup(self):
         for i, character in enumerate(self.char_deck.obj_dict.values()):
@@ -43,37 +45,32 @@ class Selector():
             else:
                 portrait_x = portrait_x + s.PORTRAIT_SIZE[0] + 2 * s.MARGIN
             portrait_y = s.MARGIN + i // 2 * s.PORTRAIT_SIZE[1]
+            
+            self.portrait_dict[character.name] = Portrait(character.name, portrait_x, portrait_y)
+        
+        self.portrait_list = list(self.portrait_dict.keys())
 
-            self.portrait_list.append([character.name, portrait_x, portrait_y])
-
-            portrait_rect = character.portrait.get_rect(topleft=(portrait_x,portrait_y))
-            self.display_surf.blit(character.portrait, portrait_rect)
     
     def display(self):
         self.display_surf.fill(self.bg_color)
 
         # display portraits
-        for i in range(len(self.portrait_list)):
-            self.char_display(self.portrait_list[i][0],
-                              self.portrait_list[i][1],
-                              self.portrait_list[i][2],
-                              self.index == i)
+        for i, portrait in enumerate(self.portrait_dict.values()):
+            self.char_display(portrait, self.index == i)
         
         # display text window & text
         self.info_window()
         self.info_text()
 
-    def char_display(self, char_name:str, x:int, y:int, selected:bool):
-        character = self.char_deck.obj_dict[char_name]
-        portrait_rect = character.portrait.get_rect(topleft=(x, y))
-        self.display_surf.blit(character.portrait, portrait_rect)
+    def char_display(self, portrait, selected:bool):
+        self.display_surf.blit(portrait.image, portrait.rect)
 
         if selected:
-            pygame.draw.rect(self.display_surf, 'white', portrait_rect, 4, 0)
+            pygame.draw.rect(self.display_surf, 'white', portrait.rect, 4, 0)
 
     def info_window(self):
         # get character object
-        char_obj = self.char_deck.obj_dict[self.portrait_list[self.index][0]]
+        char_obj = self.char_deck.obj_dict[self.portrait_list[self.index]]
 
         # get window color
         self.panel_color = s.PANEL_COLORS[char_obj.color]
@@ -83,7 +80,7 @@ class Selector():
         pygame.draw.rect(self.display_surf, self.panel_color, self.info_rect, border_radius=12)
 
     def info_text(self):
-        char_obj = self.char_deck.obj_dict[self.portrait_list[self.index][0]]
+        char_obj = self.char_deck.obj_dict[self.portrait_list[self.index]]
 
         self.text_top = self.info_rect.top + s.MARGIN
             
@@ -156,3 +153,27 @@ class Selector():
         self.display()
         self.input()
         self.timer.update()
+
+
+class Portrait():
+    def __init__(self, char_name:str, x:int, y:int):
+        self.name = char_name
+        
+        self.x = x
+        self.y = y
+
+        self.image_name = self.name.lower().replace(' ', '_').replace('.', '').replace("'", '').replace(',', '')
+
+        # color image
+        self.img_color = pygame.image.load(f'../graphics/characters/portraits/{self.image_name}.png').convert_alpha()
+        self.img_color = pygame.transform.scale(self.img_color, s.PORTRAIT_SIZE)
+
+        # B&W image
+        self.img_bw = pygame.image.load(f'../graphics/characters/portraits/{self.image_name}_bw.png').convert_alpha()
+        self.img_bw = pygame.transform.scale(self.img_bw, s.PORTRAIT_SIZE)
+
+        self.image = self.img_color
+        self.rect = self.image.get_rect(topleft=(x, y))
+
+    def set_img_bw(self):
+        self.image = self.img_bw
