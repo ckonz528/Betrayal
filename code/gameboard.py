@@ -45,20 +45,6 @@ class Gameboard:
         self.event_deck = Deck('../data/events.json', 'event')
         self.char_deck = Deck('../data/characters.json', 'explorer')
 
-        # Players
-        # TODO: set up ability for players to select characters
-        self.selector = Selector(self.char_deck)
-
-        # TODO: make list of players and cycle through them
-        self.players = []
-        self.turn_index = 0
-        self.add_player('Persephone Puleri')
-        self.add_player('Isa Valencia')
-
-        current_player_name = self.players[self.turn_index]
-        self.current_player = self.char_deck.obj_dict[f'{current_player_name}']
-        self.current_player.allow_move = True
-
         # Timers
         self.timers = {
             'player_move': Timer(300),
@@ -66,6 +52,21 @@ class Gameboard:
             'roller': Timer(),
             'game_play': Timer()
         }
+
+        # Select Players
+        self.selector = Selector(self.char_deck)
+        self.players = []
+
+        self.start_screen = StartScreen()
+        self.game_state = "start" # options: start, select, play
+
+    def init_game_play(self):
+        print('Running init game play')
+        self.turn_index = 0
+        
+        current_player_name = self.players[self.turn_index]
+        self.current_player = self.char_deck.obj_dict[f'{current_player_name}']
+        self.current_player.allow_move = True
 
         # overlay
         self.overlay = Overlay()
@@ -81,9 +82,6 @@ class Gameboard:
         self.event_active = False
 
         self.messenger.clear_queue()
-
-        self.start_screen = StartScreen()
-        self.game_state = "start" # options: start, select, play
 
     def add_player(self, char_name: str):
         chosen_player = self.char_deck.obj_dict[f'{char_name}']
@@ -165,6 +163,9 @@ class Gameboard:
         # character selection
         elif self.game_state == "select" and not(self.timers['game_play'].active):
             if keys[pygame.K_SPACE]:
+                for player in self.selector.selected_chars:
+                    self.add_player(player)
+                self.init_game_play()
                 self.game_state = "play"
 
         # game play

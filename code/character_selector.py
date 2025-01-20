@@ -14,6 +14,7 @@ class Selector():
         # font sizes
         self.title_font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.TITLE_FONT_SIZE)
         self.font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.INFO_FONT_SIZE)
+        self.player_font = pygame.font.Font('../font/Semi-Coder-Regular.otf', s.EVENT_TITLE_SIZE)
 
         self.window_width_chars = 78
 
@@ -25,6 +26,12 @@ class Selector():
         self.portrait_dict = {}
         self.portrait_setup()
 
+        # status
+        self.index = 0
+        self.active = False
+        self.player_counter = 0
+        self.selected_chars = []
+
         # window properties
         self.window_width = s.POPUP_WIDTH
         self.window_height = s.POPUP_HEIGHT
@@ -32,11 +39,7 @@ class Selector():
         self.bg_color = s.DKGRAY
         self.panel_color = s.DKGRAY
 
-        # status
-        self.index = 0
-        self.active = False
-        self.player_counter = 0
-        self.selected_chars = []
+        self.bottom_msg = f'[Press Enter to select this character]'
 
     def portrait_setup(self):
         for i, character in enumerate(self.char_deck.obj_dict.values()):
@@ -50,17 +53,27 @@ class Selector():
         
         self.portrait_list = list(self.portrait_dict.keys())
 
-    
     def display(self):
         self.display_surf.fill(self.bg_color)
 
         # display portraits
         for i, portrait in enumerate(self.portrait_dict.values()):
             self.char_display(portrait, self.index == i)
-        
+
         # display text window & text
         self.info_window()
         self.info_text()
+
+        # top message
+        top_msg = f'Choosing for Player {self.player_counter + 1}...'
+        text_surf = self.player_font.render(top_msg, False, 'white')
+        text_rect = text_surf.get_rect(midtop=(self.info_rect.midtop[0], s.MARGIN * 2))
+        self.display_surf.blit(text_surf, text_rect)
+
+        # bottom message
+        text_surf = self.player_font.render(self.bottom_msg, False, 'white')
+        text_rect = text_surf.get_rect(midtop=(self.info_rect.midbottom[0], self.info_rect.midbottom[1] + 2 * s.MARGIN))
+        self.display_surf.blit(text_surf, text_rect)
 
     def char_display(self, portrait, selected:bool):
         self.display_surf.blit(portrait.image, portrait.rect)
@@ -85,11 +98,11 @@ class Selector():
         self.text_top = self.info_rect.top + s.MARGIN
             
         # character info
-        self.display_single_line(char_obj.name, self.title_font)
-        self.display_single_line(f'Age: {char_obj.age}', self.font)
-        self.display_single_line(f'Birthday: {char_obj.birthday}', self.font)
-        self.display_single_line(f'Hobbies: {char_obj.hobbies}', self.font)
-        self.display_single_line(char_obj.fact, self.font)
+        self.display_single_info_line(char_obj.name, self.title_font)
+        self.display_single_info_line(f'Age: {char_obj.age}', self.font)
+        self.display_single_info_line(f'Birthday: {char_obj.birthday}', self.font)
+        self.display_single_info_line(f'Hobbies: {char_obj.hobbies}', self.font)
+        self.display_single_info_line(char_obj.fact, self.font)
 
         # bio
         self.text_top += s.LINE_SPACE
@@ -102,13 +115,13 @@ class Selector():
         # traits
         #TODO: figure out how to show base trait position / value somehow
         self.text_top += s.MARGIN
-        self.display_single_line('Traits:', self.title_font)
-        self.display_single_line(f'Speed: {char_obj.speed_scale}', self.font)
-        self.display_single_line(f'Might: {char_obj.might_scale}', self.font)
-        self.display_single_line(f'Knowledge: {char_obj.knowledge_scale}', self.font)
-        self.display_single_line(f'Sanity: {char_obj.sanity_scale}', self.font)
+        self.display_single_info_line('Traits:', self.title_font)
+        self.display_single_info_line(f'Speed: {char_obj.speed_scale}', self.font)
+        self.display_single_info_line(f'Might: {char_obj.might_scale}', self.font)
+        self.display_single_info_line(f'Knowledge: {char_obj.knowledge_scale}', self.font)
+        self.display_single_info_line(f'Sanity: {char_obj.sanity_scale}', self.font)
 
-    def display_single_line(self, text:str, font:pygame.font.Font):
+    def display_single_info_line(self, text:str, font:pygame.font.Font):
 
         text_surf = font.render(text, False, 'white')
         text_rect = text_surf.get_rect(topleft=(self.info_rect.left + s.MARGIN, self.text_top))
@@ -117,14 +130,21 @@ class Selector():
 
         self.text_top += s.LINE_SPACE
 
-    def select_char(self):
-        pass
+    def select_char(self, char_name:str):
+        self.selected_chars.append(char_name)
 
-    def remove_char_option(self):
-        pass
+        selected_color = self.char_deck.obj_dict[char_name].color
+
+        for i, character in enumerate(self.char_deck.obj_dict.values()):
+            if character.color == selected_color:
+                self.portrait_dict[character.name].image = self.portrait_dict[character.name].img_bw
+                self.portrait_dict[character.name].chosen = True
+
 
     def input(self):
         keys = pygame.key.get_pressed()
+
+        current_selection = self.portrait_list[self.index]
 
         if not self.timer.active:
             if keys[pygame.K_UP]:
@@ -142,6 +162,18 @@ class Selector():
             if keys[pygame.K_RIGHT]:
                 self.index += 1
                 self.timer.activate()
+
+            if keys[pygame.K_RETURN]:
+                self.timer.activate()
+                if self.portrait_dict[current_selection].chosen:
+                    self.bottom_msg = 'Character taken. Select a different character'
+                else:
+                    self.select_char(current_selection)
+                    print(self.selected_chars)
+                    self.player_counter += 1
+                    self.bottom_msg = f'[Press Enter to select this character]'
+
+        # TODO: skip already slected characters / otherwise make them unselectable
 
         # clamp values
         if self.index < 0:
@@ -174,6 +206,8 @@ class Portrait():
 
         self.image = self.img_color
         self.rect = self.image.get_rect(topleft=(x, y))
+
+        self.chosen = False
 
     def set_img_bw(self):
         self.image = self.img_bw
