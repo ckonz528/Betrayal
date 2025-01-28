@@ -1,27 +1,29 @@
-import pygame
-import settings as s
 import json
 from random import shuffle
 from rooms import Room
 from cards import Card, ObjectCard
 from explorers import Explorer
+from typing import cast, Generic, TypeVar
 
-
-class Deck():
-    def __init__(self, info_path: str, object: str, messenger: object = None, obj_type: str = None) -> None:
+T = TypeVar('T')
+class Deck(Generic[T]):
+    def __init__(self, info_path: str, object: str, messenger: object = None, obj_type: str | None = None) -> None:
         # construct deck of tiles
         with open(info_path, "r", encoding='utf-8') as data_file:
             info_list = json.load(data_file)
 
+        self.obj_dict: dict[str, T]
+
         # choose what type of card objects are created
         if object == 'object':
-            self.obj_dict = {card_info['name']: ObjectCard(card_info, obj_type) for card_info in info_list}
+            assert obj_type is not None
+            self.obj_dict = {card_info['name']: cast(T, ObjectCard(card_info, obj_type)) for card_info in info_list}
         elif object == 'event':
-            self.obj_dict = {card_info['name']: Card(card_info) for card_info in info_list}
+            self.obj_dict = {card_info['name']: cast(T, Card(card_info)) for card_info in info_list}
         elif object == 'room':
-            self.obj_dict = {card_info['name']: Room(card_info, messenger) for card_info in info_list}
+            self.obj_dict = {card_info['name']: cast(T, Room(card_info, messenger)) for card_info in info_list}
         elif object == 'explorer':
-            self.obj_dict = {card_info['name']: Explorer(card_info) for card_info in info_list}
+            self.obj_dict = {card_info['name']: cast(T, Explorer(card_info)) for card_info in info_list}
 
         self.name_list = list(self.obj_dict.keys())
 
@@ -52,7 +54,7 @@ class Deck():
             self.name_list.remove(card_name)
 
 
-class RoomDeck(Deck):
+class RoomDeck(Deck[Room]):
     def __init__(self, info_path: str, object: str, messenger: object) -> None:
         super().__init__(info_path, object, messenger)
 
@@ -65,5 +67,7 @@ class RoomDeck(Deck):
             if floor in tile.floors:
                 self.name_list.remove(chosen_tile)
                 return tile
+
+        assert False, "Room not found??"
 
         # TODO: add logic for if there are no more tiles for that floor

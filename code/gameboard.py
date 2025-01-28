@@ -1,7 +1,7 @@
 import pygame
 import settings as s
 from decks import Deck, RoomDeck
-from rooms import Room
+from cards import ObjectCard, Card
 from explorers import Explorer
 from timer import Timer
 from overlay import Overlay
@@ -40,10 +40,10 @@ class Gameboard:
         self.place_tile('Basement Landing', (-100,0))
 
         # Card decks
-        self.omen_deck = Deck('../data/omens.json', 'object', obj_type='omen')
-        self.item_deck = Deck('../data/items.json', 'object', obj_type='item')
-        self.event_deck = Deck('../data/events.json', 'event')
-        self.char_deck = Deck('../data/characters.json', 'explorer')
+        self.omen_deck = Deck[ObjectCard]('../data/omens.json', 'object', obj_type='omen')
+        self.item_deck = Deck[ObjectCard]('../data/items.json', 'object', obj_type='item')
+        self.event_deck = Deck[Card]('../data/events.json', 'event')
+        self.char_deck = Deck[Explorer]('../data/characters.json', 'explorer')
 
         # Timers
         self.timers = {
@@ -55,7 +55,7 @@ class Gameboard:
 
         # Select Players
         self.selector = Selector(self.char_deck)
-        self.players = []
+        self.players: list[str] = []
 
         self.start_screen = StartScreen()
         self.game_state = "start" # options: start, select, play
@@ -63,7 +63,7 @@ class Gameboard:
     def init_game_play(self):
         print('Running init game play')
         self.turn_index = 0
-        
+
         current_player_name = self.players[self.turn_index]
         self.current_player = self.char_deck.obj_dict[f'{current_player_name}']
         self.current_player.allow_move = True
@@ -139,14 +139,14 @@ class Gameboard:
             self.current_player.allow_move = True
 
 
-        #TODO: center camera on next player 
+        #TODO: center camera on next player
         # self.all_sprites.set_camera(pygame.math.Vector2((self.current_player.rect.centerx + s.SCREEN_W / 2, self.current_player.rect.centery + s.SCREEN_H / 2)))
 
     def adjust_tokens(self):
         directions = ['NW','N','NE','E','SE','S','SW','W']
         adjust_counter = 0
-        for token in self.players:
-            token = self.char_deck.obj_dict[token]
+        for token_name in self.players:
+            token: Explorer = self.char_deck.obj_dict[token_name]
             if token.name != self.current_player.name and token.grid_pos == self.current_player.grid_pos:
                 token.adjust_pos(directions[adjust_counter])
                 adjust_counter += 1
@@ -161,8 +161,8 @@ class Gameboard:
                 self.game_state = "select"
 
         # character selection
-        elif self.game_state == "select" and not(self.timers['game_play'].active):
-            if keys[pygame.K_SPACE]:
+        elif self.game_state == "select":
+            if keys[pygame.K_SPACE] and not(self.timers['game_play'].active):
                 for player in self.selector.selected_chars:
                     self.add_player(player)
                 self.init_game_play()
@@ -182,7 +182,7 @@ class Gameboard:
                 if keys[pygame.K_UP]:
                     self.timers['player_move'].activate()
                     if self.check_walls('N'):
-                        self.current_player.set_pos((player_pos[0], player_pos[1] - 1))                
+                        self.current_player.set_pos((player_pos[0], player_pos[1] - 1))
                 elif keys[pygame.K_DOWN]:
                     self.timers['player_move'].activate()
                     if self.check_walls('S'):
@@ -249,7 +249,7 @@ class Gameboard:
             elif not doors[3]:
                 self.messenger.add_entry(f'{room_name} {direction} blocked', 'red')
                 return False
-            
+
         # check for adjacent tile & walls
         if direction == 'N':
             target_pos = (self.current_player.grid_pos[0], self.current_player.grid_pos[1] - 1)
@@ -313,12 +313,12 @@ class Gameboard:
     def run(self, dt):
         self.player_input()
         self.update_timers()
-        
+
         if self.game_state == "start":
             self.start_screen.update()
         elif self.game_state == "select":
             self.selector.update()
-        else:        
+        else:
             # drawing logic
             self.display_surf.fill(s.BG_COLOR)  # background
             self.all_sprites.custom_draw(self.current_player)
@@ -346,7 +346,7 @@ class CameraGroup(pygame.sprite.Group):
 
         # camera speed for keyboard
         self.keyboard_speed = 3
-    
+
     def keyboard_ctrl(self, player):
         keys = pygame.key.get_pressed()
 

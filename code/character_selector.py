@@ -39,18 +39,18 @@ class Selector():
         self.bg_color = s.DKGRAY
         self.panel_color = s.DKGRAY
 
-        self.bottom_msg = f'[Press Enter to select this character]'
+        self.bottom_msg = '[Press Enter to select this character]'
 
     def portrait_setup(self):
         for i, character in enumerate(self.char_deck.obj_dict.values()):
             if i % 2 == 0:
                 portrait_x = 0 + 2 * s.MARGIN
             else:
-                portrait_x = portrait_x + s.PORTRAIT_SIZE[0] + 2 * s.MARGIN
+                portrait_x = s.PORTRAIT_SIZE[0] + 4 * s.MARGIN # portrait_x + s.PORTRAIT_SIZE[0] + 2 * s.MARGIN
             portrait_y = s.MARGIN + i // 2 * s.PORTRAIT_SIZE[1]
-            
+
             self.portrait_dict[character.name] = Portrait(character.name, portrait_x, portrait_y)
-        
+
         self.portrait_list = list(self.portrait_dict.keys())
 
     def display(self):
@@ -96,7 +96,7 @@ class Selector():
         char_obj = self.char_deck.obj_dict[self.portrait_list[self.index]]
 
         self.text_top = self.info_rect.top + s.MARGIN
-            
+
         # character info
         self.display_single_info_line(char_obj.name, self.title_font)
         self.display_single_info_line(f'Age: {char_obj.age}', self.font)
@@ -171,7 +171,7 @@ class Selector():
                     self.select_char(current_selection)
                     print(self.selected_chars)
                     self.player_counter += 1
-                    self.bottom_msg = f'[Press Enter to select this character]'
+                    self.bottom_msg = '[Press Enter to select this character]'
 
         # TODO: skip already slected characters / otherwise make them unselectable
 
@@ -190,7 +190,7 @@ class Selector():
 class Portrait():
     def __init__(self, char_name:str, x:int, y:int):
         self.name = char_name
-        
+
         self.x = x
         self.y = y
 
