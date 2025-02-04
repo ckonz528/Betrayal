@@ -1,7 +1,6 @@
 import pygame
 import settings as s
 import textwrap
-from timer import Timer
 
 
 class Messenger:
@@ -22,12 +21,12 @@ class Messenger:
         self.queue_length = 8
 
     def add_entry(self, entry:str, color:str = 'white'):
-        entry = (entry, color)
+        # entry = (entry, color)
         if len(self.entry_list) <self.queue_length:
-            self.entry_list.append(entry)
-        else: 
+            self.entry_list.append((entry, color))
+        else:
             self.entry_list = self.entry_list[1:]
-            self.entry_list.append(entry)
+            self.entry_list.append((entry, color))
 
     def show_entries(self):
         rev_entry_list = list(reversed(self.entry_list))
@@ -36,7 +35,7 @@ class Messenger:
         for item, color in rev_entry_list:
             for line in textwrap.wrap(item,30):
                 text_surf = self.font.render(line, False, color)
-                
+
                 # background
                 bg_rect = pygame.Rect(s.POSITIONS['msg'][0], top, self.width, text_surf.get_height())
                 pygame.draw.rect(self.display_surface, s.PANEL_BKG, bg_rect)

@@ -1,7 +1,6 @@
 import pygame
 import settings as s
 import textwrap
-from timer import Timer
 
 class Event:
     def __init__(self) -> None:

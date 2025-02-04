@@ -31,7 +31,7 @@ class Overlay:
         name_list = textwrap.wrap(self.player.name, 12)
         name_surfs = self.list_setup(name_list)
         left, top = s.POSITIONS['name']
-        self.show_entries(name_surfs, left, top, self.width - left)
+        self.show_entries(name_surfs, left, top, int(self.width - left))
 
         # current player traits
         trait_names = self.player.traits.keys()
@@ -39,8 +39,8 @@ class Overlay:
         trait_values = self.player.traits.values()
         value_surfs = self.list_setup(trait_values)
         left, top = s.POSITIONS['traits'] #TODO: change naming to traits
-        self.show_entries(trait_surfs, left, top, self.width, value_surfs)
-        
+        self.show_entries(trait_surfs, left, top, int(self.width), value_surfs)
+
 
     def list_setup(self, entry_list):
         text_surfs = []
@@ -52,8 +52,8 @@ class Overlay:
             element_height += text_surf.get_height()
 
         return text_surfs
-    
-    def show_entries(self, text_surfs: list, left: int, top: int, width: int, value_surfs: list = None):
+
+    def show_entries(self, text_surfs: list, left: int, top: int, width: int, value_surfs: list | None = None):
         for text_index, text_surf in enumerate(text_surfs):
             # background
             bg_rect = pygame.Rect(left, top, width, text_surf.get_height())

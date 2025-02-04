@@ -1,10 +1,11 @@
 import pygame
 import settings as s
 from timer import Timer
+from messenger import Messenger
 
 
 class Room(pygame.sprite.Sprite):
-    def __init__(self, tile_info: dict, messenger: object) -> None:
+    def __init__(self, tile_info: dict, messenger: Messenger) -> None:
         super().__init__()
         self.messenger = messenger
 
@@ -27,12 +28,12 @@ class Room(pygame.sprite.Sprite):
 
         self.image = pygame.transform.scale(
             self.image, (s.TILE_SIZE, s.TILE_SIZE))
-        
+
         # set up object for game use
         self.layer = s.LAYERS['board']
         self.rotate_timer = Timer(500)
         self.set_pos((0, 0))
-        
+
         self.rotateable = False
 
     def set_pos(self, grid_pos: tuple, direction:str = 'N'):
@@ -68,7 +69,7 @@ class Room(pygame.sprite.Sprite):
 
     def stop_rotation(self):
         self.rotateable = False
-        
+
     def rotation_check(self):
         #TODO: find a way to run this with the end turn proceedure and keep turn from ending if invalid
         if self.direction_entered == 'N' and self.doors[2]:
