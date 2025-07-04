@@ -169,11 +169,10 @@ class Selector():
                     self.bottom_msg = 'Character taken. Select a different character'
                 else:
                     self.select_char(current_selection)
-                    print(self.selected_chars)
                     self.player_counter += 1
                     self.bottom_msg = '[Press Enter to select this character]'
 
-        # TODO: skip already slected characters / otherwise make them unselectable
+        #TODO: add error handling for no characters selected
 
         # clamp values
         if self.index < 0:

@@ -45,13 +45,8 @@ class Gameboard:
         self.event_deck = Deck[Card]('../data/events.json', 'event')
         self.char_deck = Deck[Explorer]('../data/characters.json', 'explorer')
 
-        # Timers
-        self.timers = {
-            'player_move': Timer(300),
-            'inv_panel': Timer(),
-            'roller': Timer(),
-            'game_play': Timer()
-        }
+        self.timers = {}
+        self.timers['start_game'] = Timer()
 
         # Select Players
         self.selector = Selector(self.char_deck)
@@ -80,6 +75,11 @@ class Gameboard:
         self.roller_active = False
         self.event = Event()
         self.event_active = False
+
+        # Timers
+        self.timers['player_move'] = Timer(300)
+        self.timers['inv_panel'] = Timer()
+        self.timers['roller'] = Timer()
 
         self.messenger.clear_queue()
 
@@ -157,16 +157,20 @@ class Gameboard:
         # start screen
         if self.game_state == "start":
             if keys[pygame.K_SPACE]:
-                self.timers['game_play'].activate()
+                self.timers['start_game'].activate()
                 self.game_state = "select"
 
         # character selection
         elif self.game_state == "select":
-            if keys[pygame.K_SPACE] and not(self.timers['game_play'].active):
-                for player in self.selector.selected_chars:
-                    self.add_player(player)
-                self.init_game_play()
-                self.game_state = "play"
+            if keys[pygame.K_SPACE] and not(self.timers['start_game'].active):
+                #TODO: add error handling for no characters selected
+                if self.selector.selected_chars:
+                    for player in self.selector.selected_chars:
+                        self.add_player(player)
+                    self.init_game_play()
+                    self.game_state = "play"
+                else:
+                    self.selector.bottom_msg = "ERROR: No characters selected"
 
         # game play
         else:
