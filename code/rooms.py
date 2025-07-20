@@ -2,6 +2,8 @@ import pygame
 import settings as s
 from timer import Timer
 from messenger import Messenger
+import room_fxns
+import string
 
 
 class Room(pygame.sprite.Sprite):
@@ -15,6 +17,13 @@ class Room(pygame.sprite.Sprite):
         self.card = tile_info['card']
         self.floors = tile_info['floors']
         self.instructions = tile_info['instructions']
+
+        # room function
+        try:
+            fxn_name = self.name.translate(str.maketrans('', '', string.punctuation)).lower().replace(" ","_")
+            self.room_fxn = getattr(room_fxns, fxn_name)
+        except:
+            self.room_fxn = None
 
         # get or construct image
         image_name = self.name.lower().replace(' ', '_').replace("'", '')
