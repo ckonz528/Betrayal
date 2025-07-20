@@ -25,6 +25,7 @@ class Event:
 
     def run_event(self, event_card):
         self.event = event_card
+        print(f'Event function = {self.event.event_fxn}')
 
     def event_window(self):
         self.event_rect = pygame.Rect((s.POSITIONS['roller']), (self.window_width, self.window_height))
