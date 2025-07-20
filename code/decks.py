@@ -1,7 +1,7 @@
 import json
 from random import shuffle
 from rooms import Room
-from cards import Card, ObjectCard
+import cards
 from explorers import Explorer
 from typing import cast, Generic, TypeVar
 
@@ -17,9 +17,9 @@ class Deck(Generic[T]):
         # choose what type of card objects are created
         if object == 'object':
             assert obj_type is not None
-            self.obj_dict = {card_info['name']: cast(T, ObjectCard(card_info, obj_type)) for card_info in info_list}
+            self.obj_dict = {card_info['name']: cast(T, cards.ObjectCard(card_info, obj_type)) for card_info in info_list}
         elif object == 'event':
-            self.obj_dict = {card_info['name']: cast(T, Card(card_info)) for card_info in info_list}
+            self.obj_dict = {card_info['name']: cast(T, cards.EventCard(card_info)) for card_info in info_list}
         elif object == 'room':
             self.obj_dict = {card_info['name']: cast(T, Room(card_info, messenger)) for card_info in info_list}
         elif object == 'explorer':

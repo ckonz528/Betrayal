@@ -3,8 +3,7 @@
     "name": "Alien Geometry",
     "description": "The angles of this room don't add up. The room is square, but it has five corners. One of the corners is inside out. You try for the door, but it is always on the other side of the room.",
     "action_text": "Make a Knowledge roll.",
-    "result_text": "4+: Gain 1 Sanity. It starts to make sense! \n0-3: Lose 1 Speed. You experience vertigo.",
-    "function": "alien_geometry"
+    "result_text": "4+: Gain 1 Sanity. It starts to make sense! \n0-3: Lose 1 Speed. You experience vertigo."
   },
   {
     "name": "An Eerie Feeling",
