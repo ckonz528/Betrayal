@@ -172,7 +172,7 @@ class Selector():
                     self.player_counter += 1
                     self.bottom_msg = '[Press Enter to select this character]'
 
-        #TODO: add error handling for no characters selected
+        #TODO: add message to press space bar to play
 
         # clamp values
         if self.index < 0:

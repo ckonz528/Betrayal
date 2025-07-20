@@ -56,8 +56,10 @@ class Gameboard:
         self.game_state = "start" # options: start, select, play
 
     def init_game_play(self):
-        print('Running init game play')
         self.turn_index = 0
+
+        for player in self.selector.selected_chars:
+            self.add_player(player)
 
         current_player_name = self.players[self.turn_index]
         self.current_player = self.char_deck.obj_dict[f'{current_player_name}']
@@ -163,14 +165,11 @@ class Gameboard:
         # character selection
         elif self.game_state == "select":
             if keys[pygame.K_SPACE] and not(self.timers['start_game'].active):
-                #TODO: add error handling for no characters selected
-                if self.selector.selected_chars:
-                    for player in self.selector.selected_chars:
-                        self.add_player(player)
+                if len(self.selector.selected_chars) >= 3:
                     self.init_game_play()
                     self.game_state = "play"
                 else:
-                    self.selector.bottom_msg = "ERROR: No characters selected"
+                    self.selector.bottom_msg = "ERROR: Not enough characters selected"
 
         # game play
         else:

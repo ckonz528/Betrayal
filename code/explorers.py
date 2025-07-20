@@ -59,6 +59,7 @@ class Explorer(pygame.sprite.Sprite):
 
         # player life status
         self.dead = False
+        # self.reset_pos = (0,0) # not currently functional
 
     def set_pos(self, grid_pos: tuple):
         self.grid_pos = grid_pos
@@ -66,7 +67,8 @@ class Explorer(pygame.sprite.Sprite):
         self.pos = (self.grid_pos[0] * s.TILE_SIZE + s.TILE_SIZE//2, self.grid_pos[1] * s.TILE_SIZE + s.TILE_SIZE//2)
         self.rect = self.image.get_rect(center=self.pos)
 
-    def adjust_pos(self, direction):
+    def adjust_pos(self, direction:str):
+        # adjust position of the token so it doesn't overlap wwith other tokens
         self.pos = (self.grid_pos[0] * s.TILE_SIZE + s.TILE_SIZE//2, self.grid_pos[1] * s.TILE_SIZE + s.TILE_SIZE//2)
         if direction == "NW":
             self.pos = (self.pos[0] - s.CHAR_SIZE, self.pos[1] - s.CHAR_SIZE)
@@ -87,7 +89,7 @@ class Explorer(pygame.sprite.Sprite):
 
         self.rect = self.image.get_rect(center=self.pos)
 
-    def add_item(self, item: object):
+    def add_item(self, item:object):
         self.inventory[item.name] = item
 
     def adjust_stat(self, stat:str, amnt:int):
